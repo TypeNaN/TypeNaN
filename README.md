@@ -59,7 +59,7 @@ Here are some ideas to get you started:
 <p><a href="https://www.buymeacoffee.com/TypeNaN"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="TypeNaN" /></a><a href="https://ko-fi.com/typenan"> <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="210" alt="typenan" /></a></p><br><br>
 
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=typenan&show_icons=true&locale=en&layout=compact" alt="typenan" /></p>
+<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=typenan&show_icons=true&locale=en&layout=compact" alt="typenan" /></p>
 
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=typenan&show_icons=true&locale=en" alt="typenan" /></p>
 
