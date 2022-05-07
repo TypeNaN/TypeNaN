@@ -66,4 +66,5 @@ Here are some ideas to get you started:
 
 ### Blogs posts
 <!-- BLOG-POST-LIST:START -->
+- [Start a new project](https://dev.to/typenan/start-a-new-project-15pf)
 <!-- BLOG-POST-LIST:END -->
