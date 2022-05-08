@@ -113,5 +113,6 @@ Here are some ideas to get you started:
 
 ### Blogs posts:<br>
 <!-- BLOG-POST-LIST:START -->
+- [Code EP.1 : Duino coin monitor](https://dev.to/typenan/code-ep1-duino-coin-monitor-cni)
 - [Start a new project](https://dev.to/typenan/start-a-new-project-15pf)
 <!-- BLOG-POST-LIST:END -->
