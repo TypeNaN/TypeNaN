@@ -78,11 +78,9 @@ Here are some ideas to get you started:
 
 <br><br>
 
-<p align="center" >
-<img src="https://github-readme-stats.vercel.app/api?username=typenan&show_icons=true&theme=dark&locale=en" alt="typenan" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=typenan&theme=dark" alt="typenan" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs?username=typenan&show_icons=true&theme=dark&locale=en&layout=compact" alt="typenan" />
-</p>
+<p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api?username=typenan&show_icons=true&theme=dark&locale=en" alt="typenan" /></p>
+<p align="center"><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=typenan&theme=dark" alt="typenan" /></p>
+<p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=typenan&show_icons=true&theme=dark&locale=en&layout=compact" alt="typenan" /></p>
 
 <br><br>
 <p align="center">
