@@ -1,0 +1,129 @@
+@import './landing.css';
+
+@font-face {
+  font-family: 'K2D', sans-serif;
+  src: local('K2D Thin'), url('../K2D/K2D_Thin.ttf') format('woff2'),
+    local('K2D Bold'), url('../K2D/K2D_Bold.ttf') format('woff2'),
+    local('K2D ExtraBold'), url('../K2D/K2D_ExtraBold.ttf') format('woff2');
+  font-display: swap;
+}
+@keyframes pulse {
+	0% {opacity: 0;}
+  25% {opacity: 1;}
+	75% {opacity: 1;}
+  100% {opacity: 0;}
+}
+::-webkit-scrollbar {width: 4px;}
+::-webkit-scrollbar-track {background: #a9d7e5;}
+::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 5px;}
+::-webkit-scrollbar-thumb:hover {background: #a6e22e;}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+}
+body {
+  font: normal 11px 'K2D Thin';
+  background: rgba(20, 30, 40, 1);
+  background-image: url('../assets/lain.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  color: #aaa;
+  overflow: hidden;
+}
+a {
+  color: #a6e22e;
+  text-decoration: none;
+  font: bold 0.8rem/1.8rem 'K2D Bold';
+}
+a:hover {
+  color: #baff31;
+  cursor: pointer;
+  text-shadow: 1px 1px 4px rgba(146, 255, 4, 0.56);
+}
+.myAds {
+  border: solid 1px #a6e22e;
+  background: rgba(20, 30, 40, .25);
+}
+section#GEEK {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('../assets/lain.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  user-select: none;
+}
+section#GAMER {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('../assets/lain.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  user-select: none;
+}
+section#HR {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('../assets/lain.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  user-select: none;
+}
+section#HR ul#container-setting,
+section#GAMER ul#container-setting {
+  display: inline-block;
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 5px 20px;
+  text-align: right;
+  background-color: #202822;
+  list-style-type: none;
+}
+section#HR ul#container-setting li,
+section#GAMER ul#container-setting li {
+  display: inline-block;
+  min-width: 50px;
+  height: 30px;
+  margin: 0 10px;
+  padding: 5px 15px;
+  text-align: center;
+  border: solid 2px #6e7074;
+  background-color: #202822;
+  font: bold 0.8rem/1rem 'K2D Thin';
+  border-radius: 10px;
+  cursor: pointer;
+}
+section#HR ul#container-setting li.selected,
+section#GAMER ul#container-setting li.selected {
+  color: #a6e22e;
+  border: solid 2px #baff31;
+  background-color: #2d2f32;
+  transition: all 1s;
+}
