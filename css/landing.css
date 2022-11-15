@@ -8,7 +8,7 @@ section#Landing {
   margin: 0;
   padding: 0;
   background-color: #2d2f32dd;
-  font: bold 1.8rem/2.4rem 'K2D ExtraBold';
+  font: bold 1.8rem/2.4rem 'K2D';
   overflow: hidden;
   user-select: none;
 }
@@ -32,7 +32,7 @@ section#Landing ul#container-language li {
   text-align: center;
   border: solid 3px #2d2f32;
   background-color: #202822;
-  font: bold 1.8rem/80px 'K2D ExtraBold';
+  font: bold 1.8rem/80px 'K2D';
   border-radius: 25px;
   cursor: pointer;
 }
@@ -56,7 +56,7 @@ section#Landing ul#container-viewer li {
   text-align: center;
   border: solid 3px #2d2f32;
   background-color: #202822;
-  font: bold 1.8rem/80px 'K2D ExtraBold';
+  font: bold 1.8rem/80px 'K2D';
   border-radius: 25px;
   cursor: pointer;
 }

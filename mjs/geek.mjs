@@ -1,6 +1,9 @@
 'use strict'
 
 
+import terminal from './terminal.mjs'
+
+
 export default class {
   constructor() {
     this.render()
@@ -10,5 +13,6 @@ export default class {
     this.section = document.createElement('section')
     this.section.id = 'GEEK'
     document.body.appendChild(this.section)
+    new terminal(this.section)
   }
 }

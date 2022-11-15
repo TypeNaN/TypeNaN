@@ -1,0 +1,275 @@
+section#Terminal {
+	position: fixed;
+  background: none;
+	color: #aaa;
+	width: 520px;
+	height: 480px;
+	left: 5px;
+	top: 5px;
+	border-radius: .5rem .5rem .5rem .5rem;
+  box-shadow: 10px 10px 4px rgba(0,0,0,0.56);
+  transform-origin: top left;
+  transform: scale(0.3, 0.3);
+  transition: transform 0.5s ease-in-out 0.3s,
+    left 0.5s ease-in-out 0.3s,
+    top 0.5s ease-in-out 0.3s;
+  z-index: 9999;
+  user-select: none;
+}
+section#Terminal:hover {
+  left: 20px;
+  top: 20px;
+  transform: scale(1,1);
+  transition: transform 0.5s ease-in-out,
+    left 0.5s ease-in-out,
+    top 0.5s ease-in-out;
+}
+section#Terminal~section.Windows {
+  transition: color 200ms ease-in-out,
+    background-color 200ms ease-in-out,
+    height 100ms ease-in-out 200ms,
+    width 500ms ease-in-out 300ms,
+    transform 500ms ease-in-out 300ms;
+}
+section#Terminal:hover~section.Windows {
+  width: calc(100vw - 560px);
+  transition: 0.5s ease-in-out;
+}
+section#Terminal div#Terminal-Title {
+	background: rgba(25, 25, 25, 0.98);
+  color: #a6e22e;
+	height: 25px;
+  font: bold 11px 'K2D';
+	letter-spacing: 0.3rem;
+	text-transform: uppercase;
+	text-align: center;
+	padding-top: 6px;
+	border-radius: .5rem .5rem 0 0;
+}
+section#Terminal div#Terminal-Title:hover {
+  background-color: #45484d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#45484d), to(#000000));
+  background-image: -webkit-linear-gradient(top, #2d2f32, #000000);
+  background-image: -moz-linear-gradient(top, #2d2f32, #000000);
+  background-image: -ms-linear-gradient(top, #2d2f32, #000000);
+  background-image: -o-linear-gradient(top, #2d2f32, #000000);
+  background-image: linear-gradient(to bottom, #2d2f32, #000000);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#2d2f32, endColorstr=#000000);
+}
+section#Terminal div#Terminal-console {
+	display: inline-block;
+	background: rgba(45, 45, 45, 0.9);
+	width: 100%;
+  height: 428px;
+	padding: 20px 20px 10px 20px;
+	border-radius: 0 0 .5rem .5rem;
+  font: bold 0.8em/1.2em 'K2D';
+  word-wrap: break-word;
+	white-space: pre-wrap;
+	overflow-y: auto;
+	overflow-x: hidden;
+  scroll-behavior: smooth;
+  transform-origin: top left;
+  transform: scale(1, 1);
+  transition: 1s;
+}
+section#Terminal div#Terminal-console::-webkit-scrollbar {width: 4px;}
+section#Terminal div#Terminal-console::-webkit-scrollbar-track {background: #a9d7e5;}
+section#Terminal div#Terminal-console::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 5px;}
+section#Terminal div#Terminal-console::-webkit-scrollbar-thumb:hover {background: #f00;}
+section#Terminal div#Terminal-console pre#welcome {
+  text-shadow: 0 10px 6px rgba(0, 0, 0, 1);
+}
+section#Terminal div#Terminal-console ul {
+	margin: 20px 0 0 -40px;
+	list-style-type: none;
+}
+section#Terminal div#Terminal-console ul#Terminal-console-log li {
+  font: normal 1.6em/1.4em 'K2D';
+}
+section#Terminal div#Terminal-console .error {
+  font: bold 1.2em/1.2em 'K2D';
+	color: rgba(255, 60, 60, 1);
+}
+section#Terminal div#Terminal-console .cli {
+  color: #a6e22e;
+}
+section#Terminal div#Terminal-prompt {
+	margin-top: 20px;
+	padding: 5px 0;
+  color: #fff;
+  font: bold 1.6em/1.6em 'K2D';
+  letter-spacing: 0.2em;
+  border-top: solid 1px #a6e22e;
+}
+section#Terminal span.Terminal-prompt-sign {
+	color: rgba(56, 209, 56, 0.98);
+  font: bold 1em/1em 'K2D';
+}
+section#Terminal span#Terminal-prompt-interrupt {
+  color: #a6e22e;
+}
+section#Terminal span#Terminal-prompt-cursor {
+	border-right: .5em solid rgb(235, 156, 11);
+	-webkit-animation: pulse 0.8s ease-in-out infinite;
+	-moz-animation: pulse 0.8s ease-in-out infinite;
+	-o-animation: pulse 0.8s ease-in-out infinite;
+	-ms-animation: pulse 0.8s ease-in-out infinite;
+	animation: pulse 0.8s ease-in-out infinite;
+}
+section#Terminal span.Terminal-prompt-interrupt-before {
+  border-radius: 4px 0 0 4px;
+  padding: 0 2px 0 4px;
+  background-image: linear-gradient(to right, #146E3077 0%, #24fB5577 51%, #14eE3077 100%);
+}
+section#Terminal span.Terminal-prompt-interrupt-after {
+  border-radius: 0 4px 4px 0;
+  padding: 0 4 0 2px;
+  background-image: linear-gradient(to right, #0b6fcc77 0%, #47a6ff77 51%, #12437077 100%);
+}
+section#Terminal div#Terminal-console-foot {
+  background: rgba(25, 25, 25, 0.98);
+  height: 25px;
+  font: bold 11px 'K2D';
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 6px;
+  border-radius: 0 0 .5rem .5rem;
+}
+section#Terminal div#Terminal-console-foot span#Terminal-foot-status {
+  color:#a6e22e
+}
+section#Terminal div#Terminal-prompt div#Terminal-completer {
+  position: absolute;
+  max-height: 400px;
+  padding: 5px;
+  color: #fff;
+  background-color: #4d0c22ee;
+  border-radius: .5rem .5rem .5rem .5rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.98);
+  text-align: center;
+  z-index: 99999;
+  overflow: hidden;
+  font: bold 1.2em/1.8em 'K2D';
+}
+
+section#Terminal div#Terminal-prompt div#Terminal-completer div {
+  padding: 0 20px;
+}
+
+section#Terminal div#Terminal-prompt div#Terminal-completer div.Terminal-completer-selected {
+  background-color: rgba(25, 25, 25, 0.86);
+  color: #a6e22e;
+}
+
+
+@media print {
+  section#Terminal,
+  section#Terminal * { display: none; }
+}
+
+@media only screen and (max-width: 480px) and (orientation : portrait) {
+  section#Terminal {
+    width: calc(100vw - 20px);
+    height: 80px;
+    left: 50%;
+    top: 5px;
+    transform: translate(-50%,0);
+    transition: height 0.5s ease-in-out;
+  }
+  section#Terminal:hover {
+    left: 50%;
+    top: 5px;
+    height: 80vh;
+    transform: translate(-50%, 0);
+    transition: height 0.5s ease-in-out;
+  }
+  section#Terminal div#Terminal-console {
+    height: 80px;
+    transition: height 0.5s ease-in-out;
+  }
+  section#Terminal:hover div#Terminal-console {
+    height: 80vh;
+    transition: height 0.5s ease-in-out;
+  }
+  section#Terminal div#Terminal-console pre#welcome {
+    transform-origin: top left;
+    transform: scale(0.75,0.75);
+    transition: 1s;
+  }
+  section#Terminal~section.Windows {
+    transition: color 200ms ease-in-out,
+      background-color 200ms ease-in-out,
+      height 100ms ease-in-out 200ms,
+      width 500ms ease-in-out 300ms,
+      transform 500ms ease-in-out 300ms;
+  }
+  section#Terminal:hover~section.Windows.Windows-Slide-RF {
+    width: calc(100vw - 20px);
+    transform: translate(0, calc((-20vh) + 70px));
+    transition: 0.5s ease-in-out;
+  }
+  section#Terminal:hover~section.Windows.Windows-Slide-TD {
+    width: calc(100vw - 20px);
+    transform: translate(0, 100vh);
+    transition: 1s ease-in-out;
+  }
+}
+
+
+@media only screen and (max-height: 480px) and (orientation : landscape) {
+  section#Terminal {
+    width: 300px;
+    height: 400px;
+    left: 5px;
+    top: 5px;
+    transform-origin: top left;
+    transform: scale(1, 1);
+    transition: width 0.5s ease-in-out;
+  }
+  section#Terminal:hover {
+    left: 5px;
+    top: 5px;
+    width: 400px;
+    height: 400px;
+    transition: width 0.5s ease-in-out 0.3s;
+  }
+  section#Terminal div#Terminal-console {
+    width: 100%;
+    height: 350px;
+    transition: width 0.5s ease-in-out;
+  }
+  section#Terminal:hover div#Terminal-console {
+    width: 100%;
+    transition: width 0.5s ease-in-out;
+  }
+  section#Terminal div#Terminal-console pre#welcome {
+    transform-origin: top left;
+    transform: scale(0.55,0.55);
+    transition: 1s ease-in-out;
+  }
+  section#Terminal:hover div#Terminal-console pre#welcome {
+    transform-origin: top left;
+    transform: scale(0.75,0.75);
+    transition: 1s ease-in-out 0.3s;
+  }
+  section#Terminal~section.Windows {
+    width: calc(100vw - 330px);
+    transition: color 200ms ease-in-out,
+      background-color 200ms ease-in-out,
+      height 100ms ease-in-out 200ms,
+      width 500ms ease-in-out 300ms,
+      transform 500ms ease-in-out 300ms;
+  }
+  section#Terminal:hover~section.Windows.Windows-Slide-RF {
+    width: calc(100vw - 430px);
+    transform: translate(calc((-100vw) - 10px));
+    transition: 1s ease-in-out 0.3s;
+  }
+  section#Terminal:hover~section.Windows.Windows-Slide-TD {
+    width: calc(100vw - 430px);
+    transform: translate(calc((-100vw) - 10px), 100vh);
+    transition: 1s ease-in-out 0.3s;
+  }
+}

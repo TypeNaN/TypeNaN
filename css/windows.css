@@ -1,0 +1,183 @@
+@import './help.css';
+
+section.Windows {
+  position: fixed;
+  background: none;
+	color: #aaa;
+  width: calc(100vw - 186px);
+	height: calc(100vh - 40px);
+	right: -100vw;
+	top: 20px;
+	border-radius: .5rem .5rem .5rem .5rem;
+  box-shadow: 10px 10px 4px rgba(0,0,0,0.56);
+  transition: 0.5s ease-in-out 0.3s;
+}
+section.Windows.Windows-Slide-RF {
+  transform: translate(calc((-100vw) - 10px));
+  transition: 1s ease-in-out;
+}
+section.Windows.Windows-Slide-TD {
+  transform: translate(calc((-100vw) - 10px), 100vh);
+  transition: 1s ease-in-out;
+}
+section.Windows.Windows-remove {
+  transform: translate(-300vw, 200vh);
+  width: 0;
+  height: 25px;
+  color: #a6e22eff;
+  background-color: #a6e22eff;
+  box-shadow: none;
+  overflow: hidden;
+  /* transition: color 200ms ease-in-out,
+    background-color 200ms ease-in-out,
+    height 100ms ease-in-out 200ms,
+    width 200ms ease-in-out 200ms,
+    transform 500ms ease-in-out 300ms; */
+}
+section.Windows div#Windows-Title {
+  position: relative;
+	background: rgba(25, 25, 25, 0.98);
+  color: #a6e22e;
+	height: 25px;
+  font: bold 11px 'K2D';
+	letter-spacing: 0.3rem;
+	text-transform: uppercase;
+	text-align: center;
+	padding-top: 5px;
+	border-radius: .5rem .5rem 0 0;
+  user-select: none;
+}
+section.Windows div#Windows-Title:hover {
+  background-color: #45484d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#45484d), to(#000000));
+  background-image: -webkit-linear-gradient(top, #2d2f32, #000000);
+  background-image: -moz-linear-gradient(top, #2d2f32, #000000);
+  background-image: -ms-linear-gradient(top, #2d2f32, #000000);
+  background-image: -o-linear-gradient(top, #2d2f32, #000000);
+  background-image: linear-gradient(to bottom, #2d2f32, #000000);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#2d2f32, endColorstr=#000000);
+}
+section.Windows div#Windows-X {
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  width: 15px;
+	height: 15px;
+  letter-spacing: 0;
+	text-transform: uppercase;
+	text-align: center;
+  line-height: 15px;
+	border-radius: 50%;
+  user-select: none;
+  color: #fff;
+	background: rgba(85, 85, 85, 0.98);
+}
+section.Windows div#Windows-X:hover {
+  color: #fff;
+  background: rgba(255, 0, 0, 0.98);
+}
+section.Windows div#Windows-console {
+	display: inline-block;
+	background: rgba(45, 45, 45, 0.9);
+  width: 100%;
+  height: calc(100vh - 93px);
+	padding: 20px;
+	border-radius: 0 0 .5rem .5rem;
+  font: normal 1rem/1.4rem 'K2D';
+  word-wrap: break-word;
+  white-space: pre-wrap;
+	overflow-y: auto;
+	overflow-x: hidden;
+  transition: 1s;
+}
+section.Windows div#Windows-console::-webkit-scrollbar {width: 4px;}
+section.Windows div#Windows-console::-webkit-scrollbar-track {background: #a9d7e5;}
+section.Windows div#Windows-console::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 5px;}
+section.Windows div#Windows-console::-webkit-scrollbar-thumb:hover {background: #f00;}
+section.Windows div#Windows-console pre#Windows-description {
+  text-shadow: 0 10px 6px #000;
+}
+section.Windows div#Windows-console ul {
+	margin: -20px 0 40px -40px;
+	list-style-type: none;
+}
+section.Windows div#Windows-console p.no-sudo {
+  background-color: #f00;
+  color: #fff;
+  text-align: center;
+  border-radius: .5rem .5rem 0 0;
+  padding: 5px;
+}
+section.Windows span.blink-cursor {
+  margin: 0 5px 0 5px;
+  border-right: .5em solid rgb(235, 156, 11);
+  -webkit-animation: pulse 0.8s ease-in-out infinite;
+  -moz-animation: pulse 0.8s ease-in-out infinite;
+  -o-animation: pulse 0.8s ease-in-out infinite;
+  -ms-animation: pulse 0.8s ease-in-out infinite;
+  animation: pulse 0.8s ease-in-out infinite;
+}
+section.Windows div#Windows-console-foot {
+  background: rgba(25, 25, 25, 0.98);
+  height: 25px;
+  font: bold 11px/25px 'K2D';
+  letter-spacing: 0.3rem;
+  text-align: center;
+  border-radius: 0 0 .5rem .5rem;
+  user-select: none;
+}
+
+@media print {
+  section.Windows { position:absolute; left: calc(100vw + 12px); top: 4px; width: calc(100vw - 12px); height: calc(100vh - 8px); }
+  section.Windows * { display: none; }
+  section.Windows div#Windows-console { position:absolute; left: 24px; top: 8; width: calc(100vw - 48px); height: fit-content; }
+  section.Windows .allow-print * { display: inline; box-shadow: none; text-shadow: none; }
+}
+
+@media only screen and (max-width: 480px) and (orientation : portrait) {
+  section.Windows {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 160px);
+    left: 10px;
+    top: 100vh;
+  }
+  section.Windows.Windows-Slide-RF {
+    transform: translate(0, calc((-100vh) + 150px));
+    transition: 0.5s ease-in-out;
+  }
+  section.Windows.Windows-Slide-TD {
+    transform: translate(0, 100vh);
+    transition: 0.5s ease-in-out;
+  }
+  section.Windows div#Windows-console {
+    width: 100%;
+    height: calc(100vh - 213px);
+  }
+}
+
+@media only screen and (max-height: 480px) and (orientation : landscape) {
+  section.Windows {
+    position: fixed;
+    background: none;
+    color: #aaa;
+    width: calc(100vw - 330px);
+    height: 400px;
+    right: -100vw;
+    top: 5px;
+    border-radius: .5rem .5rem .5rem .5rem;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.56);
+    transition: 0.5s ease-in-out 0.3s;
+  }
+  section.Windows.Windows-Slide-RF {
+    transform: translate(calc((-100vw) - 10px), 0);
+    transition: 1s ease-in-out;
+  }
+  section.Windows.Windows-Slide-TD {
+    transform: translate(calc((-100vw) - 10px), 100vh);
+    transition: 1s ease-in-out;
+  }
+  section.Windows div#Windows-console {
+    width: 100%;
+    height: 350px;
+  }
+}

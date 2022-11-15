@@ -1,0 +1,11 @@
+section.Windows div#Windows-console div.container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+section.Windows div#Windows-console div.cmds {
+  width: 40%;
+}
+section.Windows div#Windows-console div.info {
+  width: 60%;
+}
