@@ -220,11 +220,6 @@ export default class {
     this.createElement('span', [['id', 'Terminal-prompt-cursor']], this.terminal.childNodes[1].childNodes[2], '')
     this.createElement('span', [['id', 'Terminal-foot-status']], this.terminal.childNodes[2].childNodes[0], 'High')
     this.console = this.terminal.childNodes[1]
-
-    if ('virtualKeyboard' in navigator) {
-      navigator.virtualKeyboard.overlaysContent = true
-      this.terminal.onclick = (e) => navigator.virtualKeyboard.show()
-    }
   }
 
   command_completer = async (data) => {
