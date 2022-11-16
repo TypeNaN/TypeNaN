@@ -1,0 +1,166 @@
+section#HR div.skill-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px 80px;
+  position: relative;
+  margin-top: 60px;
+  padding: 100px 10% 0 10%;
+}
+section#HR div.skill-container div.skill-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 240px;
+  height: 250px;
+  background: #aaa;
+}
+section#HR div.skill-container div.skill-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(#fff, #fff, #e3e3e3);
+  filter: blur(1px);
+  z-index: 1;
+}
+section#HR div.skill-container div.skill-box::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  right: -1px;
+  width: 20px;
+  height: 100%;
+  background: #9d9d9d;
+  filter: blur(1px);
+  z-index: 1;
+}
+section#HR div.skill-container div.skill-box div.skill-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+}
+section#HR div.skill-container div.skill-box div.skill-shadow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left:  calc(100% + 10px);
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(#00000011, transparent);
+  transform: skewX(45deg);
+}
+section#HR div.skill-container div.skill-box div.skill-shadow::after {
+  content: '';
+  position: absolute;
+  bottom: -200%;
+  left: calc(100% + 10px);
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(#00000011, transparent);
+  transform: skewX(45deg);
+}
+section#HR div.skill-container div.skill-box div.skill-content {
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: inherit;
+  width: 100%;
+  height: 100%;
+  padding-top: 10%;
+  background: linear-gradient(#dbdae1,#a3aaba);
+  box-shadow: 5px 5px 5px #00000011,
+    15px 15px 15px #00000011,
+    20px 20px 20px #00000011,
+    50px 50px 50px #00000011,
+    inset 3px 3px 2px #fff;
+}
+section#HR div.skill-container div.skill-box div.skill-content div.skill-percent {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+section#HR div.skill-container div.skill-box div.skill-content div.skill-percent::before {
+  content: attr(data-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 20px;
+  background: #555;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.75rem;
+  letter-spacing:  0.1rem;
+}
+section#HR div.skill-container div.skill-box div.skill-content div.skill-percent div.skill-dot {
+  position: absolute;
+  inset: 5px;
+  z-index: 10;
+  animation: animateDot 2s linear forwards 0.3s;
+}
+
+@keyframes animateDot {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(calc(3.6deg * var(--num))); }
+}
+
+section#HR div.skill-container div.skill-box div.skill-content div.skill-percent div.skill-dot::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: #555;
+  border-radius: 50%;
+}
+section#HR div.skill-container div.skill-box div.skill-content div.skill-percent svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform: rotate(270deg);
+}
+section#HR div.skill-container div.skill-box div.skill-content div.skill-percent svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke-width: 3;
+  stroke: #00000011;
+  transform: translate(5px, 5px);
+}
+section#HR div.skill-container div.skill-box div.skill-content div.skill-percent svg circle:nth-child(2) {
+  stroke: #555;
+  stroke-dasharray: 440;
+  stroke-dashoffset: calc(440 - (440 * var(--num) / 100));
+  opacity: 0;
+  animation: fadeIn 1s linear forwards 2.5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+section#HR div.skill-container div.skill-box div.skill-content div.skill-number {
+  position: relative;
+  inset: 0;
+  opacity: 0;
+  animation: fadeIn 1s linear forwards 1.5s;
+}
+section#HR div.skill-container div.skill-box div.skill-content div.skill-number h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  margin: 0;
+  color: #555;
+  text-shadow: 5px 5px 5px #00000033;
+}

@@ -110,7 +110,9 @@ section.Windows div#Windows-console p.no-sudo {
   padding: 5px;
 }
 section.Windows div#Windows-console div.myAds {
+  margin: 0 auto;
   min-width: 134px;
+  max-width: 834px;
   border: solid 1px #a6e22e;
   background: rgba(20, 30, 40, .25);
 }

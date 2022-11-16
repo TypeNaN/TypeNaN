@@ -13,7 +13,7 @@ export default class {
   render = async () => {
     const conf_lang = ['th', 'en']
     const conf_view = ['hr', 'geek', 'gamer']
-    const conf_disabled = ['hr', 'gamer']
+    const conf_disabled = ['gamer']
 
     this.landing = document.getElementById('Landing')
     if (!this.landing) {

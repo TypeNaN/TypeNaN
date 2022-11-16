@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,700;0,800;1,800&display=swap');
+
 @import './landing.css';
 @import './terminal.css';
 @import './windows.css';
+@import './hr.css';
 
 /* @font-face {
   font-family: 'K2D', sans-serif;
@@ -9,13 +12,16 @@
     local('K2D ExtraBold'), url('../K2D/K2D_ExtraBold.ttf') format('woff2');
   font-display: swap;
 } */
-@font-face {
+
+/* @font-face {
   font-family: 'K2D', sans-serif;
   src: url('../K2D/K2D_Thin.ttf') format('woff2'),
     url('../K2D/K2D_Bold.ttf') format('woff2'),
     url('../K2D/K2D_ExtraBold.ttf') format('woff2');
   font-display: swap;
-}
+} */
+
+
 @keyframes pulse {
 	0% {opacity: 0;}
   25% {opacity: 1;}
@@ -90,11 +96,9 @@ section#HR {
   height: 100vh;
   margin: 0;
   padding: 0;
-  background-image: url('../assets/lain.webp');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
+  background: #888;
+  overflow-x: hidden;
+  overflow-y: auto;
   user-select: none;
 }
 section#HR ul#container-setting,
@@ -110,6 +114,7 @@ section#GAMER ul#container-setting {
   text-align: right;
   background-color: #202822;
   list-style-type: none;
+  z-index: 9999;
 }
 section#HR ul#container-setting li,
 section#GAMER ul#container-setting li {
