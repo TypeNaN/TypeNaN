@@ -70,7 +70,6 @@ export default class {
         v.innerHTML = i.toUpperCase()
         viewer.appendChild(v)
         if (conf_disabled.indexOf(i) > -1) {
-          console.log(i,'disabled');
           v.setAttribute('disabled', true)
           continue
         }
