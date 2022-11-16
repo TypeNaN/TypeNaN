@@ -2,12 +2,16 @@
 
 
 import Helper     from './help.mjs'
+import Blog       from './blog.mjs'
 import Setting    from './setting.mjs'
 
 
 export const Commands = [
   { command: 'help'         , execute: Helper     , id: 'Helper' },
-
+  
+  { command: 'bl'           , execute: Blog       , id: 'Blog' },
+  { command: 'blog'         , execute: Blog       , id: 'Blog' },
+  
   { command: 'conf'         , execute: Setting    , id: null },
   { command: 'sudo'         , execute: null       , id: null },
 ]
