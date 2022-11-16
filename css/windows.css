@@ -108,6 +108,11 @@ section.Windows div#Windows-console p.no-sudo {
   border-radius: .5rem .5rem 0 0;
   padding: 5px;
 }
+section.Windows div#Windows-console div.myAds {
+  min-width: 134px;
+  border: solid 1px #a6e22e;
+  background: rgba(20, 30, 40, .25);
+}
 section.Windows span.blink-cursor {
   margin: 0 5px 0 5px;
   border-right: .5em solid rgb(235, 156, 11);

@@ -61,10 +61,6 @@ a:hover {
   cursor: pointer;
   text-shadow: 1px 1px 4px rgba(146, 255, 4, 0.56);
 }
-.myAds {
-  border: solid 1px #a6e22e;
-  background: rgba(20, 30, 40, .25);
-}
 section#GEEK {
   width: 100vw;
   height: 100vh;
