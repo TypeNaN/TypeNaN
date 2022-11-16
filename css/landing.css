@@ -36,6 +36,11 @@ section#Landing ul#container-language li {
   border-radius: 25px;
   cursor: pointer;
 }
+section#Landing ul#container-language li:hover {
+  color: #202822;
+  border: solid 3px #baff31;
+  background-color: #baff31;
+}
 section#Landing ul#container-viewer {
   display: flex;
   flex-direction: row;
@@ -60,6 +65,21 @@ section#Landing ul#container-viewer li {
   border-radius: 25px;
   cursor: pointer;
 }
+section#Landing ul#container-viewer li:hover {
+  color: #202822;
+  border: solid 3px #baff31;
+  background-color: #baff31;
+}
+section#Landing ul#container-viewer li[disabled=true] {
+  border: solid 3px #404140;
+  background-color: #404140;
+  cursor: progress;
+}
+section#Landing ul#container-viewer li[disabled=true]:hover {
+  border: solid 3px #974141;
+  background-color: #974141;
+}
+
 section#Landing ul#container-language li.selected,
 section#Landing ul#container-viewer li.selected {
   color: #a6e22e;
