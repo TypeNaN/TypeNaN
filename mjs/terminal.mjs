@@ -23,7 +23,7 @@ const commands = Commands
 
 const disabledKeys = [9, 37, 38, 39, 40, 93, 112, 114, 117, 118, 121]
 
-const welcome_en = `
+const welcome_logo = `
 ##########################################################################################
 ##########################################################################################
 ###                     ##########################    ########     ###    ########     ###
@@ -54,7 +54,8 @@ const welcome_en = `
                 TT    EE     RR RR   MM MM MM  II  NN NNN  AAAAAA  LL
                 TT    EEEEE  RR  RR  MM    MM  II  NN  NN  AA  AA  LLLLLL
 
-
+`
+const welcome_en = `
       If you are new to LINUX operating system and having troublen dealing with the
       command-line utilities provided by LINUX then you really need to know first of
       all about the "help" command which as its name says "help" you to learn about
@@ -62,37 +63,6 @@ const welcome_en = `
       about shell built-in commands.
 `
 const welcome_th = `
-##########################################################################################
-##########################################################################################
-###                     ##########################    ########     ###    ########     ###
-###                     ##########################     #######     ###     #######     ###
-########     #####################################      ######     ###      ######     ###
-########  ########################################       ################### #####     ###
-########  ##     ###   #            ###         ##        ####              # ####     ###
-########  ##     ###   #     ####    ##         ##         ##     ######     # ###     ###
-########  ##     ###   #     ####    ##     ######    #    ##     ######     #  ##     ###
-########   ##     #    #            ###     ######    ##   #############     #   #     ###
-########    ##         #     ##########        ###    ###   ##               #         ###
-########     ##       ##     ##########     ######    #### ##     ######     ##        ###
-########     ###     ###     ##########     ######    #######     ######     ###       ###
-########     ###     ###     ##########         ##    #######                ####      ###
-########     ###     ###     ##########         ##    ########        ##     #####     ###
-##########################################################################################
-##########################################################################################
-
-              LL      OOOO   GGGGGG  GGGGGG  EEEEE  DDDD      II  NN  NN
-              LL     OO  OO  GG      GG      EE     DD DD     II  NN  NN
-              LL     OO  OO  GG GGG  GG GGG  EEEE   DD  DD    II  NNN NN
-              LL     OO  OO  GG  GG  GG  GG  EE     DD DD     II  NN NNN
-              LLLLL   OOOO   GGGGGG  GGGGGG  EEEEE  DDDD      II  NN  NN
-
-              TTTTTT  EEEEE  RRRRRR  MM    MM  II  NN  NN   AAAA   LL
-                TT    EE     RR  RR  MM    MM  II  NN  NN  AA  AA  LL
-                TT    EEE    RRRRRR  MMM  MMM  II  NNN NN  AA  AA  LL
-                TT    EE     RR RR   MM MM MM  II  NN NNN  AAAAAA  LL
-                TT    EEEEE  RR  RR  MM    MM  II  NN  NN  AA  AA  LLLLLL
-
-
       หากคุณไม่คุ้นเคยกับระบบปฏิบัติการ LINUX และไม่ทราบว่าต้องจัดการอย่างไรดีกับการป้อนคำสั่งต่างๆ
       คุณจำเป็นต้องเรียนรู้เกี่ยวกับยูทิลิตี้หรือคำสั่งที่ใช้ในระบบปฏิบัติการ LINUX ก่อน ส่วนคำสั่งสำหรับใช้ใน
       ที่นี่คุณสามารถเริ่มต้นด้วยคำสั่ง "help" ซึ่งตามชื่อของมันบอกว่า "help" เพื่อให้คุณได้เรียนรู้เกี่ยวกับ
@@ -234,7 +204,7 @@ export default class {
   }
 
   render = async () => {
-    const welcome = document.documentElement.lang === 'th' ? welcome_th : welcome_en
+    const welcome = welcome_logo + (document.documentElement.lang === 'th' ? welcome_th : welcome_en)
     this.terminal = document.createElement('section')
     this.terminal.id = 'Terminal'
     this.parent.appendChild(this.terminal)
