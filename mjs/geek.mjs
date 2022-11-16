@@ -1,9 +1,6 @@
 'use strict'
 
 
-import terminal from './terminal.mjs'
-
-
 export default class {
   constructor() {
 
@@ -19,6 +16,7 @@ export default class {
     this.section = document.createElement('section')
     this.section.id = 'GEEK'
     document.body.appendChild(this.section)
+    const { default:terminal } = await import('./terminal.mjs')
     new terminal(this.section)
   }
 }
