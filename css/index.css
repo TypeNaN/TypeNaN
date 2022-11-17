@@ -28,10 +28,10 @@
 	75% {opacity: 1;}
   100% {opacity: 0;}
 }
-::-webkit-scrollbar {width: 4px;}
+::-webkit-scrollbar {width: 8px;}
 ::-webkit-scrollbar-track {background: #a9d7e5;}
 ::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 5px;}
-::-webkit-scrollbar-thumb:hover {background: #a6e22e;}
+::-webkit-scrollbar-thumb:hover {background: #f00;}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -76,7 +76,8 @@ section#GEEK {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   user-select: none;
 }
 section#GAMER {
@@ -88,7 +89,8 @@ section#GAMER {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   user-select: none;
 }
 section#HR {
@@ -96,7 +98,7 @@ section#HR {
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: #888;
+  background: #ddd;
   overflow-x: hidden;
   overflow-y: auto;
   user-select: none;
@@ -105,14 +107,15 @@ section#HR ul#container-setting,
 section#GAMER ul#container-setting {
   display: inline-block;
   position: fixed;
-  width: 100%;
+  width: calc(100% - 16px);
   height: 40px;
-  left: 0;
+  left: 8px;
   top: 0;
   margin: 0;
   padding: 5px 20px;
   text-align: right;
   background-color: #202822;
+  border-radius: 0 0 15px 15px;
   list-style-type: none;
   z-index: 9999;
 }

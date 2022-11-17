@@ -1,71 +1,101 @@
+section#HR h1{
+  font-size: 3rem;
+  color: #555;
+  text-align: center;
+  margin: 100px auto 0 auto;
+}
+section#HR h2 {
+  font-size: 2rem;
+  color: #555;
+  text-align: center;
+  margin: 100px auto 40px auto;
+}
+section#HR hr {
+  width: 90%;
+  max-width: 880px;
+  margin: 20px auto 40px auto;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes animateDot {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(calc(3.6deg * var(--num))); }
+}
+
 section#HR div.skill-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 40px 80px;
+  gap: 20px 20px;
   position: relative;
-  margin-top: 60px;
-  padding: 100px 10% 0 10%;
+  width: 90%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0;
 }
-section#HR div.skill-container div.skill-box {
+section#HR div.skill-box {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 240px;
-  height: 250px;
+  width: 160px;
+  height: 150px;
   background: #aaa;
 }
-section#HR div.skill-container div.skill-box::before {
+section#HR div.skill-box::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 20px;
+  width: 10px;
   height: 100%;
-  background: linear-gradient(#fff, #fff, #e3e3e3);
-  filter: blur(1px);
+  background: linear-gradient(#fff, #e5f7d1, #e3e3e3);
+  filter: blur(3px);
   z-index: 1;
 }
-section#HR div.skill-container div.skill-box::after {
+section#HR  div.skill-box::after {
   content: '';
   position: absolute;
   top: 1px;
   right: -1px;
-  width: 20px;
+  width: 10px;
   height: 100%;
-  background: #9d9d9d;
-  filter: blur(1px);
+  background: #aaaaaa;
+  filter: blur(3px);
   z-index: 1;
 }
-section#HR div.skill-container div.skill-box div.skill-shadow {
+section#HR div.skill-shadow {
   position: absolute;
   width: 100%;
   height: 100%;
   background: #eee;
 }
-section#HR div.skill-container div.skill-box div.skill-shadow::before {
+section#HR div.skill-shadow::before {
   content: '';
   position: absolute;
   top: 0;
-  left:  calc(100% + 10px);
+  left:  calc(100% - 10px);
   width: 100%;
   height: 200%;
   background: linear-gradient(#00000011, transparent);
   transform: skewX(45deg);
 }
-section#HR div.skill-container div.skill-box div.skill-shadow::after {
+section#HR div.skill-shadow::after {
   content: '';
   position: absolute;
   bottom: -200%;
-  left: calc(100% + 10px);
+  left: calc(100% - 10px);
   width: 100%;
   height: 200%;
   background: linear-gradient(#00000011, transparent);
   transform: skewX(45deg);
 }
-section#HR div.skill-container div.skill-box div.skill-content {
+section#HR div.skill-content {
   display: flex;
   justify-content:flex-start;
   align-items: center;
@@ -74,19 +104,19 @@ section#HR div.skill-container div.skill-box div.skill-content {
   width: 100%;
   height: 100%;
   padding-top: 10%;
-  background: linear-gradient(#dbdae1,#a3aaba);
+  background: linear-gradient(#dee7e7,#bac1d3);
   box-shadow: 5px 5px 5px #00000011,
     15px 15px 15px #00000011,
     20px 20px 20px #00000011,
     50px 50px 50px #00000011,
     inset 3px 3px 2px #fff;
 }
-section#HR div.skill-container div.skill-box div.skill-content div.skill-percent {
+section#HR div.skill-percent {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 90px;
+  height: 90px;
 }
-section#HR div.skill-container div.skill-box div.skill-content div.skill-percent::before {
+section#HR div.skill-percent::before {
   content: attr(data-text);
   display: flex;
   justify-content: center;
@@ -98,20 +128,15 @@ section#HR div.skill-container div.skill-box div.skill-content div.skill-percent
   color: #fff;
   font-size: 1.75rem;
   letter-spacing:  0.1rem;
+  box-shadow: 5px 5px 5px #00000033;
 }
-section#HR div.skill-container div.skill-box div.skill-content div.skill-percent div.skill-dot {
+section#HR div.skill-dot {
   position: absolute;
   inset: 5px;
   z-index: 10;
   animation: animateDot 2s linear forwards 0.3s;
 }
-
-@keyframes animateDot {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(calc(3.6deg * var(--num))); }
-}
-
-section#HR div.skill-container div.skill-box div.skill-content div.skill-percent div.skill-dot::before {
+section#HR div.skill-dot::before {
   content: '';
   position: absolute;
   top: -7px;
@@ -122,45 +147,39 @@ section#HR div.skill-container div.skill-box div.skill-content div.skill-percent
   background: #555;
   border-radius: 50%;
 }
-section#HR div.skill-container div.skill-box div.skill-content div.skill-percent svg {
+section#HR div.skill-percent svg {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 90px;
+  height: 90px;
   transform: rotate(270deg);
 }
-section#HR div.skill-container div.skill-box div.skill-content div.skill-percent svg circle {
+section#HR div.skill-percent svg circle {
   width: 100%;
   height: 100%;
   fill: transparent;
-  stroke-width: 3;
+  stroke-width: 5;
   stroke: #00000011;
   transform: translate(5px, 5px);
 }
-section#HR div.skill-container div.skill-box div.skill-content div.skill-percent svg circle:nth-child(2) {
+section#HR div.skill-percent svg circle:nth-child(2) {
   stroke: #555;
-  stroke-dasharray: 440;
-  stroke-dashoffset: calc(440 - (440 * var(--num) / 100));
+  stroke-dasharray: 256;
+  stroke-dashoffset: calc(256 - (256 * var(--num) / 100));
   opacity: 0;
   animation: fadeIn 1s linear forwards 2.5s;
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-section#HR div.skill-container div.skill-box div.skill-content div.skill-number {
-  position: relative;
-  inset: 0;
-  opacity: 0;
-  animation: fadeIn 1s linear forwards 1.5s;
-}
-section#HR div.skill-container div.skill-box div.skill-content div.skill-number h2 {
+section#HR div.skill-label {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
+  position: relative;
   margin: 0;
+  inset: 0;
+  opacity: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
   color: #555;
   text-shadow: 5px 5px 5px #00000033;
+  animation: fadeIn 1s linear forwards 0.5s;
 }

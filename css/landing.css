@@ -32,7 +32,7 @@ section#Landing ul#container-language li {
   text-align: center;
   border: solid 3px #2d2f32;
   background-color: #202822;
-  font: bold 1.8rem/80px 'K2D';
+  font: bold 1.6rem/80px 'K2D';
   border-radius: 25px;
   cursor: pointer;
 }
@@ -46,7 +46,7 @@ section#Landing ul#container-viewer {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 440px;
+  width: 400px;
   height: 100px;
   margin: 10px;
   padding: 0;
@@ -61,7 +61,7 @@ section#Landing ul#container-viewer li {
   text-align: center;
   border: solid 3px #2d2f32;
   background-color: #202822;
-  font: bold 1.8rem/80px 'K2D';
+  font: bold 1.6rem/80px 'K2D';
   border-radius: 25px;
   cursor: pointer;
 }
