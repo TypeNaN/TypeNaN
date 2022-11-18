@@ -4,6 +4,16 @@
 import setting from "./setting.mjs"
 
 
+const landing_lang = {
+  header: {
+    th: 'คุณสามารถดาวน์โหลด Resume มาตรฐานในรูปแบบไฟล์ PDF ได้ที่นี่',
+    en: 'You can download a standard resume in PDF format here.'
+  },
+  descript: {
+    th: 'หรือสละเวลาสักเล็กน้อยเพื่อเยี่ยมชมเว็บไซต์',
+    en: 'Or take a few moments to visit the website.'
+  }
+}
 const myskill_lang = {
   header: {
     th: 'คะแนนความถนัดแต่ละทักษะ',
@@ -84,18 +94,16 @@ export default class {
     // this.landing.innerHTML += '<img id="HR-Landing-img2" src="../assets/lain.webp" alt="HR-Landing-img2" />'
     // this.landing.innerHTML += '<img id="HR-Landing-img3" src="../assets/lain.webp" alt="HR-Landing-img3" />'
 
-    const Resume = document.createElement('h1')
-    const cursor = document.createElement('span')
-    cursor.className = 'blink-cursor'
-    Resume.innerHTML = 'Resume '
-    Resume.appendChild(cursor)
-    this.landing.appendChild(Resume)
-    
-    this.landing.innerHTML += '<div id="HR-Landing-Download">\
-    <h3>คุณสามารถดาวน์โหลด Resume มาตรฐานในรูปแบบไฟล์ PDF ได้ที่นี่</h3>\
-    <a target="_blank" href="../assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top"><button>Download PDF</button></a>\
-    <h3>หรือสละเวลาสักเล็กน้อยเพื่อเยี่ยมชมเว็บไซต์</h3>\
-    </div>'
+    const resume = document.createElement('h1')
+    resume.id = 'HR-Landing-header-resume'
+    this.landing.appendChild(resume)
+    this.randomNonce()
+
+    this.landing.innerHTML += `<div id="HR-Landing-Download">
+<a target="_blank" href="../assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top"><button>Download PDF</button></a>
+<h3>${landing_lang['header'][this.lang]}</h3>
+<h3>${landing_lang['descript'][this.lang]}</h3>
+</div>`
   }
   
   render_skill = async () => {
@@ -169,7 +177,9 @@ export default class {
       ], [
         'head_typing', [
           ['WPM', 59],
-          ['ACC', 96],
+          ['ACC', 88],
+          ['CPM', 223],
+          ['Consistency', 70],
         ]
       ]
     ])
@@ -268,5 +278,36 @@ export default class {
         }
       }
     }
+  }
+
+  randomNonce = async () => {
+    let timeInterval
+    let msg = `Resum${this.generateNonce()}`
+    timeInterval = setInterval(() => {
+      if (msg == 'Resume') {
+        this.renderNonce(msg)
+        clearTimeout(timeInterval)
+      }
+      else {
+        msg = `Resum${this.generateNonce()}`
+        this.renderNonce(msg)
+      }
+    }, 50)
+  }
+
+  renderNonce = (msg) => {
+    const parent = document.getElementById('HR-Landing-header-resume')
+    const cursor = document.createElement('span')
+    cursor.setAttribute('class', 'blink-cursor')
+    parent.innerHTML = msg
+    parent.appendChild(cursor)
+  }
+
+  generateNonce() {
+    const posible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    let text = ''
+    let length = 1
+    for (let i = 0; i < length; i++) text += posible.charAt(Math.floor(Math.random() * posible.length))
+    return text
   }
 }

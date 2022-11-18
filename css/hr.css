@@ -5,18 +5,23 @@
 @keyframes scroll-animate-show {
   0% {
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(4px);
     transform: rotate(360deg) translateX(100%);
   }
   50% {
     opacity: 0.2;
-    filter: blur(10px);
+    filter: blur(4px);
     transform: rotate(0deg) translateX(50%);
+  }
+  80% {
+    opacity: 0.8;
+    filter: blur(4px);
+    transform: rotate(0deg) translateX(-10%);
   }
   90% {
     opacity: 0.9;
-    filter: blur(4px);
-    transform: rotate(0deg) translateX(90%);
+    filter: blur(2);
+    transform: rotate(0deg) translateX(10%);
   }
   100% {
     opacity: 1;
@@ -42,22 +47,45 @@ section#HR #HR-Landing {
   width: 100vw;
   height: 100vh;
   padding: 0;
+  background: linear-gradient(0deg, #333333, #dddddd);
 }
 section#HR #HR-Landing img {
   position: absolute;
+  pointer-events: none;
+}
+/* section#HR #HR-Landing img#HR-Landing-img1 {
   width: 100%;
   left: 0;
   bottom: 0;
-  pointer-events: none;
   opacity: 0;
   animation: fadeIn 1s linear forwards .5s;
 }
+section#HR #HR-Landing img#HR-Landing-img2 {
+  width: 60%;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  animation: fadeIn 1s linear forwards 1s;
+}
+section#HR #HR-Landing img#HR-Landing-img3 {
+  width: 20%;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  animation: fadeIn 1s linear forwards 1.5s;
+} */
 section#HR #HR-Landing h1 {
   position: absolute;
   opacity: 0;
   margin: 0;
   font-size: 3rem;
-  animation: fadeIn 1s linear forwards 1.5s;
+  letter-spacing: 2rem;
+  border-bottom: .1em solid rgb(235, 156, 11);
+  color: transparent;
+  background: linear-gradient(38deg, hsl(164deg 100% 59%), hsl(49deg 100% 62%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: fadeIn 1s linear forwards .5s;
 }
 section#HR #HR-Landing span.blink-cursor {
   margin: 0 5px 0 5px;
@@ -70,8 +98,21 @@ section#HR #HR-Landing span.blink-cursor {
 }
 section#HR #HR-Landing #HR-Landing-Download {
   position: absolute;
-  left: 10%;
-  top: 20%;
+  left: 5%;
+  bottom: 10%;
+}
+section#HR #HR-Landing #HR-Landing-Download h3 {
+  color: #202822;
+  font: normal 1.2rem/1.8rem 'K2D';
+}
+section#HR #HR-Landing #HR-Landing-Download button {
+  width: 200px;
+  height: 60px;
+  color: #a6e22e;
+  border: solid 2px #baff31;
+  background-color: #2d2f32;
+  border-radius: 20px;
+  font: normal 1.2rem/1.8rem 'K2D';
 }
 section#HR .skill-container {
   display: flex;
@@ -103,7 +144,7 @@ section#HR .skill-box {
   align-items: center;
   position: relative;
   width: 160px;
-  height: 150px;
+  height: 160px;
   background: #aaa;
 }
 section#HR .skill-box::before {
@@ -138,7 +179,7 @@ section#HR .skill-shadow::before {
   content: '';
   position: absolute;
   top: 0;
-  left:  calc(100% - 10px);
+  left:  100%;
   width: 100%;
   height: 200%;
   background: linear-gradient(#00000011, transparent);
@@ -148,7 +189,7 @@ section#HR .skill-shadow::after {
   content: '';
   position: absolute;
   bottom: -200%;
-  left: calc(100% - 10px);
+  left: 100%;
   width: 100%;
   height: 200%;
   background: linear-gradient(#00000011, transparent);
@@ -246,4 +287,11 @@ section#HR .scroll-animate {
 }
 section#HR .scroll-animate-show {
   animation: scroll-animate-show 1s linear forwards 0.3s;
+}
+
+
+@media print {
+  section#HR { display: none; }
+  section#HR * { display: none; }
+  section#HR .allow-print * { display: inline; box-shadow: none; text-shadow: none; }
 }
