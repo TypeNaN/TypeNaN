@@ -10,45 +10,45 @@ const myskill_lang = {
     en: 'Skill Score'
   },
   head_frontend: {
-    th: 'ทักษะด้าน Web Frontend',
-    en: 'Skill Web Frontend'
+    th: 'ทักษะด้าน Frontend',
+    en: 'Skill Frontend'
   },
   head_backend: {
-    th: 'ทักษะด้าน Web Backend',
-    en: 'Skill Web Backend'
+    th: 'ทักษะด้าน Backend',
+    en: 'Skill Backend'
   },
   head_devops: {
-    th: 'ทักษะด้าน Web Development Operations',
-    en: 'Skill Web Development Operations'
+    th: 'ทักษะด้าน Development Operations',
+    en: 'Skill Development Operations'
+  },
+  head_arch: {
+    th: 'ทักษะด้านสถาปัตยกรรมโปรมแกรม',
+    en: 'Skill Programming Architecture'
   },
   head_lang: {
     th: 'ทักษะด้านการสื่อสารภาษาอังกฤษ',
     en: 'Skill English'
   },
   head_ml: {
-    th: 'ทักษะด้านการ Machine Learning',
-    en: 'Skill Machine Learning'
+    th: 'ทักษะด้าน Machine Learning และ Data Analysis',
+    en: 'Skill Machine Learning & Data Analysis'
   },
-  head_typing1: {
-    th: 'ทักษะด้านการพิมพ์สัมผัส (Words Per Minute)',
-    en: 'Skill Typing (Words Per Minute)'
+  head_typing: {
+    th: 'ทักษะด้านการพิมพ์สัมผัส (ค่าเฉลี่ย)',
+    en: 'Skill Typing (Average)'
   },
-  head_typing2: {
-    th: 'ทักษะด้านการพิมพ์สัมผัส (Accuracy Percentage)',
-    en: 'Skill Typing (Accuracy Percentage)'
-  },
-
 }
 
 
 export default class {
   constructor() {
-
+    /*
     // <!-- adsbygoogle banner name TypeNaN Profile -->
     const script = document.createElement('script')
     script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6854323187340337'
     script.crossorigin = 'anonymous'
     document.head.appendChild(script)
+    */
     this.render()
   }
 
@@ -58,131 +58,123 @@ export default class {
     this.section.id = 'HR'
     document.body.appendChild(this.section)
     
-    this.section.innerHTML += `<h1>${myskill_lang['header'][this.lang]}</h1>`
-    this.section.innerHTML += `<h2>${myskill_lang['head_frontend'][this.lang]}</h2>`
+    this.render_skill()
+    this.render_topnav()
 
-    this.myskill([
-      [
-        ['HTML', 90],
-        ['CSS', 60],
-        ['JavaScript', 72],
-        ['JQuery', 49],
-        ['Socket.io', 67],
-        ['SPA', 97],
-        ['WPA', 88],
-        ['SW', 70],
-        ['API', 90],
-        ['Websocket', 67],
-        ['Encrypt', 30],
-        ['Graphic', 10],
-      ]
-    ])
-
-    this.section.innerHTML += `<h2>${myskill_lang['head_backend'][this.lang]}</h2>`
-    this.myskill([
-      [
-        ['Node.js', 70],
-        ['GO', 42],
-        ['Python', 46],
-        ['Express', 59],
-        ['Socket.io', 57],
-        ['RestAPI', 85],
-        ['CRUD', 73],
-        ['Socket', 67],
-      ]
-    ])
-
-    this.section.innerHTML += `<h2>${myskill_lang['head_devops'][this.lang]}</h2>`
-    this.myskill([
-      [
-        ['Xampp', 38],
-        ['Apache', 41],
-        ['Nginx', 54],
-        ['Docker', 25],
-        ['K8s', 11],
-        ['AWS', 24],
-        ['Firebase', 47],
-        ['Tor', 23],
-        ['Git', 60],
-      ]
-    ])
-
-    this.section.innerHTML += `<h2>${myskill_lang['head_ml'][this.lang]}</h2>`
-    this.myskill([
-      [
-        ['Image', 13],
-        ['voice', 6],
-        ['Neural', 19],
-      ]
-    ])
-
-    this.section.innerHTML += `<h2>${myskill_lang['head_lang'][this.lang]}</h2>`
-    this.myskill([
-      [
-        ['Read', 23],
-        ['Write', 5],
-        ['Listen', 18],
-        ['Speak', 6],
-      ]
-    ])
-
-    this.section.innerHTML += `<h2>${myskill_lang['head_typing1'][this.lang]}</h2>`
-    this.myskill([
-      [
-        ['10 words', 59],
-        ['25 words', 46],
-        ['50 words', 44],
-        ['100 words', 42],
-      ], [
-        ['15 sec', 49],
-        ['30 sec', 52],
-        ['60 sec', 41],
-        ['120 sec', 39],
-      ]
-    ])
-
-    this.section.innerHTML += `<h2>${myskill_lang['head_typing2'][this.lang]}</h2>`
-    this.myskill([
-      [
-        ['10 words', 100],
-        ['25 words', 100],
-        ['50 words', 100],
-        ['100 words', 100],
-      ],[
-        ['15 sec', 100],
-        ['30 sec', 100],
-        ['60 sec', 100],
-        ['120 sec', 100],
-      ]
-    ])
-
-    this.topnav()
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('scroll-animate-show')
+        } else {
+          entry.target.classList.remove('scroll-animate-show')
+        }
+      })
+    })
+    const scrollAnimate = document.querySelectorAll('.scroll-animate')
+    scrollAnimate.forEach((el) => observer.observe(el))
   }
 
+  render_skill = async () => {
+    this.section.innerHTML += `<h1>${myskill_lang['header'][this.lang]}</h1>`
+    this.myskill([
+      [
+        'head_frontend', [
+          ['HTML', 90],
+          ['CSS', 60],
+          ['JavaScript', 85],
+          ['JQuery', 39],
+          ['Socket.io', 67],
+          ['Flutter', 25],
+          ['SPA', 97],
+          ['WPA', 88],
+          ['SW', 70],
+          ['API', 90],
+          ['Websocket', 67],
+          ['Encrypt', 30],
+          ['Graphic', 10],
+        ]
+      ],
+      [
+        'head_backend', [
+          ['Node.js', 85],
+          ['GO', 36],
+          ['Python', 46],
+          ['Express', 59],
+          ['Socket.io', 57],
+          ['RestAPI', 85],
+          ['CRUD', 73],
+          ['Socket', 67],
+        ]
+      ], [
+        'head_devops', [
+          ['Xampp', 38],
+          ['Apache', 41],
+          ['Nginx', 54],
+          ['Docker', 25],
+          ['K8s', 11],
+          ['AWS', 24],
+          ['Firebase', 47],
+          ['Tor', 23],
+          ['Git', 60],
+        ]
+      ], [
+        'head_arch', [
+          ['Clean', 2],
+          ['Onion', 5],
+          ['Hexagonal', 18],
+        ]
+      ], [
+        'head_ml', [
+          ['Python', 68],
+          ['Numpy', 37],
+          ['matplotlib', 25],
+          ['pytorch', 5],
+          ['JavaScript', 22],
+          ['TensorFlow', 5],
+          ['Image', 13],
+          ['voice', 6],
+          ['Neural', 19],
+        ]
+      ], [
+        'head_lang', [
+          ['Read', 23],
+          ['Write', 5],
+          ['Listen', 18],
+          ['Speak', 6],
+        ]
+      ], [
+        'head_typing', [
+          ['WPM', 59],
+          ['ACC', 96],
+        ]
+      ]
+    ])
+  }
 
   myskill = async (skill_set) => {
     skill_set.forEach((groups) => {
       const container = document.createElement('div')
       container.className = 'skill-container'
-      groups.forEach((v) => {
+      container.innerHTML += `<h2>${myskill_lang[groups[0]][this.lang]}</h2>`
+      groups[1].forEach((v) => {
         const box = document.createElement('div')
         const shadow = document.createElement('div')
         const content = document.createElement('div')
         const percent = document.createElement('div')
         const dot = document.createElement('div')
         const label = document.createElement('div')
-  
-        box.className = 'skill-box'
+
+        box.className = 'skill-box scroll-animate'
         shadow.className = 'skill-shadow'
         content.className = 'skill-content'
         percent.className = 'skill-percent'
         percent.setAttribute('data-text', v[1])
         percent.setAttribute('style', `--num:${v[1]};`)
-  
+
         dot.className = 'skill-dot'
         label.className = 'skill-label'
         label.innerHTML = v[0]
-  
+
         container.appendChild(box)
         box.appendChild(shadow)
         box.appendChild(content)
@@ -196,7 +188,7 @@ export default class {
     })
   }
 
-  topnav = async () => {
+  render_topnav = async () => {
     const conf_lang = ['th', 'en']
     const conf_view = ['geek', 'gamer']
 

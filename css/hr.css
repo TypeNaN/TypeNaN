@@ -1,32 +1,35 @@
-section#HR h1{
-  font-size: 3rem;
-  color: #555;
-  text-align: center;
-  margin: 100px auto 0 auto;
-}
-section#HR h2 {
-  font-size: 2rem;
-  color: #555;
-  text-align: center;
-  margin: 100px auto 40px auto;
-}
-section#HR hr {
-  width: 90%;
-  max-width: 880px;
-  margin: 20px auto 40px auto;
-}
-
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
+@keyframes scroll-animate-show {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: rotate(360deg) translateX(100%);
+  }
+  50% {
+    opacity: 0.2;
+    filter: blur(8px);
+    transform: rotate(0deg) translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: rotate(0deg)  translateX(0);
+  }
+}
 @keyframes animateDot {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(calc(3.6deg * var(--num))); }
 }
-
-section#HR div.skill-container {
+section#HR h1 {
+  font-size: 3rem;
+  color: #555;
+  text-align: center;
+  margin: 100px auto 40px auto;
+}
+section#HR .skill-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +41,19 @@ section#HR div.skill-container {
   margin: 0 auto;
   padding: 0;
 }
-section#HR div.skill-box {
+section#HR .skill-container h2 {
+  width: 100%;
+  font-size: 2rem;
+  color: #555;
+  text-align: center;
+  margin: 100px auto 40px auto;
+}
+section#HR .skill-container hr {
+  width: 90%;
+  max-width: 880px;
+  margin: 20px auto 40px auto;
+}
+section#HR .skill-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +62,7 @@ section#HR div.skill-box {
   height: 150px;
   background: #aaa;
 }
-section#HR div.skill-box::before {
+section#HR .skill-box::before {
   content: '';
   position: absolute;
   top: 0;
@@ -58,7 +73,7 @@ section#HR div.skill-box::before {
   filter: blur(3px);
   z-index: 1;
 }
-section#HR  div.skill-box::after {
+section#HR  .skill-box::after {
   content: '';
   position: absolute;
   top: 1px;
@@ -69,13 +84,13 @@ section#HR  div.skill-box::after {
   filter: blur(3px);
   z-index: 1;
 }
-section#HR div.skill-shadow {
+section#HR .skill-shadow {
   position: absolute;
   width: 100%;
   height: 100%;
   background: #eee;
 }
-section#HR div.skill-shadow::before {
+section#HR .skill-shadow::before {
   content: '';
   position: absolute;
   top: 0;
@@ -85,7 +100,7 @@ section#HR div.skill-shadow::before {
   background: linear-gradient(#00000011, transparent);
   transform: skewX(45deg);
 }
-section#HR div.skill-shadow::after {
+section#HR .skill-shadow::after {
   content: '';
   position: absolute;
   bottom: -200%;
@@ -95,7 +110,7 @@ section#HR div.skill-shadow::after {
   background: linear-gradient(#00000011, transparent);
   transform: skewX(45deg);
 }
-section#HR div.skill-content {
+section#HR .skill-content {
   display: flex;
   justify-content:flex-start;
   align-items: center;
@@ -111,12 +126,12 @@ section#HR div.skill-content {
     50px 50px 50px #00000011,
     inset 3px 3px 2px #fff;
 }
-section#HR div.skill-percent {
+section#HR .skill-percent {
   position: relative;
   width: 90px;
   height: 90px;
 }
-section#HR div.skill-percent::before {
+section#HR .skill-percent::before {
   content: attr(data-text);
   display: flex;
   justify-content: center;
@@ -130,13 +145,13 @@ section#HR div.skill-percent::before {
   letter-spacing:  0.1rem;
   box-shadow: 5px 5px 5px #00000033;
 }
-section#HR div.skill-dot {
+section#HR .skill-dot {
   position: absolute;
   inset: 5px;
   z-index: 10;
   animation: animateDot 2s linear forwards 0.3s;
 }
-section#HR div.skill-dot::before {
+section#HR .skill-dot::before {
   content: '';
   position: absolute;
   top: -7px;
@@ -147,13 +162,13 @@ section#HR div.skill-dot::before {
   background: #555;
   border-radius: 50%;
 }
-section#HR div.skill-percent svg {
+section#HR .skill-percent svg {
   position: relative;
   width: 90px;
   height: 90px;
   transform: rotate(270deg);
 }
-section#HR div.skill-percent svg circle {
+section#HR .skill-percent svg circle {
   width: 100%;
   height: 100%;
   fill: transparent;
@@ -161,15 +176,14 @@ section#HR div.skill-percent svg circle {
   stroke: #00000011;
   transform: translate(5px, 5px);
 }
-section#HR div.skill-percent svg circle:nth-child(2) {
+section#HR .skill-percent svg circle:nth-child(2) {
   stroke: #555;
   stroke-dasharray: 256;
   stroke-dashoffset: calc(256 - (256 * var(--num) / 100));
   opacity: 0;
   animation: fadeIn 1s linear forwards 2.5s;
 }
-
-section#HR div.skill-label {
+section#HR .skill-label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,4 +196,10 @@ section#HR div.skill-label {
   color: #555;
   text-shadow: 5px 5px 5px #00000033;
   animation: fadeIn 1s linear forwards 0.5s;
+}
+section#HR .scroll-animate {
+  opacity: 0;
+}
+section#HR .scroll-animate-show {
+  animation: scroll-animate-show 1s linear forwards;
 }
