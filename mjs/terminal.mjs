@@ -112,6 +112,12 @@ export default class {
               this.on_completer.processing = false
               this.call_worker = true
               break
+            case 8: // Back space
+              this.on_completer.select = -1
+              this.on_completer.processing = false
+              this.call_worker = true
+              worker.postMessage({ on: 'keydown', code: code, ascii: String.fromCharCode(code), key: key })
+              break
             case 27: //Escape
               this.on_completer.select = -1
               this.on_completer.processing = false
@@ -269,7 +275,7 @@ export default class {
     this.terminal.childNodes[1].childNodes[2].appendChild(dialog)
     let height = dialog.offsetHeight
     left = left + 20
-    top = top - height - 60
+    top = top - height
     dialog.left = left
     dialog.top = top
     dialog.style.left = `${left}px`
