@@ -1,0 +1,14 @@
+section.Windows #Windows-console div#Frame-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+section.Windows #Windows-console iframe#Frame-resume {
+  background-color: #000;
+  border: none;
+  overflow: hidden;
+}
+section.Windows #Windows-console iframe#Frame-resume html,
+section.Windows #Windows-console iframe#Frame-resume body {
+  overflow: hidden;
+}

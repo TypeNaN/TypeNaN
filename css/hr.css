@@ -10,8 +10,13 @@
   }
   50% {
     opacity: 0.2;
-    filter: blur(8px);
+    filter: blur(10px);
     transform: rotate(0deg) translateX(50%);
+  }
+  90% {
+    opacity: 0.9;
+    filter: blur(4px);
+    transform: rotate(0deg) translateX(90%);
   }
   100% {
     opacity: 1;
@@ -28,6 +33,45 @@ section#HR h1 {
   color: #555;
   text-align: center;
   margin: 100px auto 40px auto;
+}
+section#HR #HR-Landing {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+}
+section#HR #HR-Landing img {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeIn 1s linear forwards .5s;
+}
+section#HR #HR-Landing h1 {
+  position: absolute;
+  opacity: 0;
+  margin: 0;
+  font-size: 3rem;
+  animation: fadeIn 1s linear forwards 1.5s;
+}
+section#HR #HR-Landing span.blink-cursor {
+  margin: 0 5px 0 5px;
+  border-right: .5em solid rgb(235, 156, 11);
+  -webkit-animation: pulse 0.8s ease-in-out infinite;
+  -moz-animation: pulse 0.8s ease-in-out infinite;
+  -o-animation: pulse 0.8s ease-in-out infinite;
+  -ms-animation: pulse 0.8s ease-in-out infinite;
+  animation: pulse 0.8s ease-in-out infinite;
+}
+section#HR #HR-Landing #HR-Landing-Download {
+  position: absolute;
+  left: 10%;
+  top: 20%;
 }
 section#HR .skill-container {
   display: flex;
@@ -201,5 +245,5 @@ section#HR .scroll-animate {
   opacity: 0;
 }
 section#HR .scroll-animate-show {
-  animation: scroll-animate-show 1s linear forwards;
+  animation: scroll-animate-show 1s linear forwards 0.3s;
 }

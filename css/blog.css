@@ -1,28 +1,28 @@
-section.Windows div#Windows-console div#Blog a {
+section.Windows #Windows-console a {
   color: #a6e22e;
   text-decoration: none;
   font: bold 1.6rem/2rem 'K2D Bold';
 }
-section.Windows div#Windows-console div#Blog a:hover {
+section.Windows #Windows-console a:hover {
   color: #ccff66;
   cursor: pointer;
   text-shadow: 1px 1px 4px rgba(146, 255, 4, 0.56);
 }
-section.Windows div#Windows-console div#Blog div.blog-link-img  {
+section.Windows #Windows-console .blog-link-img  {
   width: 100%;
   text-align: center;
 }
-section.Windows div#Windows-console div#Blog div.blog-link-img a {
+section.Windows #Windows-console .blog-link-img a {
   color: #a6e22e;
   text-decoration: none;
   font: bold 1.6rem/2.4rem 'K2D Bold';
 }
-section.Windows div#Windows-console div#Blog div.blog-link-img a:hover {
+section.Windows #Windows-console .blog-link-img a:hover {
   color: #ccff66;
   cursor: pointer;
   text-shadow: 1px 1px 4px rgba(146, 255, 4, 0.56);
 }
-section.Windows div#Windows-console div#Blog div.blog-link-img img {
+section.Windows #Windows-console .blog-link-img img {
   width: 80%;
   max-width: 600px;
   margin-top: 5px;

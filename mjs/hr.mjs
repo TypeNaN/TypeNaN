@@ -58,6 +58,7 @@ export default class {
     this.section.id = 'HR'
     document.body.appendChild(this.section)
     
+    this.render_landing()
     this.render_skill()
     this.render_topnav()
 
@@ -74,6 +75,29 @@ export default class {
     scrollAnimate.forEach((el) => observer.observe(el))
   }
 
+  render_landing = async () => {
+    this.landing = document.createElement('section')
+    this.landing.id = 'HR-Landing'
+    this.section.appendChild(this.landing)
+    
+    // this.landing.innerHTML += '<img id="HR-Landing-img1" src="../assets/lain.webp" alt="HR-Landing-img1" />'
+    // this.landing.innerHTML += '<img id="HR-Landing-img2" src="../assets/lain.webp" alt="HR-Landing-img2" />'
+    // this.landing.innerHTML += '<img id="HR-Landing-img3" src="../assets/lain.webp" alt="HR-Landing-img3" />'
+
+    const Resume = document.createElement('h1')
+    const cursor = document.createElement('span')
+    cursor.className = 'blink-cursor'
+    Resume.innerHTML = 'Resume '
+    Resume.appendChild(cursor)
+    this.landing.appendChild(Resume)
+    
+    this.landing.innerHTML += '<div id="HR-Landing-Download">\
+    <h3>คุณสามารถดาวน์โหลด Resume มาตรฐานในรูปแบบไฟล์ PDF ได้ที่นี่</h3>\
+    <a target="_blank" href="../assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top"><button>Download PDF</button></a>\
+    <h3>หรือสละเวลาสักเล็กน้อยเพื่อเยี่ยมชมเว็บไซต์</h3>\
+    </div>'
+  }
+  
   render_skill = async () => {
     this.section.innerHTML += `<h1>${myskill_lang['header'][this.lang]}</h1>`
     this.myskill([

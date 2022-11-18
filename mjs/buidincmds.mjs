@@ -3,15 +3,19 @@
 
 import Helper     from './help.mjs'
 import Blog       from './blog.mjs'
+import Print      from './print.mjs'
 import Setting    from './setting.mjs'
 
 
 export const Commands = [
-  { command: 'help'         , execute: Helper     , id: 'Helper' },
+  { command: 'help'         , execute: Helper     , id: 'Window-Helper' },
   
-  { command: 'bl'           , execute: Blog       , id: 'Blog' },
-  { command: 'blog'         , execute: Blog       , id: 'Blog' },
-  
+  { command: 'bl'           , execute: Blog       , id: 'Window-Blog' },
+  { command: 'blog'         , execute: Blog       , id: 'Window-Blog' },
+
+  { command: 'pr'           , execute: Print       , id: 'Window-Print' },
+  { command: 'print'        , execute: Print       , id: 'Window-Print' },
+
   { command: 'conf'         , execute: Setting    , id: null },
   { command: 'sudo'         , execute: null       , id: null },
 ]

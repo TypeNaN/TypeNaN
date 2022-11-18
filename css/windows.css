@@ -1,5 +1,6 @@
 @import './help.css';
 @import './blog.css';
+@import './print.css';
 
 section.Windows {
   position: fixed;
