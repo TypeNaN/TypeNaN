@@ -94,14 +94,15 @@ export default class {
     this.landing.id = 'HR-Landing'
     this.section.appendChild(this.landing)
     
+    this.landing.innerHTML += '<div class="cube"></div>'
+    this.landing.innerHTML += '<div class="cube"></div>'
+    this.landing.innerHTML += '<div class="cube"></div>'
+    this.landing.innerHTML += '<div class="cube"></div>'
+    this.landing.innerHTML += '<div class="cube"></div>'
+    this.landing.innerHTML += '<div class="cube"></div>'
     // this.landing.innerHTML += '<img id="HR-Landing-img1" src="../assets/lain.webp" alt="HR-Landing-img1" />'
     // this.landing.innerHTML += '<img id="HR-Landing-img2" src="../assets/lain.webp" alt="HR-Landing-img2" />'
     // this.landing.innerHTML += '<img id="HR-Landing-img3" src="../assets/lain.webp" alt="HR-Landing-img3" />'
-
-    // const resume = document.createElement('h1')
-    // resume.id = 'HR-Landing-header-resume'
-    // this.landing.appendChild(resume)
-    // this.randomNonce()
 
     this.landing.innerHTML += `<div id="HR-Landing-Download">
     <h3>${landing_lang['info1'][this.lang]}</h3>
@@ -111,7 +112,7 @@ export default class {
     <h3>${landing_lang['info3'][this.lang]}</h3>
     </div>`
 
-    this.randomNonce()
+    this.randomText()
 
   }
   
@@ -289,7 +290,7 @@ export default class {
     }
   }
 
-  randomNonce = async () => {
+  randomText = async () => {
     let timeInterval
     let msg = `Resum${this.generateNonce()}`
     timeInterval = setInterval(() => {

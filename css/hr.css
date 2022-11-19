@@ -33,6 +33,21 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(calc(3.6deg * var(--num))); }
 }
+@keyframes Gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
 section#HR h1 {
   font-size: 3rem;
   color: #555;
@@ -40,11 +55,62 @@ section#HR h1 {
   margin: 100px auto 40px auto;
 }
 section#HR #HR-Landing {
-  position: relative;
+  /* position: relative;
   width: 100vw;
   height: 100vh;
   padding: 0;
-  /* background: linear-gradient(0deg, #333333, #dddddd); */
+  background: linear-gradient(0deg, #333333, #dddddd); */
+
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  /* background: linear-gradient(132deg, #FC415A, #591BC5, #212335); */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  overflow: hidden;
+  animation: Gradient 15s ease infinite;
+}
+
+section#HR #HR-Landing .cube {
+  position: absolute;
+  top: 80vh;
+  left: 45vw;
+  width: 10px;
+  height: 10px;
+  border: solid 1px #D7D4E4;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 12s ease-in forwards infinite;
+}
+section#HR #HR-Landing .cube:nth-child(2n) {
+  border-color: #FFF ;
+}
+section#HR #HR-Landing .cube:nth-child(2) {
+  animation-delay: 2s;
+  left: 25vw;
+  top: 40vh;
+}
+section#HR #HR-Landing .cube:nth-child(3) {
+  animation-delay: 4s;
+  left: 75vw;
+  top: 50vh;
+}
+section#HR #HR-Landing .cube:nth-child(4) {
+  animation-delay: 6s;
+  left: 90vw;
+  top: 10vh;
+}
+section#HR #HR-Landing .cube:nth-child(5) {
+  animation-delay: 8s;
+  left: 10vw;
+  top: 85vh;
+}
+section#HR #HR-Landing .cube:nth-child(6) {
+  animation-delay: 10s;
+  left: 50vw;
+  top: 10vh;
 }
 section#HR #HR-Landing img {
   position: absolute;
@@ -107,8 +173,8 @@ section#HR #HR-Landing #HR-Landing-Download span.blink-cursor {
   animation: pulse 0.8s ease-in-out infinite;
 }
 section#HR #HR-Landing #HR-Landing-Download h3 {
-  color: #202822;
-  font: normal 1.2rem/1.8rem 'K2D';
+  color: #fff;
+  font: bold 1.2rem/1.8rem 'K2D';
 }
 section#HR #HR-Landing #HR-Landing-Download button {
   width: 200px;
@@ -117,7 +183,7 @@ section#HR #HR-Landing #HR-Landing-Download button {
   border: solid 2px #baff31;
   background-color: #2d2f32;
   border-radius: 5px;
-  font: normal 1.2rem/1.8rem 'K2D';
+  font: bold 1.2rem/1.8rem 'K2D';
   cursor: pointer;
 }
 section#HR #HR-Landing #HR-Landing-Download button:hover {
