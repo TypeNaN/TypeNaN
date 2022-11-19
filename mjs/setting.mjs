@@ -7,6 +7,7 @@ export default class {
     this.worker = worker
     this.conf_lang = ['th', 'en']
     this.conf_view = ['hr', 'geek', 'gamer']
+    this.conf_disabled = ['gamer']
     this.conf = JSON.parse(sessionStorage.getItem('conf')) || { lang: false, viewer: false }
     this.setting = { lang: this.conf.lang, viewer: this.conf.viewer }
     if (sudo) {
@@ -19,6 +20,10 @@ export default class {
             break
           case '-v':
           case '--viewer':
+            if (this.conf_disabled.indexOf(value) > -1) {
+              this.conf.viewer = value
+              break
+            }
             if (this.conf_view.indexOf(value) > -1) this.viewer = value
             break
           case '-c':
@@ -35,6 +40,14 @@ export default class {
 
   render = async () => {
     if  (this.sudo) {
+      if (this.conf_disabled.indexOf(this.conf.viewer) > -1) {
+        await this.waitfor(10)
+        const stdlog = document.getElementById('Terminal-console-log')
+        stdlog.innerHTML += `<li>Viewer ${this.conf.viewer} is unavailable.</li>`
+        console.log(this.conf.viewer,'disabled')
+        this.conf.viewer = this.setting.viewer
+        return
+      }
       if (this.conf.viewer != this.setting.viewer) {
         const section = document.getElementsByTagName('section')
         for (let i = 0; i < section.length; i++) {
@@ -70,4 +83,6 @@ export default class {
     this.conf.viewer = conf['viewer']
     return conf['viewer']
   }
+
+  waitfor = (millisecond) => new Promise(resolve => setTimeout(() => resolve(), millisecond))
 }
