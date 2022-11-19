@@ -15,20 +15,33 @@ export default class {
     const conf_view = ['hr', 'geek', 'gamer']
     const conf_disabled = ['gamer']
 
-    this.landing = document.getElementById('Landing')
-    if (!this.landing) {
-      this.landing = document.createElement('section')
-      this.landing.id = 'Landing'
-      this.parent.appendChild(this.landing)
-    }
+    this.landing = document.createElement('section')
+    this.landing.id = 'Landing'
+    this.parent.appendChild(this.landing)
+    this.landing.innerHTML = `<ul class="bg-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>`
+
+    this.preconfig = document.createElement('section')
+    this.preconfig.id = 'Preconfig'
+    this.landing.appendChild(this.preconfig)
 
     const header = document.createElement('h1')
     header.innerHTML ='View As'
-    this.landing.append(header)
+    this.preconfig.append(header)
 
     const language = document.createElement('ul')
     language.id = 'container-language'
-    this.landing.appendChild(language)
+    this.preconfig.appendChild(language)
 
     for (const i of conf_lang) {
       if (!document.getElementById(i)) {
@@ -60,7 +73,7 @@ export default class {
 
     const viewer = document.createElement('ul')
     viewer.id = 'container-viewer'
-    this.landing.appendChild(viewer)
+    this.preconfig.appendChild(viewer)
 
     for (const i of conf_view) {
       if (!document.getElementById(i)) {
@@ -99,7 +112,7 @@ export default class {
     this.accept.id = 'conf-accept'
     this.accept.className = 'conf-accept-hide'
     this.accept.innerHTML = 'Go!'
-    this.landing.appendChild(this.accept)
+    this.preconfig.appendChild(this.accept)
     this.accept.onclick = () => accept = true
 
     while (!this.conf.lang || !this.conf.viewer) await waitfor(200)
