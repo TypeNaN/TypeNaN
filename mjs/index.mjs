@@ -9,6 +9,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     await land.render()
     conf = land.getconf()
   }
+
+  const href = conf['viewer']
+  let iscss = false
+  let root = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')
+  let head = document.getElementsByTagName("head")[0]
+  let links = document.getElementsByTagName('link')
+  for (let i = 0; i < links.length; i++) { if (links[i].href === root + './css/' + href + '.css') { iscss = true; break; } }
+  if (!iscss) {
+    const link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.type = 'text/css'
+    link.href = './css/' + href + '.css'
+    link.media = 'all'
+    head.appendChild(link)
+  }
+
   document.documentElement.lang = conf['lang']
   const module = await import(`./${conf['viewer']}.mjs`)
   new module.default()
