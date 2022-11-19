@@ -5,13 +5,17 @@ import setting from "./setting.mjs"
 
 
 const landing_lang = {
-  header: {
-    th: 'คุณสามารถดาวน์โหลด Resume มาตรฐานในรูปแบบไฟล์ PDF ได้ที่นี่',
-    en: 'You can download a standard resume in PDF format here.'
+  info1: {
+    th: 'คุณสามารถดาวน์โหลด',
+    en: 'You can download.'
   },
-  descript: {
-    th: 'หรือสละเวลาสักเล็กน้อยเพื่อเยี่ยมชมเว็บไซต์',
-    en: 'Or take a few moments to visit the website.'
+  info2: {
+    th: 'รูปแบบมาตรฐานในไฟล์ PDF ได้ที่นี่',
+    en: 'Standard format in PDF file here.'
+  },
+  info3: {
+    th: 'หรือสละเวลาสักเล็กน้อยเพื่อเยี่ยมชม<br>และสำรวจเว็บไซต์',
+    en: 'Or take a few moments to visit<br>and explore the website.'
   }
 }
 const myskill_lang = {
@@ -94,16 +98,21 @@ export default class {
     // this.landing.innerHTML += '<img id="HR-Landing-img2" src="../assets/lain.webp" alt="HR-Landing-img2" />'
     // this.landing.innerHTML += '<img id="HR-Landing-img3" src="../assets/lain.webp" alt="HR-Landing-img3" />'
 
-    const resume = document.createElement('h1')
-    resume.id = 'HR-Landing-header-resume'
-    this.landing.appendChild(resume)
-    this.randomNonce()
+    // const resume = document.createElement('h1')
+    // resume.id = 'HR-Landing-header-resume'
+    // this.landing.appendChild(resume)
+    // this.randomNonce()
 
     this.landing.innerHTML += `<div id="HR-Landing-Download">
-<a target="_blank" href="../assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top"><button>Download PDF</button></a>
-<h3>${landing_lang['header'][this.lang]}</h3>
-<h3>${landing_lang['descript'][this.lang]}</h3>
-</div>`
+    <h3>${landing_lang['info1'][this.lang]}</h3>
+    <h1 id="HR-Landing-header-resume"></h1>
+    <h3>${landing_lang['info2'][this.lang]}</h3>
+    <a target="_blank" href="../assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top"><button>Download PDF</button></a>
+    <h3>${landing_lang['info3'][this.lang]}</h3>
+    </div>`
+
+    this.randomNonce()
+
   }
   
   render_skill = async () => {

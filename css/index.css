@@ -132,6 +132,12 @@ section#GAMER ul#container-setting li {
   border-radius: 10px;
   cursor: pointer;
 }
+section#HR ul#container-setting li:hover,
+section#GAMER ul#container-setting li:hover {
+  color: #202822;
+  border: solid 2px #baff31;
+  background-color: #baff31;
+}
 section#HR ul#container-setting li.selected,
 section#GAMER ul#container-setting li.selected {
   color: #a6e22e;

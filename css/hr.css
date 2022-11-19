@@ -41,13 +41,10 @@ section#HR h1 {
 }
 section#HR #HR-Landing {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   padding: 0;
-  background: linear-gradient(0deg, #333333, #dddddd);
+  /* background: linear-gradient(0deg, #333333, #dddddd); */
 }
 section#HR #HR-Landing img {
   position: absolute;
@@ -74,20 +71,33 @@ section#HR #HR-Landing img#HR-Landing-img3 {
   opacity: 0;
   animation: fadeIn 1s linear forwards 1.5s;
 } */
-section#HR #HR-Landing h1 {
+
+section#HR #HR-Landing #HR-Landing-Download {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
   position: absolute;
   opacity: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 1s linear forwards .5s;
+}
+section#HR #HR-Landing #HR-Landing-Download h1 {
   margin: 0;
   font-size: 3rem;
-  letter-spacing: 2rem;
+  letter-spacing: 1.5rem;
   border-bottom: .1em solid rgb(235, 156, 11);
   color: transparent;
   background: linear-gradient(38deg, hsl(164deg 100% 59%), hsl(49deg 100% 62%));
   background-clip: text;
   -webkit-background-clip: text;
-  animation: fadeIn 1s linear forwards .5s;
 }
-section#HR #HR-Landing span.blink-cursor {
+section#HR #HR-Landing #HR-Landing-Download span.blink-cursor {
   margin: 0 5px 0 5px;
   border-right: .5em solid rgb(235, 156, 11);
   -webkit-animation: pulse 0.8s ease-in-out infinite;
@@ -95,11 +105,6 @@ section#HR #HR-Landing span.blink-cursor {
   -o-animation: pulse 0.8s ease-in-out infinite;
   -ms-animation: pulse 0.8s ease-in-out infinite;
   animation: pulse 0.8s ease-in-out infinite;
-}
-section#HR #HR-Landing #HR-Landing-Download {
-  position: absolute;
-  left: 5%;
-  bottom: 10%;
 }
 section#HR #HR-Landing #HR-Landing-Download h3 {
   color: #202822;
@@ -111,8 +116,14 @@ section#HR #HR-Landing #HR-Landing-Download button {
   color: #a6e22e;
   border: solid 2px #baff31;
   background-color: #2d2f32;
-  border-radius: 20px;
+  border-radius: 5px;
   font: normal 1.2rem/1.8rem 'K2D';
+  cursor: pointer;
+}
+section#HR #HR-Landing #HR-Landing-Download button:hover {
+  color: #202822;
+  border: solid 2px #baff31;
+  background-color: #baff31;
 }
 section#HR .skill-container {
   display: flex;
@@ -247,6 +258,10 @@ section#HR .skill-dot::before {
   background: #555;
   border-radius: 50%;
 }
+section#HR .skill-percent:hover .skill-dot::before {
+  background: #a6e22e;
+  filter: drop-shadow(0px 0px 2px #81b906);
+}
 section#HR .skill-percent svg {
   position: relative;
   width: 90px;
@@ -268,6 +283,10 @@ section#HR .skill-percent svg circle:nth-child(2) {
   opacity: 0;
   animation: fadeIn 1s linear forwards 2.5s;
 }
+section#HR .skill-percent:hover svg circle:nth-child(2) {
+  stroke: #a6e22e;
+  filter: drop-shadow(0px 0px 2px #81b906);
+}
 section#HR .skill-label {
   display: flex;
   justify-content: center;
@@ -286,7 +305,9 @@ section#HR .scroll-animate {
   opacity: 0;
 }
 section#HR .scroll-animate-show {
-  animation: scroll-animate-show 1s linear forwards 0.3s;
+  /* animation: scroll-animate-show 1s linear forwards 0.3s; */
+  animation: fadeIn 2s linear forwards 0.5s;
+  
 }
 
 
