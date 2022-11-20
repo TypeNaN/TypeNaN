@@ -11,7 +11,6 @@ const history = []
 
 let command_cursor = -1
 let history_index = -1
-let arrow_down = false
 const keypress = {}
 
 
@@ -25,11 +24,11 @@ class Terminal {
       if (command_line.toString() !== history[history.length - 1].toString()) {
         if (history.length > 100) history.shift()
         history.push([...command_line])
-        history_index = history.length - 1
+        history_index = history.length
       }
     } else {
       history.push([...command_line])
-      history_index = history.length - 1
+      history_index = history.length
     }
     this.clearinterrupt()
   }
@@ -133,46 +132,39 @@ class Terminal {
         postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
         break
       case 38: // Arrow Up
-        arrow_down = false
-        if (history.length > 0) {
-          if (history_index > -1) {
-            if (history_index == history.length - 1) {
-              command_line_tmp.length = 0
-              command_line_tmp.push(...command_line)              
-            }
-            command_line.length = 0
-            command_line.push(...history[history_index])
-            command_cursor = history[history_index].length
-            history_index--
-            postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-          }
-        } else {
-          if (history_index > -1) history_index = -1
-          if (history_index == history.length - 1) {
-            command_line_tmp.length = 0
-            command_line_tmp.push(...command_line)
-          }
+        if (history_index == history.length) {
+          command_line_tmp.length = 0
+          command_line_tmp.push(...command_line)
+        }
+        if (history_index > 0) {
+          if (history_index > history.length) history_index = history.length
+          history_index--
+          command_line.length = 0
+          command_line.push(...history[history_index])
+          command_cursor = history[history_index].length
+          postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
         }
         break
       case 40: // Arrow Down
-        command_line.length = 0
         if (history_index < history.length) {
-          if (history_index == -1) history_index = 0
           history_index++
-          if (!arrow_down) history_index++
-          if (history_index < history.length) {
+          if (history_index <= history.length - 1) {
+            command_line.length = 0
             command_line.push(...history[history_index])
+            command_cursor = history[history_index].length
+            postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
           } else {
-            history_index = history.length - 1
+            command_line.length = 0
             command_line.push(...command_line_tmp)
+            command_cursor = command_line.length
+            postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
           }
         } else {
-          history_index = history.length - 1
+          command_line.length = 0
           command_line.push(...command_line_tmp)
+          command_cursor = command_line.length
+          postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
         }
-        arrow_down = true
-        command_cursor = command_line.length
-        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
         break
       case 46: // Delete
         if (command_line.length > 0) if (command_cursor < command_line.length) command_line.splice(command_cursor + 1, 1)
