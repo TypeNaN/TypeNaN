@@ -20,14 +20,14 @@
 
 
 @keyframes pulse {
-	0% {opacity: 0;}
-  25% {opacity: 1;}
-	75% {opacity: 1;}
-  100% {opacity: 0;}
+	0% {opacity: 1;}
+  25% {opacity: 0;}
+	75% {opacity: 0;}
+  100% {opacity: 1;}
 }
-::-webkit-scrollbar {width: 8px;}
+::-webkit-scrollbar {width: 4px;}
 ::-webkit-scrollbar-track {background: #a9d7e5;}
-::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 5px;}
+::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 2px;}
 ::-webkit-scrollbar-thumb:hover {background: #f00;}
 * {
   -webkit-box-sizing: border-box;
