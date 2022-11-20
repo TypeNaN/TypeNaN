@@ -44,7 +44,6 @@ export default class {
         await this.waitfor(10)
         const stdlog = document.getElementById('Terminal-console-log')
         stdlog.innerHTML += `<li>Viewer ${this.conf.viewer} is unavailable.</li>`
-        console.log(this.conf.viewer,'disabled')
         this.conf.viewer = this.setting.viewer
         return
       }

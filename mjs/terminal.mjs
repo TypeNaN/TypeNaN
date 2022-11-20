@@ -315,8 +315,7 @@ export default class {
     const logul = document.getElementById('Terminal-console-log')
     const logli = document.createElement('li')
     const error = await this.command_maping(data.command)
-    // data.command = this.command_space(data.command)
-    if (error) logli.innerHTML = `<span class="Terminal-prompt-sign">$></span> <span class=error>${data.command.join('')}</span>`
+    if (error) logli.innerHTML += `<span class="Terminal-prompt-sign">$></span> <span class=error>${data.command.join('')}</span><p>${error===true?'':error}</p>`
     else logli.innerHTML = `<span class="Terminal-prompt-sign">$></span> <span class=cli>${data.command.join('')}</span>`
     logul.appendChild(logli)
     const bottom = this.console.scrollHeight - this.console.clientHeight === Math.round(this.console.scrollTop)
@@ -381,8 +380,12 @@ export default class {
             const cmd = [...cmds]
             for (let i = 0; i < cmds.length; i++) { cmd[i] = cmd[i].replace(' ', '') }
             if (cmd.join('').length > 0) {
-              const view = new commands[0].execute()
-              view.render(commands[0].id)
+              if (cmd.join('') == 'sudo') {
+                return `usage: $ ${cmd.join('')} [command][arguments]`
+              } else {
+                const view = new commands[0].execute()
+                view.render(commands[0].id)
+              }
             }
           }
         }
