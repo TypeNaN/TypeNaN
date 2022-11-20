@@ -55,24 +55,16 @@ section#HR h1 {
   margin: 100px auto 40px auto;
 }
 section#HR #HR-Landing {
-  /* position: relative;
-  width: 100vw;
-  height: 100vh;
-  padding: 0;
-  background: linear-gradient(0deg, #333333, #dddddd); */
-
   position: relative;
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  /* background: linear-gradient(132deg, #FC415A, #591BC5, #212335); */
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   overflow: hidden;
   animation: Gradient 15s ease infinite;
 }
-
 section#HR #HR-Landing .cube {
   position: absolute;
   top: 80vh;
@@ -116,28 +108,6 @@ section#HR #HR-Landing img {
   position: absolute;
   pointer-events: none;
 }
-/* section#HR #HR-Landing img#HR-Landing-img1 {
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  opacity: 0;
-  animation: fadeIn 1s linear forwards .5s;
-}
-section#HR #HR-Landing img#HR-Landing-img2 {
-  width: 60%;
-  left: 0;
-  bottom: 0;
-  opacity: 0;
-  animation: fadeIn 1s linear forwards 1s;
-}
-section#HR #HR-Landing img#HR-Landing-img3 {
-  width: 20%;
-  left: 0;
-  bottom: 0;
-  opacity: 0;
-  animation: fadeIn 1s linear forwards 1.5s;
-} */
-
 section#HR #HR-Landing #HR-Landing-Download {
   display: flex;
   justify-content: center;
@@ -307,6 +277,11 @@ section#HR .skill-percent::before {
   letter-spacing:  0.1rem;
   box-shadow: 5px 5px 5px #00000033;
 }
+section#HR .skill-box:hover .skill-percent::before {
+  color: #a6e22e;
+  background: #202822;
+  box-shadow: 5px 5px 5px #92ff048f;
+}
 section#HR .skill-dot {
   position: absolute;
   inset: 5px;
@@ -324,9 +299,9 @@ section#HR .skill-dot::before {
   background: #555;
   border-radius: 50%;
 }
-section#HR .skill-percent:hover .skill-dot::before {
-  background: #a6e22e;
-  filter: drop-shadow(0px 0px 2px #81b906);
+section#HR .skill-box:hover .skill-dot::before {
+  background: #e22e91;
+  filter: drop-shadow(0px 0px 2px #b9068c);
 }
 section#HR .skill-percent svg {
   position: relative;
@@ -349,9 +324,9 @@ section#HR .skill-percent svg circle:nth-child(2) {
   opacity: 0;
   animation: fadeIn 1s linear forwards 2.5s;
 }
-section#HR .skill-percent:hover svg circle:nth-child(2) {
-  stroke: #a6e22e;
-  filter: drop-shadow(0px 0px 2px #81b906);
+section#HR .skill-box:hover svg circle:nth-child(2) {
+  stroke: #e22e91;
+  filter: drop-shadow(0px 0px 2px #b9068c);
 }
 section#HR .skill-label {
   display: flex;
@@ -375,7 +350,6 @@ section#HR .scroll-animate-show {
   animation: fadeIn 2s linear forwards 0.5s;
   
 }
-
 
 @media print {
   section#HR { display: none; }

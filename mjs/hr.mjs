@@ -10,7 +10,7 @@ const landing_lang = {
     en: 'You can download.'
   },
   info2: {
-    th: 'รูปแบบมาตรฐานในไฟล์ PDF ได้ที่นี่',
+    th: 'รูปแบบมาตรฐานไฟล์ PDF ได้ที่นี่',
     en: 'Standard format in PDF file here.'
   },
   info3: {
@@ -94,16 +94,14 @@ export default class {
     this.landing.id = 'HR-Landing'
     this.section.appendChild(this.landing)
     
-    this.landing.innerHTML += '<div class="cube"></div>'
-    this.landing.innerHTML += '<div class="cube"></div>'
-    this.landing.innerHTML += '<div class="cube"></div>'
-    this.landing.innerHTML += '<div class="cube"></div>'
-    this.landing.innerHTML += '<div class="cube"></div>'
-    this.landing.innerHTML += '<div class="cube"></div>'
-    // this.landing.innerHTML += '<img id="HR-Landing-img1" src="../assets/lain.webp" alt="HR-Landing-img1" />'
-    // this.landing.innerHTML += '<img id="HR-Landing-img2" src="../assets/lain.webp" alt="HR-Landing-img2" />'
-    // this.landing.innerHTML += '<img id="HR-Landing-img3" src="../assets/lain.webp" alt="HR-Landing-img3" />'
-
+    this.landing.innerHTML += `
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>`
+    
     this.landing.innerHTML += `<div id="HR-Landing-Download">
     <h3>${landing_lang['info1'][this.lang]}</h3>
     <h1 id="HR-Landing-header-resume"></h1>
@@ -297,12 +295,11 @@ export default class {
       if (msg == 'Resume') {
         this.renderNonce(msg)
         clearTimeout(timeInterval)
-      }
-      else {
+      } else {
         msg = `Resum${this.generateNonce()}`
         this.renderNonce(msg)
       }
-    }, 50)
+    }, 100)
   }
 
   renderNonce = (msg) => {
