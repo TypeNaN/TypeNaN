@@ -223,7 +223,7 @@ export default class {
         content.appendChild(label)
         content.appendChild(percent)
         percent.appendChild(dot)
-        percent.innerHTML += '<svg><circle cx="40" cy="40" r="40"> </circle><circle cx="40" cy="40" r="40"> </circle></svg>'
+        percent.innerHTML += '<svg><circle cx="45" cy="45" r="45"> </circle><circle cx="45" cy="45" r="45"> </circle></svg>'
       })
       container.innerHTML += `<hr />`
       this.section.appendChild(container)

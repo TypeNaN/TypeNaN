@@ -260,8 +260,8 @@ section#HR .skill-content {
 }
 section#HR .skill-percent {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
 }
 section#HR .skill-percent::before {
   content: attr(data-text);
@@ -280,7 +280,7 @@ section#HR .skill-percent::before {
 section#HR .skill-box:hover .skill-percent::before {
   color: #a6e22e;
   background: #202822;
-  box-shadow: 5px 5px 5px #92ff048f;
+  box-shadow: 0 5px 5px #92ff048f;
 }
 section#HR .skill-dot {
   position: absolute;
@@ -300,13 +300,13 @@ section#HR .skill-dot::before {
   border-radius: 50%;
 }
 section#HR .skill-box:hover .skill-dot::before {
-  background: #e22e91;
-  filter: drop-shadow(0px 0px 2px #b9068c);
+  background: #f52e4f;
+  filter: drop-shadow(0px 0px 2px #b90642);
 }
 section#HR .skill-percent svg {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   transform: rotate(270deg);
 }
 section#HR .skill-percent svg circle {
@@ -319,14 +319,14 @@ section#HR .skill-percent svg circle {
 }
 section#HR .skill-percent svg circle:nth-child(2) {
   stroke: #555;
-  stroke-dasharray: 256;
-  stroke-dashoffset: calc(256 - (256 * var(--num) / 100));
+  stroke-dasharray: 275;
+  stroke-dashoffset: calc(275 - (275 * var(--num) / 100));
   opacity: 0;
   animation: fadeIn 1s linear forwards 2.5s;
 }
 section#HR .skill-box:hover svg circle:nth-child(2) {
-  stroke: #e22e91;
-  filter: drop-shadow(0px 0px 2px #b9068c);
+  stroke: #f52e4f;
+  filter: drop-shadow(0px 0px 2px #b90642);
 }
 section#HR .skill-label {
   display: flex;
