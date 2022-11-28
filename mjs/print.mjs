@@ -42,7 +42,7 @@ export default class extends Windows {
     container.id = 'Frame-container'
     const frame = document.createElement('iframe')
     frame.id = 'Frame-resume'
-    frame.src = '../assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top'
+    frame.src = './assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top'
     container.appendChild(frame)
     this.console.appendChild(container)
     const padding = parseInt(

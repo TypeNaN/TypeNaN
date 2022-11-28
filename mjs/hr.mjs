@@ -106,7 +106,7 @@ export default class {
     <h3>${landing_lang['info1'][this.lang]}</h3>
     <h1 id="HR-Landing-header-resume"></h1>
     <h3>${landing_lang['info2'][this.lang]}</h3>
-    <a target="_blank" href="../assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top"><button>Download PDF</button></a>
+    <a target="_blank" href="./assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top"><button>Download PDF</button></a>
     <h3>${landing_lang['info3'][this.lang]}</h3>
     </div>`
 
