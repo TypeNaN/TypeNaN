@@ -168,8 +168,7 @@ section#HR .skill-container {
   flex-wrap: wrap;
   gap: 20px 20px;
   position: relative;
-  width: 90%;
-  max-width: 880px;
+  width: clamp(400px, 90%, 880px);
   margin: 0 auto;
   padding: 0;
 }
@@ -181,8 +180,7 @@ section#HR .skill-container h2 {
   margin: 100px auto 40px auto;
 }
 section#HR .skill-container hr {
-  width: 90%;
-  max-width: 880px;
+  width: clamp(400px, 90%, 880px);
   margin: 20px auto 40px auto;
 }
 section#HR .skill-box {
