@@ -23,6 +23,7 @@ const commands = Commands
 
 const disabledKeys = [9, 37, 38, 39, 40, 93, 112, 114, 117, 118, 121]
 
+// For font monospace
 const welcome_logo = `
 ##########################################################################################
 ##########################################################################################
@@ -55,6 +56,7 @@ const welcome_logo = `
                 TT    EEEEE  RR  RR  MM    MM  II  NN  NN  AA  AA  LLLLLL
 
 `
+
 const welcome_en = `
       If you are new to LINUX operating system and having troublen dealing with the
       command-line utilities provided by LINUX then you really need to know first of
@@ -291,10 +293,9 @@ export default class {
       if (data.command.length > 0) { after = data.command }
       else { after = [''] }
     } else { after = data.command.slice(data.cursor + 1, data.command.length) }
-    // before = this.command_space(before)
-    // after = this.command_space(after)
+    before = this.command_space(before)
+    after = this.command_space(after)
     this.createElement('span', [['class', 'Terminal-prompt-sign']], this.terminal.childNodes[1].childNodes[2], '<span class="Terminal-prompt-sign">$></span> ')
-    
     if (data.command.length < 1) {
       this.createElement('span', [['id', 'Terminal-prompt-cursor']], this.terminal.childNodes[1].childNodes[2], '')
     } else {
@@ -306,7 +307,6 @@ export default class {
         this.createElement('span', [['class', 'Terminal-prompt-interrupt-after']], this.terminal.childNodes[1].childNodes[2], after.join(''))
       }
     }
-    
     const bottom = this.console.scrollHeight - this.console.clientHeight === Math.round(this.console.scrollTop)
     if (!bottom) this.console.scrollTop = this.console.scrollHeight - this.console.clientHeight
   }
@@ -315,11 +315,22 @@ export default class {
     const logul = document.getElementById('Terminal-console-log')
     const logli = document.createElement('li')
     const error = await this.command_maping(data.command)
-    if (error) logli.innerHTML += `<span class="Terminal-prompt-sign">$></span> <span class=error>${data.command.join('')}</span><p>${error===true?'':error}</p>`
-    else logli.innerHTML = `<span class="Terminal-prompt-sign">$></span> <span class=cli>${data.command.join('')}</span>`
+    const command = (this.command_space(data.command)).join('')
+    if (error) {
+      if (error.message) {
+        logli.innerHTML += `<span class="Terminal-prompt-sign">$></span> <span class=error>${command}</span><p class="error-message">${error.message}</p>`
+      } else {
+        logli.innerHTML += `<span class="Terminal-prompt-sign">$></span> <span class=error>${command}</span>`
+      }
+    } else logli.innerHTML = `<span class="Terminal-prompt-sign">$></span> <span class=cli>${command}</span>`
     logul.appendChild(logli)
     const bottom = this.console.scrollHeight - this.console.clientHeight === Math.round(this.console.scrollTop)
     if (!bottom) this.console.scrollTop = this.console.scrollHeight - this.console.clientHeight
+  }
+
+    command_space = (cmd) => {
+    for (let i = 0; i < cmd.length; i++) { cmd[i] = cmd[i].replace(' ', '&nbsp;') }
+    return cmd
   }
 
   command_space_reduce = (cmd) => {
@@ -356,7 +367,8 @@ export default class {
           view.render(match.id)
           return false
         } else {
-          if (arg.length > 0 && arg[0] !== undefined && arg[0] !== null && arg[0] !== '') {
+          // if (arg.length > 0 && arg[0] !== undefined && arg[0] !== null && arg[0] !== '') {
+          if (arg.length > 0 && arg[0]) {
             matches = commands.map((command) => ({
               command: command.command.match(arg[0]),
               execute: command.execute,
@@ -375,13 +387,14 @@ export default class {
                 const view = new commands[0].execute()
                 view.render(commands[0].id)
               }
+              throw new Error()
             }
           } else {
             const cmd = [...cmds]
             for (let i = 0; i < cmds.length; i++) { cmd[i] = cmd[i].replace(' ', '') }
             if (cmd.join('').length > 0) {
               if (cmd.join('') == 'sudo') {
-                return `usage: $ ${cmd.join('')} [command][arguments]`
+                throw new Error(`usage:<br>${cmd.join('')} [command] [arguments]`)
               } else {
                 const view = new commands[0].execute()
                 view.render(commands[0].id)
@@ -389,7 +402,7 @@ export default class {
             }
           }
         }
-        return true
+        throw new Error()
       } else {
         const cmd = [...cmds]
         for (let i = 0; i < cmds.length; i++) { cmd[i] = cmd[i].replace(' ', '') }
@@ -397,9 +410,9 @@ export default class {
           const view = new commands[0].execute()
           view.render(commands[0].id)
         }
-        return true
+        throw new Error()
       }
-    })
+    }).catch(e => e)
   }
 
   windows_close = async (commands) => {
@@ -422,4 +435,3 @@ export default class {
     return `${this.digit2(d.getHours())}:${this.digit2(d.getMinutes())}:${this.digit2(d.getSeconds())}`
   }
 }
-
