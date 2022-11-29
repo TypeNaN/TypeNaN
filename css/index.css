@@ -25,6 +25,11 @@
 	75% {opacity: 0;}
   100% {opacity: 1;}
 }
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 ::-webkit-scrollbar {width: 4px;}
 ::-webkit-scrollbar-track {background: #a9d7e5;}
 ::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 2px;}
@@ -41,22 +46,25 @@ html {
 	height: 100vh;
 }
 body {
-  font: normal 11px 'K2D';
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'K2D';
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 14px;
+  color: #aaa;
   background: rgba(20, 30, 40, 1);
   background-image: url('../assets/lain.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  color: #aaa;
 }
 a {
   color: #a6e22e;
   text-decoration: none;
-  font: bold 0.8rem/1.8rem 'K2D';
+  font-weight: bold;
 }
 a:hover {
   color: #baff31;
@@ -125,7 +133,9 @@ section#GAMER ul#container-setting li {
   text-align: center;
   border: solid 2px #6e7074;
   background-color: #202822;
-  font: normal 0.8rem/1rem 'K2D';
+  font-weight: bold;
+  font-size: 0.8rem;
+  line-height: 1rem;
   border-radius: 10px;
   cursor: pointer;
 }

@@ -6,9 +6,8 @@ section#Landing {
   top: 0;
   margin: 0;
   padding: 0;
-  /* background-color: #2d2f32dd; */
   overflow: hidden;
-  /* user-select: none; */
+  user-select: none;
 }
 section#Landing ul.bg-bubbles {
   position: absolute;
@@ -16,6 +15,7 @@ section#Landing ul.bg-bubbles {
   left: 0;
   width: 100vw;
   height: 100vh;
+  opacity: 70%;
 }
 section#Landing ul.bg-bubbles li {
   position: absolute;
@@ -26,22 +26,22 @@ section#Landing ul.bg-bubbles li {
   /* background-color: fade(white, 15%); */
   background: #a6e22e;
   bottom: -160px;
+  border-radius: 10% 50% 50% 50%;
   
-  -webkit-animation: square 25s infinite;
-  animation:         square 25s infinite;
-  
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
+  -webkit-animation: square 25s linear infinite;
+  animation:         square 25s linear infinite;
 }
 section#Landing ul.bg-bubbles li:nth-child(1){
-  left: 10%;
+  left: 3%;
 }
 section#Landing ul.bg-bubbles li:nth-child(2){
-  left: 20%;
+  left: 15%;
   width: 80px;
   height: 80px;
   animation-delay: 2s;
   animation-duration: 17s;
+  -webkit-animation: squareRL 25s linear infinite;
+  animation:         squareRL 25s linear infinite;
 }
 section#Landing ul.bg-bubbles li:nth-child(3){
   left: 25%;
@@ -90,15 +90,25 @@ section#Landing ul.bg-bubbles li:nth-child(10){
   width: 160px;
   height: 160px;
   animation-delay: 11s;
+  -webkit-animation: squareRL 25s linear infinite;
+  animation:         squareRL 25s linear infinite;
 }
 
 @-webkit-keyframes square {
   0%   { transform: translateY(0); }
-  100% { transform: translateY(-200vh) rotate(600deg); }
+  100% { transform: translateY(calc(-100vh + -200px)) rotate(600deg); }
 }
 @keyframes square {
   0%   { transform: translateY(0); }
-  100% { transform: translateY(-200vh) rotate(600deg); }
+  100% { transform: translateY(calc(-100vh + -200px)) rotate(600deg); }
+}
+@-webkit-keyframes squareRL {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(calc(-100vh + -200px)) rotate(-600deg); }
+}
+@keyframes squareRL {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(calc(-100vh + -200px)) rotate(-600deg); }
 }
 
 section#Landing section#Preconfig {
@@ -114,8 +124,13 @@ section#Landing section#Preconfig {
   margin: 0;
   padding: 0;
   background-color: #2d2f32dd;
-  font: bold 1.8rem/2.4rem 'K2D';
+  font-weight: bold;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
   overflow: hidden;
+}
+section#Landing section#Preconfig h1 {
+  text-shadow: 0 10px 6px #000;
 }
 section#Landing section#Preconfig ul#container-language {
   display: flex;
@@ -129,15 +144,18 @@ section#Landing section#Preconfig ul#container-language {
   background-color: #202822;
   list-style-type: none;
   border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.6rem;
+  line-height: 80px;
+  text-align: center;
+  box-shadow: 0 10px 6px #00000088;
 }
 section#Landing section#Preconfig ul#container-language li {
   width: 140px;
   height: 80px;
   margin: 10px;
-  text-align: center;
   border: solid 3px #2d2f32;
   background-color: #202822;
-  font: bold 1.6rem/80px 'K2D';
   border-radius: 25px;
   cursor: pointer;
 }
@@ -158,6 +176,11 @@ section#Landing section#Preconfig ul#container-viewer {
   background-color: #202822;
   list-style-type: none;
   border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.6rem;
+  line-height: 80px;
+  text-align: center;
+  box-shadow: 0 10px 6px #00000088;
 }
 section#Landing section#Preconfig ul#container-viewer li {
   width: 140px;
@@ -166,7 +189,6 @@ section#Landing section#Preconfig ul#container-viewer li {
   text-align: center;
   border: solid 3px #2d2f32;
   background-color: #202822;
-  font: bold 1.6rem/80px 'K2D';
   border-radius: 25px;
   cursor: pointer;
 }
@@ -198,6 +220,8 @@ section#Landing section#Preconfig botton#conf-accept {
   background-color: #baff31;
   color: #2d2f32dd;
   border-radius: 25px;
+  border: solid 10px #202822;
+  box-shadow: 0 10px 6px #00000088;
   cursor: pointer;
 }
 section#Landing section#Preconfig botton#conf-accept.conf-accept-hide {

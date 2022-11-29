@@ -39,11 +39,11 @@ section#Terminal div#Terminal-Title {
 	background: rgba(25, 25, 25, 0.98);
   color: #a6e22e;
 	height: 25px;
-  font: bold 11px 'K2D';
+  font-weight: bold;
+  line-height: 25px;
 	letter-spacing: 0.3rem;
 	text-transform: uppercase;
 	text-align: center;
-	padding-top: 6px;
 	border-radius: .5rem .5rem 0 0;
 }
 section#Terminal div#Terminal-Title:hover {
@@ -63,9 +63,10 @@ section#Terminal div#Terminal-console {
   height: 428px;
 	padding: 20px 20px 10px 20px;
 	border-radius: 0 0 .5rem .5rem;
-  font: bold 0.8em/1.2em 'K2D';
+  font-weight: bold;
+  font-size: 0.8rem;
+  line-height: 1rem;
   word-wrap: break-word;
-	white-space: pre-wrap;
 	overflow-y: auto;
 	overflow-x: hidden;
   scroll-behavior: smooth;
@@ -78,6 +79,11 @@ section#Terminal div#Terminal-console::-webkit-scrollbar-track {background: #a9d
 section#Terminal div#Terminal-console::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 5px;}
 section#Terminal div#Terminal-console::-webkit-scrollbar-thumb:hover {background: #f00;}
 section#Terminal div#Terminal-console pre#welcome {
+  font-family: 'monospace';
+  font-weight: bold;
+  font-size: 0.55rem;
+  line-height: 1.3em;
+  word-wrap: break-word;
   text-shadow: 0 10px 6px rgba(0, 0, 0, 1);
 }
 section#Terminal div#Terminal-console ul {
@@ -85,11 +91,18 @@ section#Terminal div#Terminal-console ul {
 	list-style-type: none;
 }
 section#Terminal div#Terminal-console ul#Terminal-console-log li {
-  font: normal 1.6em/1.4em 'K2D';
+  font-family: 'K2D';
+  font-weight: normal;
+  font-size: 0.8rem;
+  line-height: 1.6em;
 }
 section#Terminal div#Terminal-console .error {
-  font: bold 1.2em/1.2em 'K2D';
+  font-weight: bold;
 	color: rgba(255, 60, 60, 1);
+}
+section#Terminal div#Terminal-console .error-message {
+  padding-left: 20px;
+  color: rgba(255, 60, 60, 1);
 }
 section#Terminal div#Terminal-console .cli {
   color: #a6e22e;
@@ -98,13 +111,17 @@ section#Terminal div#Terminal-prompt {
 	margin-top: 20px;
 	padding: 5px 0;
   color: #fff;
-  font: bold 1.6em/1.6em 'K2D';
-  letter-spacing: 0.2em;
+  /* font: bold 1.6em/1.6em 'K2D'; */
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1em;
+  /* letter-spacing: 0.2em; */
   border-top: solid 1px #a6e22e;
 }
 section#Terminal span.Terminal-prompt-sign {
 	color: rgba(56, 209, 56, 0.98);
-  font: bold 1em/1em 'K2D';
+  /* font: bold 1em/1em 'K2D'; */
+  font-weight: bold;
 }
 section#Terminal span#Terminal-prompt-interrupt {
   color: #a6e22e;
@@ -130,11 +147,11 @@ section#Terminal span.Terminal-prompt-interrupt-after {
 section#Terminal div#Terminal-console-foot {
   background: rgba(25, 25, 25, 0.98);
   height: 25px;
-  font: bold 11px 'K2D';
+  font-weight: bold;
+  line-height: 25px;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 6px;
   border-radius: 0 0 .5rem .5rem;
 }
 section#Terminal div#Terminal-console-foot span#Terminal-foot-status {
@@ -151,7 +168,7 @@ section#Terminal div#Terminal-prompt div#Terminal-completer {
   text-align: center;
   z-index: 99999;
   overflow: hidden;
-  font: bold 1.2em/1.8em 'K2D';
+  /* font: bold 1.2em/1.8em 'K2D'; */
 }
 
 section#Terminal div#Terminal-prompt div#Terminal-completer div {
