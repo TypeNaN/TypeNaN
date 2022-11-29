@@ -27,6 +27,7 @@ export default class {
     this.console = this.windows.childNodes[1]
     this.console.className = 'allow-print'
 
+    /*
     const ads = document.createElement('div')
     ads.className = 'myAds'
     ads.innerHTML += '\
@@ -40,7 +41,8 @@ export default class {
     '
     this.windows.childNodes[1].childNodes[0].appendChild(ads)
     if ('adsbygoogle' in window) (adsbygoogle = window.adsbygoogle || []).push({})
-
+    */
+  
     this.X = this.windows.childNodes[0].childNodes[1]
     this.X.onclick = (e) => this.remove()
     this.randomStatusBarReverse()
