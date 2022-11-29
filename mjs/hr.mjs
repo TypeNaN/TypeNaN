@@ -304,10 +304,12 @@ export default class {
 
   renderNonce = (msg) => {
     const parent = document.getElementById('HR-Landing-header-resume')
-    const cursor = document.createElement('span')
-    cursor.setAttribute('class', 'blink-cursor')
-    parent.innerHTML = msg
-    parent.appendChild(cursor)
+    if (parent) {
+      const cursor = document.createElement('span')
+      cursor.setAttribute('class', 'blink-cursor')
+      parent.innerHTML = msg
+      parent.appendChild(cursor)
+    }
   }
 
   generateNonce() {
