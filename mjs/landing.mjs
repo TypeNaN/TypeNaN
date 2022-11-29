@@ -36,7 +36,7 @@ export default class {
     this.landing.appendChild(this.preconfig)
 
     const header = document.createElement('h1')
-    header.innerHTML ='View As'
+    header.innerHTML ='View Curriculum Vitae As'
     this.preconfig.append(header)
 
     const language = document.createElement('ul')
