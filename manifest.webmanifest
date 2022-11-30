@@ -1,0 +1,66 @@
+{
+  "version": "1",
+  "name": "TypeNaN",
+  "short_name": "Curriculum Vitae",
+  "description": "You can choose view as [HR, GEEK, GAMER]",
+  "lang": "th-TH",
+  "dir": "ltr",
+  "id": "./index.html",
+  "start_url": "./index.html",
+  "launch_path": "./index.html",
+  "scope": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#2d2f32",
+  "background_color": "#2d2f32",
+  "icons": [
+    {
+      "src": "./assets/150x150.png",
+      "type": "image/png",
+      "sizes": "150x150",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "developer": {
+    "name": "TypeNaN",
+    "url": "https://github.com/TypeNaN"
+  },
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "http://localhost:8443/manifest.webmanifest"
+    },
+    {
+      "platform": "webapp",
+      "url": "http://192.168.43.42:8443/manifest.webmanifest"
+    },
+    {
+      "platform": "webapp",
+      "url": "https://typenan.github.io/TypeNaN/manifest.webmanifest"
+    }
+  ],
+  "permissions": {
+    "desktop-notification": {
+      "description": "ต้องการให้ระบบส่งการแจ้งเตือน"
+    }
+    ,"notifications": {
+      "description": "ต้องการให้ระบบส่งการแจ้งเตือน"
+    }
+    ,"networking.onc": {
+      "description": "ต้องการปรับปรุงข้อมูลเมื่อออนไลน์"
+    }
+    ,"geolocation": {
+      "description": "ต้องการที่อยู่สำหรับการจัดส่ง"
+    }
+    ,"background": {
+      "description": "ต้องการการทำงานอยู่เบื้องหลัง"
+    }
+  }
+}
