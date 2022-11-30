@@ -2,12 +2,19 @@
 
 import Windows from "./windows.mjs";
 
+const description = `Command blog
+
+Pattern     : blog
+Arguments   : No arguments
+Exit Status : void
+
+`
 
 export default class extends Windows {
   constructor(params) { super(params) }
 
   render = async (id) => {
-    this.create(id, null)
+    this.create(id, description)
     await this.waitfor(50)
     this.show()
 

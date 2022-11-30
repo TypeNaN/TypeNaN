@@ -4,8 +4,6 @@ section#Landing {
   height: 100vh;
   left: 0;
   top: 0;
-  margin: 0;
-  padding: 0;
   overflow: hidden;
   user-select: none;
 }
@@ -112,17 +110,16 @@ section#Landing ul.bg-bubbles li:nth-child(10){
 }
 
 section#Landing section#Preconfig {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  gap: 20px 20px;
   width: 100vw;
   height: 100vh;
   left: 0;
   top: 0;
-  margin: 0;
-  padding: 0;
   background-color: #2d2f32dd;
   font-weight: bold;
   font-size: 1.8rem;
@@ -132,47 +129,15 @@ section#Landing section#Preconfig {
 section#Landing section#Preconfig h1 {
   text-shadow: 0 10px 6px #000;
 }
-section#Landing section#Preconfig ul#container-language {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 100px;
-  margin: 10px;
-  padding: 0;
-  background-color: #202822;
-  list-style-type: none;
-  border-radius: 25px;
-  font-weight: bold;
-  font-size: 1.6rem;
-  line-height: 74px;
-  text-align: center;
-  box-shadow: 0 10px 6px #00000088;
-}
-section#Landing section#Preconfig ul#container-language li {
-  width: 120px;
-  height: 80px;
-  margin: 10px;
-  border: solid 3px #2d2f32;
-  background-color: #202822;
-  border-radius: 25px;
-  cursor: pointer;
-}
-section#Landing section#Preconfig ul#container-language li:hover {
-  color: #202822;
-  border: solid 3px #baff31;
-  background-color: #baff31;
-}
+section#Landing section#Preconfig ul#container-language,
 section#Landing section#Preconfig ul#container-viewer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 10px 10px;
-  width: 400px;
-  padding: 10px;
+  width: 270px;
+  padding: 10px 0;
   background-color: #202822;
   list-style-type: none;
   border-radius: 25px;
@@ -182,15 +147,29 @@ section#Landing section#Preconfig ul#container-viewer {
   text-align: center;
   box-shadow: 0 10px 6px #00000088;
 }
+section#Landing section#Preconfig ul#container-language {
+  width: 270px;
+}
+section#Landing section#Preconfig ul#container-viewer {
+  width: 400px;
+}
+section#Landing section#Preconfig ul#container-language li,
 section#Landing section#Preconfig ul#container-viewer li {
   width: 120px;
   height: 80px;
-  text-align: center;
   border: solid 3px #2d2f32;
   background-color: #202822;
   border-radius: 25px;
   cursor: pointer;
 }
+section#Landing section#Preconfig ul#container-language li.selected,
+section#Landing section#Preconfig ul#container-viewer li.selected {
+  color: #a6e22e;
+  border: solid 3px #baff31;
+  background-color: #2d2f32;
+  transition: all 1s;
+}
+section#Landing section#Preconfig ul#container-language li:hover,
 section#Landing section#Preconfig ul#container-viewer li:hover {
   color: #202822;
   border: solid 3px #baff31;
@@ -204,14 +183,6 @@ section#Landing section#Preconfig ul#container-viewer li[disabled=true] {
 section#Landing section#Preconfig ul#container-viewer li[disabled=true]:hover {
   border: solid 3px #974141;
   background-color: #974141;
-}
-
-section#Landing section#Preconfig ul#container-language li.selected,
-section#Landing section#Preconfig ul#container-viewer li.selected {
-  color: #a6e22e;
-  border: solid 3px #baff31;
-  background-color: #2d2f32;
-  transition: all 1s;
 }
 section#Landing section#Preconfig botton#conf-accept {
   margin-top: 40px;

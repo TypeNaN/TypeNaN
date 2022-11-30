@@ -13,8 +13,8 @@ export const Commands = [
   { command: 'bl'           , execute: Blog       , id: 'Window-Blog' },
   { command: 'blog'         , execute: Blog       , id: 'Window-Blog' },
 
-  { command: 'pr'           , execute: Print       , id: 'Window-Print' },
-  { command: 'print'        , execute: Print       , id: 'Window-Print' },
+  { command: 'pr'           , execute: Print      , id: 'Window-Print' },
+  { command: 'print'        , execute: Print      , id: 'Window-Print' },
 
   { command: 'conf'         , execute: Setting    , id: null },
   { command: 'sudo'         , execute: null       , id: null },

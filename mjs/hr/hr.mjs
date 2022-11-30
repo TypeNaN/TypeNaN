@@ -49,8 +49,8 @@ const myskill_lang = {
     en: { h2: 'Skill Development Operations', li: myskill_desc['en'] },
   },
   head_arch: {
-    th: { h2: 'ทักษะด้านสถาปัตยกรรมโปรมแกรม', li: myskill_desc['th'] },
-    en: { h2: 'Skill Programming Architecture', li: myskill_desc['en'] },
+    th: { h2: 'ทักษะด้านสถาปัตยกรรม บริการ API', li: myskill_desc['th'] },
+    en: { h2: 'Skill API Service Architecture', li: myskill_desc['en'] },
   },
   head_ml: {
     th: 'ทักษะด้าน Machine Learning และ Data Analysis',

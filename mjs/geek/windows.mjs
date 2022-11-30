@@ -21,9 +21,8 @@ export default class {
     this.createElement('div', [['id', 'Windows-Title']], this.windows, `DEEP ${id}`)
     this.createElement('div', [['id', 'Windows-X']], this.windows.childNodes[0], 'X')
     this.createElement('div', [['id', 'Windows-console']], this.windows)
-    this.createElement('ul',  [['id', 'Windows-console-log']], this.windows.childNodes[1])
     this.createElement('div', [['id', 'Windows-console-foot']], this.windows, 'status')
-    this.createElement("pre", [['id', 'Windows-description']], this.windows.childNodes[1].childNodes[0], description)
+    this.createElement('pre', [['id', 'Windows-description']], this.windows.childNodes[1], description)
     this.console = this.windows.childNodes[1]
     this.console.className = 'allow-print'
 
@@ -51,16 +50,11 @@ export default class {
   createElement = (n, a = [], p = false, t = false) => {
     const e = document.createElement(n)
     a.forEach((v) => e.setAttribute(v[0], v[1]))
-    if (t) {
-      const v = document.createElement('span')
-      v.innerHTML = t
-      e.appendChild(v)
-    }
+    if (t) e.innerHTML = t
     let parent
     if (p instanceof HTMLElement) parent = p
-    else if (typeof p === 'string') {
-      parent = document.getElementById(p) || document.body 
-    } else parent = document.body
+    else if (typeof p === 'string') parent = document.getElementById(p) || document.body 
+    else parent = document.body
     parent.appendChild(e)
     return e
   }
@@ -100,13 +94,13 @@ export default class {
   }
 
   randomStatusBar = async () => {
-    this.StatusBarTyping(this.windows.childNodes[2].childNodes[0], this.generateNonce())
-    setInterval(() => this.StatusBarTyping(this.windows.childNodes[2].childNodes[0], this.generateNonce()), 5000)
+    this.StatusBarTyping(this.windows.childNodes[2], this.generateNonce())
+    setInterval(() => this.StatusBarTyping(this.windows.childNodes[2], this.generateNonce()), 5000)
   }
 
   randomStatusBarReverse = async () => {
-    this.StatusBarTypingReverse(this.windows.childNodes[2].childNodes[0], this.generateNonce())
-    setInterval(() => this.StatusBarTypingReverse(this.windows.childNodes[2].childNodes[0], this.generateNonce()), 5000)
+    this.StatusBarTypingReverse(this.windows.childNodes[2], this.generateNonce())
+    setInterval(() => this.StatusBarTypingReverse(this.windows.childNodes[2], this.generateNonce()), 5000)
   }
 
   StatusBarTyping = (parent, msg, delta = 16.66) => {

@@ -87,7 +87,7 @@ section.Windows div#Windows-console {
 	border-radius: 0 0 .5rem .5rem;
   font-weight: normal;
   font-size: 1rem;
-  line-height: 1.4rem;
+  line-height: 1.8rem;
   word-wrap: break-word;
   white-space: pre-wrap;
 	overflow-y: auto;
@@ -98,12 +98,11 @@ section.Windows div#Windows-console::-webkit-scrollbar {width: 4px;}
 section.Windows div#Windows-console::-webkit-scrollbar-track {background: #a9d7e5;}
 section.Windows div#Windows-console::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 5px;}
 section.Windows div#Windows-console::-webkit-scrollbar-thumb:hover {background: #f00;}
+section.Windows div#Windows-console #Windows-console-log {
+	list-style-type: none;
+}
 section.Windows div#Windows-console pre#Windows-description {
   text-shadow: 0 10px 6px #000;
-}
-section.Windows div#Windows-console ul {
-	margin: -20px 0 40px -40px;
-	list-style-type: none;
 }
 section.Windows div#Windows-console p.no-sudo {
   background-color: #f00;
@@ -136,6 +135,7 @@ section.Windows div#Windows-console-foot {
   text-align: center;
   border-radius: 0 0 .5rem .5rem;
   user-select: none;
+  overflow: hidden;
 }
 @media print {
   section.Windows { position:absolute; left: calc(100vw + 12px); top: 4px; width: calc(100vw - 12px); height: calc(100vh - 8px); }

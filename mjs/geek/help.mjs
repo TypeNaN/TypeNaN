@@ -72,20 +72,20 @@ const desc0 = {
   en: '<p class="no-sudo">Do not need super user permission</p>'
 }
 const desc1 = {
-  th: '\tแสดงรายละเอียดเกี่ยวกับการใช้งาน Terminal โดยแนะนำคำสั่งต่างๆ เพื่อใช้ป้อนสั่งให้ Terminal กระทำสิ่งใดๆ หรือให้แสดงข้อมูลที่ต้องการได้ ซึ่งคำสั่งต่างๆ มีดังต่อไปนี้\n\n',
-  en: '\tShows details about using the Terminal by recommending various conditions. For example, the Terminal does something. or to display the required information, which has various commands as follows.\n\n'
+  th: '<p>\tแสดงรายละเอียดเกี่ยวกับการใช้งาน Terminal โดยแนะนำคำสั่งต่างๆ เพื่อใช้ป้อนสั่งให้ Terminal กระทำสิ่งใดๆ หรือให้แสดงข้อมูลที่ต้องการได้ ซึ่งคำสั่งต่างๆ มีดังต่อไปนี้\n\n</p>',
+  en: '<p>\tShows details about using the Terminal by recommending various conditions. For example, the Terminal does something. or to display the required information, which has various commands as follows.\n\n</p>'
 }
 const desc2 = {
-  th: 'ชุดคำสั่ง :\n\n',
-  en: 'Commands :'
+  th: '<p>ชุดคำสั่ง :\n\n</p>',
+  en: '<p>Commands :</p>'
 }
 const desc3 = {
-  th: '\tคุณสามารถค้นหาคำสั่งที่เคยใช้ก่อนหน้าได้โดยการใช้ปุ่ม Arrow key Up/Down เพื่อเลื่อนหาคำสั่งที่คุณเคยใช้ได้ หรือกด tab เพื่อเติมคำอัติโนมัติ เช่น กดปุ่ม h แล้วตามด้วยปุ่ม tab แล้วคำสั่งที่ขึ้นต้นด้วย h จะแสดงออกมาเป็นตัวเลือกให้คุณ\n\n',
-  en: '\tYou can search for previously used commands by using the arrow key Up/Down to scroll through commands you\'ve used before, or pressing tab to autocomplete.For example, press h followed by tab.Commands starting with h will show you options.\n\n'
+  th: '<p><br>\tคุณสามารถค้นหาคำสั่งที่เคยใช้ก่อนหน้าได้โดยการใช้ปุ่ม Arrow key Up/Down เพื่อเลื่อนหาคำสั่งที่คุณเคยใช้ได้ หรือกด tab เพื่อเติมคำอัติโนมัติ เช่น กดปุ่ม h แล้วตามด้วยปุ่ม tab แล้วคำสั่งที่ขึ้นต้นด้วย h จะแสดงออกมาเป็นตัวเลือกให้คุณ\n\n</p>',
+  en: '<p>\tYou can search for previously used commands by using the arrow key Up/Down to scroll through commands you\'ve used before, or pressing tab to autocomplete.For example, press h followed by tab.Commands starting with h will show you options.\n\n</p>'
 }
 const desc4 = {
-  th: '* คุณสามารถกลับมาเรียกดูรายละเอียดนี้ได้ทุกเมื่อด้วยคำสั่ง "help"\n\n\n',
-  en: '* You can return to this detail at any time with the "help" command.\n\n\n'
+  th: '<p>* คุณสามารถกลับมาเรียกดูรายละเอียดนี้ได้ทุกเมื่อด้วยคำสั่ง "help"\n\n\n</p>',
+  en: '<p>* You can return to this detail at any time with the "help" command.\n\n\n</p>'
 }
 
 
@@ -126,9 +126,7 @@ export default class extends Windows {
       this.console.appendChild(container)
     })
 
-    
-
-    this.console.innerHTML += `<br />${desc3[lang]}`
+    this.console.innerHTML += desc3[lang]
     this.console.innerHTML += desc4[lang]
     
   }
