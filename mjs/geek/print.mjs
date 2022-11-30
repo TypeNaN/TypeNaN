@@ -15,8 +15,8 @@ const desc0 = {
   en: '<p class="no-sudo">Do not need super user permission</p>'
 }
 const desc1 = {
-  th: '<p>\tคำสั่งจัดรูปแบบข้อมูลเพื่อสั่งพิมพ์ออกไปยังเครื่องพิมพ์เอกสารขนาด A4 คุณสามารถสั่งการพิมพ์ออกไปยังเครื่องพิมพ์เอกสารได้โดยที่รูปแบบที่พิมพ์ ออกไปจะมีรูปแบบตามที่แสดงให้เห็นจากด้านล่างนี้ หรือหากตัวอย่างที่ด้านล่างไม่แสดงสามารถกดดาวน์โหลดได้ <a href="./assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top">ที่ตรงนี้</a>\n\n</p>',
-  en: '<p>\tCommand to format the data to print out to an A4 document printer You can print out to a document printer that prints that format. The result will look like the one below. Or if the preview below doesn\'t show, you can click to download it <a href="./assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top">here</a>.\n\n</p>'
+  th: '<p>\tคำสั่งจัดรูปแบบข้อมูลเพื่อสั่งพิมพ์ออกไปยังเครื่องพิมพ์เอกสารขนาด A4 คุณสามารถสั่งการพิมพ์ออกไปยังเครื่องพิมพ์เอกสารได้โดยที่รูปแบบที่พิมพ์ ออกไปจะมีรูปแบบตามที่แสดงให้เห็นจากด้านล่างนี้ หรือหากตัวอย่างที่ด้านล่างไม่แสดงสามารถกดดาวน์โหลดได้ <a target="_blank" href="./assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top">ที่ตรงนี้</a>\n\n</p>',
+  en: '<p>\tCommand to format the data to print out to an A4 document printer You can print out to a document printer that prints that format. The result will look like the one below. Or if the preview below doesn\'t show, you can click to download it <a target="_blank" href="./assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top">here</a>.\n\n</p>'
 }
 
 
