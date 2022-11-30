@@ -83,7 +83,7 @@ export default class {
       select: -1
     }
 
-    const worker = new Worker('./mjs/worker-terminal.mjs', { type: 'module', name: `worker-terminal-${this.time()}` })
+    const worker = new Worker('./mjs/geek/worker-terminal.mjs', { type: 'module', name: `worker-terminal-${this.time()}` })
     this.worker = worker
 
     this.render()

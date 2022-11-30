@@ -107,8 +107,8 @@ section#HR {
   overflow-y: auto;
   user-select: none;
 }
-section#HR ul#container-setting,
-section#GAMER ul#container-setting {
+section#HR ul#container-mainnav,
+section#GAMER ul#container-mainnav {
   display: inline-block;
   position: fixed;
   width: calc(100% - 16px);
@@ -123,8 +123,8 @@ section#GAMER ul#container-setting {
   list-style-type: none;
   z-index: 9999;
 }
-section#HR ul#container-setting li,
-section#GAMER ul#container-setting li {
+section#HR ul#container-mainnav li,
+section#GAMER ul#container-mainnav li {
   display: inline-block;
   min-width: 50px;
   height: 30px;
@@ -139,16 +139,27 @@ section#GAMER ul#container-setting li {
   border-radius: 10px;
   cursor: pointer;
 }
-section#HR ul#container-setting li:hover,
-section#GAMER ul#container-setting li:hover {
+section#HR ul#container-mainnav li:hover,
+section#GAMER ul#container-mainnav li:hover {
   color: #202822;
   border: solid 2px #baff31;
   background-color: #baff31;
 }
-section#HR ul#container-setting li.selected,
-section#GAMER ul#container-setting li.selected {
+section#HR ul#container-mainnav li.selected,
+section#GAMER ul#container-mainnav li.selected {
   color: #a6e22e;
   border: solid 2px #baff31;
   background-color: #2d2f32;
   transition: all 1s;
+}
+section#HR ul#container-mainnav li[disabled=true],
+section#GAMER ul#container-mainnav li[disabled=true] {
+  border: solid 3px #404140;
+  background-color: #404140;
+  cursor: progress;
+}
+section#HR ul#container-mainnav li[disabled=true]:hover,
+section#GAMER ul#container-mainnav li[disabled=true]:hover {
+  border: solid 3px #974141;
+  background-color: #974141;
 }

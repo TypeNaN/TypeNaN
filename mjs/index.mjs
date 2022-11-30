@@ -26,6 +26,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   document.documentElement.lang = conf['lang']
-  const module = await import(`./${conf['viewer']}.mjs`)
+  const module = await import(`./${conf['viewer']}/${conf['viewer']}.mjs`)
   new module.default()
 })

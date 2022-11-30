@@ -4,7 +4,7 @@
 import Helper     from './help.mjs'
 import Blog       from './blog.mjs'
 import Print      from './print.mjs'
-import Setting    from './setting.mjs'
+import Setting    from '../setting.mjs'
 
 
 export const Commands = [

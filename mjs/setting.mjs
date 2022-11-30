@@ -1,13 +1,15 @@
 'use strict'
 
 
+import initconfig from "./initconfig.mjs"
+
 export default class {
   constructor(sudo, params, worker) {
     this.sudo = sudo
     this.worker = worker
-    this.conf_lang = ['th', 'en']
-    this.conf_view = ['hr', 'geek', 'gamer']
-    this.conf_disabled = ['gamer']
+    this.conf_lang = initconfig.language_available
+    this.conf_view = initconfig.viewer_enable
+    this.conf_disabled = initconfig.viewer_disabled
     this.conf = JSON.parse(sessionStorage.getItem('conf')) || { lang: false, viewer: false }
     this.setting = { lang: this.conf.lang, viewer: this.conf.viewer }
     if (sudo) {

@@ -1,6 +1,8 @@
 'use strict';
 
 
+import initconfig from "./initconfig.mjs"
+
 const waitfor = (millisecond) => new Promise(resolve => setTimeout(() => resolve(), millisecond))
 
 
@@ -11,24 +13,16 @@ export default class {
   }
 
   render = async () => {
-    const conf_lang = ['th', 'en']
-    const conf_view = ['hr', 'geek', 'gamer']
-    const conf_disabled = ['gamer']
+    const conf_lang = initconfig.language_available
+    const conf_view = initconfig.viewer_enable
+    const conf_disabled = initconfig.viewer_disabled
 
     this.landing = document.createElement('section')
     this.landing.id = 'Landing'
     this.parent.appendChild(this.landing)
     this.landing.innerHTML = `<ul class="bg-bubbles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li></li><li></li><li></li><li></li><li></li>
+      <li></li><li></li><li></li><li></li><li></li>
     </ul>`
 
     this.preconfig = document.createElement('section')
