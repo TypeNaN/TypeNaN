@@ -297,7 +297,6 @@ export default class {
       this.skill.appendChild(container)
     })
   }
-
   
   render_footer = async () => {
     this.footer = document.createElement('section')
@@ -308,7 +307,7 @@ export default class {
     this.footer.appendChild(ul)
 
     const img_path = [
-      ['youtube', './assets/qr-youtube.webp', 'https://www.youtube.com/c/5ikronoz?view_as=subscriber&sub_confirmation=1'],
+      ['youtube', './assets/qr-youtube.webp', 'https://www.youtube.com/5ikronoz?view_as=subscriber&sub_confirmation=1'],
       ['github', './assets/qr-github.webp', 'https://github.com/TypeNaN'],
       // ['discord', './assets/qr-discord.webp', 'https://discord.gg/gsfuA7s2bw'],
       // ['slack', './assets/qr-slack.webp', 'https://join.slack.com/t/aloneinthailand/shared_invite/zt-1d88p9fpg-z~20Alg5CA~cbaZJ0MHMzg']
