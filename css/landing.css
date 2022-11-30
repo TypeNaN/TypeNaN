@@ -146,12 +146,12 @@ section#Landing section#Preconfig ul#container-language {
   border-radius: 25px;
   font-weight: bold;
   font-size: 1.6rem;
-  line-height: 80px;
+  line-height: 74px;
   text-align: center;
   box-shadow: 0 10px 6px #00000088;
 }
 section#Landing section#Preconfig ul#container-language li {
-  width: 140px;
+  width: 120px;
   height: 80px;
   margin: 10px;
   border: solid 3px #2d2f32;
@@ -169,23 +169,22 @@ section#Landing section#Preconfig ul#container-viewer {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 10px;
   width: 400px;
-  height: 100px;
-  margin: 10px;
-  padding: 0;
+  padding: 10px;
   background-color: #202822;
   list-style-type: none;
   border-radius: 25px;
   font-weight: bold;
   font-size: 1.6rem;
-  line-height: 80px;
+  line-height: 74px;
   text-align: center;
   box-shadow: 0 10px 6px #00000088;
 }
 section#Landing section#Preconfig ul#container-viewer li {
-  width: 140px;
+  width: 120px;
   height: 80px;
-  margin: 10px;
   text-align: center;
   border: solid 3px #2d2f32;
   background-color: #202822;
