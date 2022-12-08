@@ -5,10 +5,10 @@ import preconfig from "./initconfig.mjs"
 import setting from "./setting.mjs"
 
 export default class {
-  constructor(section, ignore) {
-    this.parent = document.body
-    this.section = section
-    this.ignore = ignore
+  constructor(obj) {
+    this.parent = obj
+    this.section = obj.section
+    this.ignore = obj.id
     this.conf = { lang: false, viewer: false }
     this.render()
   }
@@ -27,11 +27,15 @@ export default class {
         const v = document.createElement('li')
         v.id = i
         v.innerHTML = i.toUpperCase()
-        if (i === this.lang) v.className = 'selected'
         container.appendChild(v)
+        if (i === this.lang) {
+          v.className = 'selected'
+          continue
+        }
         v.onclick = (e) => {
           new setting('sudo', [`--lang=${i}`])
           for (const n of conf_lang) {
+            if (n === this.lang) continue
             const vf = document.getElementById(n)
             if (vf != v) {
               vf.classList.remove('selected')
@@ -43,13 +47,13 @@ export default class {
                   vf.classList.add('selected')
                   this.lang = n
                   document.body.removeChild(this.section)
-                  this.render()
+                  this.parent.render()
                 }
               } else {
                 vf.classList.add('selected')
                 this.lang = n
                 document.body.removeChild(this.section)
-                this.render()
+                this.parent.render()
               }
             }
           }

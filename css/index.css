@@ -32,7 +32,7 @@
 
 ::-webkit-scrollbar {width: 4px;}
 ::-webkit-scrollbar-track {background: #a9d7e5;}
-::-webkit-scrollbar-thumb {background: #0280A0;border-radius: 2px;}
+::-webkit-scrollbar-thumb {background: #0280A0; border-radius: 2px;}
 ::-webkit-scrollbar-thumb:hover {background: #f00;}
 * {
   margin: 0;
@@ -58,6 +58,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 a {
   color: #a6e22e;
@@ -98,6 +101,7 @@ section#HR {
   overflow-x: hidden;
   overflow-y: auto;
   user-select: none;
+  transform-origin: top right;
 }
 section#HR ul#container-mainnav,
 section#GAMER ul#container-mainnav {
