@@ -13,8 +13,8 @@ const landing_lang = {
     en: 'Standard format in PDF file here.'
   },
   info3: {
-    th: 'หรือสละเวลาสักเล็กน้อยเพื่อเยี่ยมชม<br>และสำรวจเว็บไซต์',
-    en: 'Or take a few moments to visit<br>and explore the website.'
+    th: 'หรือสละเวลาสักเล็กน้อย<br>เพื่อเยี่ยมชมและสำรวจเว็บไซต์',
+    en: 'Or take a few moments to <br>visit and explore the website.'
   }
 }
 

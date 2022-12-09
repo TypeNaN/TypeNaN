@@ -17,13 +17,13 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(calc(3.6deg * var(--num))); }
 }
-/* @keyframes animateSkill {
+@keyframes animateScroll {
   0% {
     opacity: 0;
-    filter: blur(4px);
+    /* filter: blur(4px); */
     transform: rotate(360deg) translateX(100%);
   }
-  50% {
+  /* 50% {
     opacity: 0.2;
     filter: blur(4px);
     transform: rotate(0deg) translateX(50%);
@@ -37,13 +37,13 @@
     opacity: 0.9;
     filter: blur(2);
     transform: rotate(0deg) translateX(10%);
-  }
+  } */
   100% {
     opacity: 1;
-    filter: blur(0);
+    /* filter: blur(0); */
     transform: rotate(0deg)  translateX(0);
   }
-} */
+}
 section#HR #HR-Landing {
   position: relative;
   width: 100vw;
@@ -152,13 +152,64 @@ section#HR #HR-Landing #HR-Landing-Download button:hover {
   border: solid 2px #baff31;
   background-color: #baff31;
 }
+section#HR #HR-Aboutme {
+  position: relative;
+  width: 100vw;
+  opacity: 0;
+}
+section#HR #HR-Aboutme.scroll-animate.show {
+  animation: fadeIn 1s linear forwards 0.5s;
+}
+section#HR #HR-Aboutme #Aboutme-me {
+  position: relative;
+  display: flex;
+  gap: 20px 20px;
+  width: 100vw;
+  aspect-ratio: 16 / 10;
+  background-image: url('../assets/me.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+section#HR #HR-Aboutme #Aboutme-me #Aboutme-desc {
+  position: absolute;
+  width: clamp(400px, 50%, 660px);
+  left: 5%;
+  top: 70px;
+  padding: 3%;
+  font-family: 'K2D';
+  font-weight: normal;
+  font-size: 1.2rem;
+  line-height: 1.8em;
+  text-indent: 3em;
+  color: #fff;
+  background: #aaaaaa1a;
+  border-radius: 16px;
+  border: 1px solid #aaaaaa3d;
+  box-shadow: 0 4px 30px #000000cc;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  opacity: 0;
+}
+section#HR #HR-Aboutme.scroll-animate.show #Aboutme-desc {
+  animation: animateScroll 0.5s linear forwards 1s;
+}
+section#HR #HR-Aboutme #Aboutme-me #Aboutme-desc p {
+  margin-top: 30px;
+}
+section#HR #HR-Aboutme #Aboutme-me #Aboutme-desc p:nth-child(1) {
+  margin: 0;
+}
 section#HR #HR-Skill {
   position: relative;
   width: 100vw;
 }
+section#HR #HR-Aboutme h1,
 section#HR #HR-Skill h1 {
   font-size: 3rem;
-  line-height: 1em;
+  line-height: 1.6em;
   color: #555;
   text-align: center;
   margin: 100px auto 40px auto;
@@ -177,7 +228,7 @@ section#HR .skill-container.scroll-animate {
   opacity: 0;
 }
 section#HR .skill-container.scroll-animate.show {
-  animation: fadeIn 2s linear forwards 0.5s;
+  animation: fadeIn 1s linear forwards 1s;
 }
 section#HR .skill-container h2 {
   width: 100vw;
@@ -377,7 +428,12 @@ section#HR #footer-container {
   width: 100vw;
   height: 100vh;
   background-color: #202822;
+  background: linear-gradient(-45deg, #000, #101811, #202822, #303833);
+  background-size: 400% 400%;
+  overflow: hidden;
+  animation: Gradient 15s ease infinite;
 }
+
 section#HR #footer-container ul#footer-qrcode {
   display: flex;
   /* flex-direction: column; */
@@ -400,4 +456,16 @@ section#HR #footer-container ul#footer-qrcode img {
   section#HR { display: none; }
   section#HR * { display: none; }
   section#HR .allow-print * { display: inline; box-shadow: none; text-shadow: none; }
+}
+
+@media only screen and (max-width: 480px) and (orientation : portrait) {
+  section#HR #HR-Aboutme #Aboutme-me {
+    height: 100vh;
+    background-position: 65%;
+  }
+  section#HR #HR-Aboutme #Aboutme-me #Aboutme-desc {
+    width: 90vw;
+    left: 5%;
+    font-size: 1.7em;
+  }
 }

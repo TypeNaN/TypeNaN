@@ -19,34 +19,34 @@ const myskill_desc = {
 }
 
 const myskill_lang = {
-  header: { th: 'คะแนนความถนัดแต่ละทักษะ', en: 'Skill Score' },
+  header: { th: 'ทักษะที่ฉันมี', en: 'Skill' },
   head_frontend: {
-    th: { h2:'ทักษะด้าน Frontend', li: myskill_desc['th'] },
-    en: { h2: 'Skill Frontend', li: myskill_desc['en'] }
+    th: { h2:'ทักษะด้าน<br>Frontend', li: myskill_desc['th'] },
+    en: { h2: 'Skill<br>Frontend', li: myskill_desc['en'] }
   },
   head_backend: {
-    th: { h2: 'ทักษะด้าน Backend', li: myskill_desc['th'] },
-    en: { h2: 'Skill Backend', li: myskill_desc['en'] },
+    th: { h2: 'ทักษะด้าน<br>Backend', li: myskill_desc['th'] },
+    en: { h2: 'Skill<br>Backend', li: myskill_desc['en'] },
   },
   head_devops: {
-    th: { h2: 'ทักษะด้าน Development Operations', li: myskill_desc['th'] },
-    en: { h2: 'Skill Development Operations', li: myskill_desc['en'] },
+    th: { h2: 'ทักษะด้าน<br>Development Operations', li: myskill_desc['th'] },
+    en: { h2: 'Skill<br>Development Operations', li: myskill_desc['en'] },
   },
   head_arch: {
-    th: { h2: 'ทักษะด้านสถาปัตยกรรม บริการ API', li: myskill_desc['th'] },
-    en: { h2: 'Skill API Service Architecture', li: myskill_desc['en'] },
+    th: { h2: 'ทักษะด้าน<br>สถาปัตยกรรม บริการ API', li: myskill_desc['th'] },
+    en: { h2: 'Skill<br>API Service Architecture', li: myskill_desc['en'] },
   },
   head_ml: {
-    th: 'ทักษะด้าน Machine Learning และ Data Analysis',
-    en: 'Skill Machine Learning & Data Analysis'
+    th: { h2: 'ทักษะด้าน<br>Machine Learning<br>และ Data Analysis', li: myskill_desc['th'] },
+    en: { h2: 'Skill<br>Machine Learning<br>and Data Analysis', li: myskill_desc['en'] },
   },
-  head_ml: {
-    th: { h2: 'ทักษะด้าน Machine Learning และ Data Analysis', li: myskill_desc['th'] },
-    en: { h2: 'Skill Machine Learning & Data Analysis', li: myskill_desc['en'] },
+  head_iot: {
+    th: { h2: 'ทักษะด้าน<br>Embeded System<br>และ Internet of think', li: myskill_desc['th'] },
+    en: { h2: 'Skill<br>Embeded System<br>and Internet of think', li: myskill_desc['en'] },
   },
   head_lang: {
     th: {
-      h2: 'ทักษะด้านการสื่อสารภาษาอังกฤษ', li: [
+      h2: 'ทักษะด้าน<br>การสื่อสารภาษาอังกฤษ', li: [
         '0-30 เข้าใจบางส่วน',
         '31-50 พอสื่อสารได้',
         '51-80 สื่อสารได้ดี',
@@ -54,7 +54,7 @@ const myskill_lang = {
       ]
     },
     en: {
-      h2: 'Skill English', li: [
+      h2: 'Skill<br>English', li: [
         '0-30 Partially understand',
         '31-50 Enough to communicate',
         '51-80 Communicate well',
@@ -64,7 +64,7 @@ const myskill_lang = {
   },
   head_typing: {
     th: {
-      h2: 'ทักษะด้านการพิมพ์สัมผัส (ค่าเฉลี่ย)', li: [
+      h2: 'ทักษะด้าน<br>การพิมพ์สัมผัส (ค่าเฉลี่ย)', li: [
         '0-10 wpm งมหาปุ่ม',
         '11-20 wpm ก้มหน้าจิ้ม',
         '21-50 wpm ชำเลืองมอง',
@@ -73,7 +73,7 @@ const myskill_lang = {
       ]
     },
     en: {
-      h2: 'Skill Typing (Average)', li: [
+      h2: 'Skill<br>Typing (Average)', li: [
         '0-10 wpm Find key',
         '11-20 wpm Bow down keystroke',
         '21-50 wpm Glance',
@@ -117,14 +117,16 @@ const myskill = [
   ],
   [
     'head_devops', [
-      ['Apache', 41],
-      ['Nginx', 54],
-      ['Docker', 25],
+      ['Linux', 80],
+      ['Apache', 31],
+      ['Nginx', 44],
+      ['Tor', 23],
+      ['Docker', 20],
       ['K8s', 9],
       ['AWS', 24],
       ['Firebase', 47],
-      ['Tor', 23],
-      ['Git', 60],
+      ['Git', 55],
+      ['Shell', 65],
     ]
   ],
   [
@@ -145,6 +147,25 @@ const myskill = [
       ['Image', 15],
       ['voice', 13],
       ['Neural', 19],
+    ]
+  ],
+  [
+    'head_iot', [
+      ['Raspberry Pi', 90],
+      ['ESP8266', 51],
+      ['ESP32', 51],
+      ['STM32', 30],
+      ['Arduino', 63],
+      ['GPIO', 60],
+      ['UART', 30],
+      ['SPI', 10],
+      ['I2C', 40],
+      ['CAN', 2],
+      ['RS232', 2],
+      ['FreeRTOS', 9],
+      ['Assembly', 10],
+      ['MicroPython', 18],
+      ['C/C++', 62],
     ]
   ],
   [

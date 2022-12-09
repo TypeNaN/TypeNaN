@@ -18,7 +18,6 @@
   font-display: swap;
 } */
 
-
 @keyframes pulse {
 	0% {opacity: 1;}
   25% {opacity: 0;}
@@ -101,7 +100,6 @@ section#HR {
   overflow-x: hidden;
   overflow-y: auto;
   user-select: none;
-  transform-origin: top right;
 }
 section#HR ul#container-mainnav,
 section#GAMER ul#container-mainnav {
