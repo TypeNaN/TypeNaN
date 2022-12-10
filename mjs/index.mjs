@@ -1,16 +1,7 @@
 'use strict'
 
 
-document.addEventListener('DOMContentLoaded', async () => {
-  let conf = JSON.parse(sessionStorage.getItem('conf')) || { lang: false, viewer: false }
-  if (!conf['lang'] || !conf['viewer']) {
-    const landing = await import('./landing.mjs')
-    const land = new landing.default()
-    await land.render()
-    conf = land.getconf()
-  }
-
-  const href = conf['viewer']
+const loadcss = href => {
   let iscss = false
   let root = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')
   let head = document.getElementsByTagName("head")[0]
@@ -24,6 +15,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     link.media = 'all'
     head.appendChild(link)
   }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  let conf = JSON.parse(sessionStorage.getItem('conf')) || { lang: false, viewer: false }
+  if (!conf['lang'] || !conf['viewer']) {
+    loadcss('landing')
+    const landing = await import('./landing.mjs')
+    const land = new landing.default()
+    await land.render()
+    conf = land.getconf()
+  }
+
+  loadcss(conf['viewer'])
 
   document.documentElement.lang = conf['lang']
   const module = await import(`./${conf['viewer']}/${conf['viewer']}.mjs`)

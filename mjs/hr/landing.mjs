@@ -1,8 +1,6 @@
 'use strict'
 
 
-import mainnav from "../mainnav.mjs"
-
 const landing_lang = {
   info1: {
     th: 'คุณสามารถดาวน์โหลด',
