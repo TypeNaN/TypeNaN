@@ -175,7 +175,7 @@ section#HR #HR-Aboutme #Aboutme-me #Aboutme-desc {
   position: absolute;
   width: clamp(400px, 50%, 660px);
   left: 5%;
-  top: 70px;
+  top: 65px;
   padding: 3%;
   font-family: 'K2D';
   font-weight: normal;
@@ -224,12 +224,6 @@ section#HR #HR-Skill .skill-container {
   width: clamp(400px, 90%, 880px);
   margin: 0 auto;
 }
-section#HR .skill-container.scroll-animate {
-  opacity: 0;
-}
-section#HR .skill-container.scroll-animate.show {
-  animation: fadeIn 1s linear forwards 1s;
-}
 section#HR .skill-container h2 {
   width: 100vw;
   font-size: 2rem;
@@ -266,6 +260,12 @@ section#HR .skill-box {
   width: 160px;
   height: 160px;
   background: #aaa;
+}
+section#HR .skill-box.scroll-animate {
+  opacity: 0;
+}
+section#HR .skill-box.scroll-animate.show {
+  animation: fadeIn 2s linear forwards 0.5s;
 }
 section#HR .skill-box::before {
   content: '';
@@ -356,7 +356,7 @@ section#HR .skill-box:hover .skill-percent::before {
   background: #202822;
   box-shadow: 0 5px 5px #92ff048f;
 }
-section#HR .skill-container.scroll-animate.show .skill-dot {
+section#HR .skill-box.scroll-animate.show .skill-dot {
   position: absolute;
   inset: 5px;
   z-index: 10;
@@ -391,18 +391,18 @@ section#HR .skill-percent svg circle {
   stroke: #00000011;
   transform: translate(5px, 5px);
 }
-section#HR .skill-container.scroll-animate.show .skill-percent svg circle:nth-child(2) {
+section#HR .skill-box.scroll-animate.show .skill-percent svg circle:nth-child(2) {
   stroke: #555;
   stroke-dasharray: 275;
   stroke-dashoffset: calc(275 - (275 * var(--num) / 100));
   opacity: 0;
   animation: fadeIn 2s ease-in-out forwards 3.5s;
 }
-section#HR .skill-container.scroll-animate.show .skill-box:hover svg circle:nth-child(2) {
+section#HR .skill-box.scroll-animate.show .skill-box:hover svg circle:nth-child(2) {
   stroke: #f52e4f;
   filter: drop-shadow(0px 0px 2px #b90642);
 }
-section#HR .skill-container.scroll-animate.show .skill-label {
+section#HR .skill-box.scroll-animate.show .skill-label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -466,6 +466,7 @@ section#HR #footer-container ul#footer-qrcode img {
   section#HR #HR-Aboutme #Aboutme-me #Aboutme-desc {
     width: 90vw;
     left: 5%;
-    font-size: 1.7em;
+    top: 50px;
+    font-size: 1.6em;
   }
 }

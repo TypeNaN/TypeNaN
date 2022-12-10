@@ -4,8 +4,8 @@
 const aboutme_lang = {
   header: { th: 'สิ่งที่ฉันเป็น', en: 'What I am ?' },
   desc: {
-    th: '<p>ฉันคือผู้ที่หลงใหลในเทคโนโลยีและมีความทยานอยากเป็นนักพัฒนาโปรแกรมอย่างมาก ฉันมีความใฝ่ฝันหลายอย่างที่ฉันคิดว่าสามารถทำให้มันเป็นจริงได้จากโปรแกรมที่ฉันพัฒนาขึ้นมา</p><p>แม้โลกที่หมุนเร็วขึ้นทุกวันฉันยังคงเดินทีละก้าวโดยหวังว่าสักวันจะไล่ทันความสำเร็จมาโอบกอดไว้</p>',
-    en: '<p>I am a technology enthusiast and aspiring developer. I have many aspirations that I think can be realized through the program I developed.</p><p>Even though the world is turning faster every day, I still take one step at a time hoping that someday Will catch up with success and bring it to embrace.</p>'
+    th: '<p>ฉันคือผู้ที่หลงใหลในเทคโนโลยีและมีความทยานอยากเป็นนักพัฒนาโปรแกรมอย่างมาก ฉันมีความใฝ่ฝันหลายอย่างที่ฉันคิดว่าสามารถทำให้มันเป็นจริงได้จากโปรแกรมที่ฉันพัฒนาขึ้นมา ฉันชอบหาคำตอบด้วยตัวเองมากกว่าการตั้งคำถามและรอคำตอบ</p><p>แม้โลกที่หมุนเร็วขึ้นทุกวันฉันยังคงเดินทีละก้าวโดยหวังว่าสักวันจะไล่ทันความสำเร็จมาโอบกอดไว้</p>',
+    en: '<p>I am a technology enthusiast and aspiring developer. I have many aspirations that I think can be realized through the program I developed. I prefer to seek answers on my own rather than asking questions and waiting for answers.</p><p>Even though the world is turning faster every day, I still take one step at a time hoping that someday Will catch up with success and bring it to embrace.</p>'
   },
 }
 

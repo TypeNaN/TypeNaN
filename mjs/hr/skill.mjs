@@ -13,7 +13,7 @@ const myskill_desc = {
     '0-10 Learning',
     '11-30 Practice',
     '31-60 Acceptable',
-    '60-80 Familiar',
+    '60-80 Accustom',
     '81-100 Proficient',
   ]
 }
@@ -50,7 +50,7 @@ const myskill_lang = {
         '0-30 เข้าใจบางส่วน',
         '31-50 พอสื่อสารได้',
         '51-80 สื่อสารได้ดี',
-        '81-100 ไม่ต่างจากเจ้าของถาษา'
+        '81-100 ราวกับเจ้าของถาษา'
       ]
     },
     en: {
@@ -67,18 +67,18 @@ const myskill_lang = {
       h2: 'ทักษะด้าน<br>การพิมพ์สัมผัส (ค่าเฉลี่ย)', li: [
         '0-10 wpm งมหาปุ่ม',
         '11-20 wpm ก้มหน้าจิ้ม',
-        '21-50 wpm ชำเลืองมอง',
-        '51-100 wpm คำอยู่ในหัว',
-        '101-300 wpm แชมป์พิมพ์เร็ว'
+        '21-50 wpm กำลังฝึก',
+        '51-100 wpm พิมพ์จนชิน',
+        '101++ wpm แชมป์พิมพ์เร็ว'
       ]
     },
     en: {
       h2: 'Skill<br>Typing (Average)', li: [
         '0-10 wpm Find key',
         '11-20 wpm Bow down keystroke',
-        '21-50 wpm Glance',
-        '51-100 wpm Word in head',
-        '101-300 wpm Champion'
+        '21-50 wpm Practicing',
+        '51-100 wpm Accustom',
+        '101++ wpm Champion'
       ]
     }
   }
@@ -207,14 +207,14 @@ export default class {
         else entry.target.classList.remove('show')
       })
     })
-    const scrollAnimate = document.querySelectorAll('.skill-container.scroll-animate')
+    const scrollAnimate = document.querySelectorAll('.skill-box.scroll-animate')
     scrollAnimate.forEach((el) => observer.observe(el))
   }
 
   render_skill = async (skill_set) => {
     skill_set.forEach((groups) => {
       const container = document.createElement('div')
-      container.className = 'skill-container scroll-animate'
+      container.className = 'skill-container'
       container.innerHTML += `<h2>${myskill_lang[groups[0]][this.lang]['h2']}</h2>`
 
       const description = document.createElement('ul')
@@ -235,7 +235,7 @@ export default class {
         const dot = document.createElement('div')
         const label = document.createElement('div')
 
-        box.className = 'skill-box'
+        box.className = 'skill-box scroll-animate'
         shadow.className = 'skill-shadow'
         content.className = 'skill-content'
         percent.className = 'skill-percent'
