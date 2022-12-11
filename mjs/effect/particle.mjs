@@ -67,7 +67,7 @@ class Effect {
     this.gap = gap
     this.radius = radius
     this.mouse = {
-      radius: 3000,
+      radius: 10000,
       x: undefined,
       y: undefined
     }
@@ -77,9 +77,7 @@ class Effect {
     })
   }
 
-  init = (ctx) => {
-    ctx.drawImage(this.img, this.x, this.y)
-    const pixels = ctx.getImageData(0, 0, this.width, this.height).data
+  init = (pixels) => {
     for (let y = 0; y < this.height; y += this.gap) {
       for (let x = 0; x < this.width; x += this.gap) {
         const index = (y * this.width + x) * 4
@@ -110,25 +108,32 @@ export default class {
     this.canvas.width = width
     this.canvas.height = height
     parent.appendChild(this.canvas)
-
+    
+    let gap = width * 0.03
+    let radius = width * 0.01
+    
     this.image = new Image()
     this.image.src = src
     this.image.onload = (e) => {
-      let im = this.resize(e.target, width)
-      this.effect = new Effect(this.canvas, im, 40, 20)
-      this.effect.init(this.ctx)
+      let im = this.resize(e.target, width, height)
+      const pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
+      this.effect = new Effect(this.canvas, im, Math.floor(gap), radius)
+      this.effect.init(pixels)
       this.animate()
       
       this.canvas.onclick = () => this.effect.wrap()
       
       const resizeObserver = new ResizeObserver((entries) => {
         if (this.canvas.width != entries[0].target.clientWidth) {
+          gap = entries[0].target.clientWidth * 0.03
+          radius = entries[0].target.clientWidth * 0.01
+          im = this.resize(this.image, entries[0].target.clientWidth, height)
           this.canvas.width = entries[0].target.clientWidth
-          this.canvas.height = entries[0].target.clientWidth
-          im = this.resize(this.image, entries[0].target.clientWidth)
+          this.canvas.height = im.height
+          const pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
           this.effect = undefined
-          this.effect = new Effect(this.canvas, im, 40, 20)
-          this.effect.init(this.ctx)
+          this.effect = new Effect(this.canvas, im, Math.floor(gap), radius)
+          this.effect.init(pixels)
         }
       })
       resizeObserver.observe(parent)
