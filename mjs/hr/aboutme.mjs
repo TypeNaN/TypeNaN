@@ -1,6 +1,9 @@
 'use strict';
 
 
+import particle from '../effect/particle.mjs'
+
+
 const aboutme_lang = {
   header: { th: 'สิ่งที่ฉันเป็น', en: 'What I am ?' },
   desc: {
@@ -24,10 +27,17 @@ export default class {
 
     this.aboutme.innerHTML += `<h1>${aboutme_lang['header'][this.lang]}</h1>`
 
-    this.aboutme_img = document.createElement('div')
-    this.aboutme_img.id = 'Aboutme-me'
-    this.aboutme_img.innerHTML += `<div id='Aboutme-desc'>${aboutme_lang['desc'][this.lang]}</div>`
-    this.aboutme.appendChild(this.aboutme_img)
+    this.aboutme_pic = document.createElement('div')
+    this.aboutme_pic.id = 'Aboutme-me'
+    this.aboutme.appendChild(this.aboutme_pic)
+
+    this.aboutme_desc = document.createElement('div')
+    this.aboutme_desc.id = 'Aboutme-desc'
+    this.aboutme_desc.innerHTML = aboutme_lang['desc'][this.lang]
+    this.aboutme_pic.appendChild(this.aboutme_desc)
+
+    new particle(this.aboutme, this.aboutme_pic.clientWidth, this.aboutme_pic.clientHeight, './assets/me.webp')
+
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
