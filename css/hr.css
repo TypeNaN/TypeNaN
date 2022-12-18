@@ -266,7 +266,7 @@ section#HR .skill-box.scroll-animate {
   opacity: 0;
 }
 section#HR .skill-box.scroll-animate.show {
-  animation: fadeIn 2s linear forwards 0.5s;
+  animation: fadeIn 1s linear forwards 0.5s;
 }
 section#HR .skill-box::before {
   content: '';
@@ -411,14 +411,14 @@ section#HR .skill-box.scroll-animate.show .skill-label {
   width: 100%;
   height: 50px;
   inset: 0;
-  opacity: 0;
+  /* opacity: 0; */
   font-weight: bold;
   font-size: 1.5rem;
   line-height: 1.6em;
   color: #555;
   text-shadow: 5px 5px 5px #00000033;
   text-align: center;
-  animation: fadeIn 2s ease-in-out forwards 1s;
+  /* animation: fadeIn 2s ease-in-out forwards 1s; */
 }
 section#HR #footer-container {
   display: flex;

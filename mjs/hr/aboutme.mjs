@@ -36,8 +36,8 @@ export default class {
     this.aboutme_desc.innerHTML = aboutme_lang['desc'][this.lang]
     this.aboutme_pic.appendChild(this.aboutme_desc)
 
-    new particle(this.aboutme, this.aboutme_pic.clientWidth, this.aboutme_pic.clientHeight, './assets/me.webp')
-
+    const particle_img = new particle(this.aboutme, this.aboutme_pic.clientWidth, this.aboutme_pic.clientHeight)
+    particle_img.render('./assets/me.webp', 10, 8)
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

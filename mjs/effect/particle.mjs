@@ -98,26 +98,25 @@ class Effect {
 
 
 export default class {
-  constructor(parent, width, height, src) {
-    this.render(parent, width, height, src)
-  }
-
-  render = async (parent, width, height, src) => {
+  constructor(parent, width, height) {
+    this.parent = parent
     this.canvas = document.createElement('canvas')
     this.ctx = this.canvas.getContext('2d')
     this.canvas.width = width
     this.canvas.height = height
-    parent.appendChild(this.canvas)
-    
-    let gap = width * 0.03
-    let radius = width * 0.01
-    
+    this.parent.appendChild(this.canvas)
+  }
+
+  render = async (src, gap = 10, radius = 4) => {
+    // 4 chanel = 1 pixel or 1 gap
+    // All chanel = Red, Green, Blue, Alpha
+    const chanel = 4
     this.image = new Image()
     this.image.src = src
     this.image.onload = (e) => {
-      let im = this.resize(e.target, width, height)
+      let im = this.resize(e.target, this.canvas.width, this.canvas.height)
       const pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
-      this.effect = new Effect(this.canvas, im, Math.floor(gap), radius)
+      this.effect = new Effect(this.canvas, im, Math.floor(gap * chanel), Math.floor(radius))
       this.effect.init(pixels)
       this.animate()
       
@@ -125,18 +124,20 @@ export default class {
       
       const resizeObserver = new ResizeObserver((entries) => {
         if (this.canvas.width != entries[0].target.clientWidth) {
-          gap = entries[0].target.clientWidth * 0.03
-          radius = entries[0].target.clientWidth * 0.01
-          im = this.resize(this.image, entries[0].target.clientWidth, height)
+          let scale = entries[0].target.clientWidth / this.canvas.width
+          console.log(scale);
+          gap = gap * scale
+          radius = radius ** (scale**2)
+          im = this.resize(this.image, entries[0].target.clientWidth, this.canvas.height)
           this.canvas.width = entries[0].target.clientWidth
           this.canvas.height = im.height
           const pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
           this.effect = undefined
-          this.effect = new Effect(this.canvas, im, Math.floor(gap), radius)
+          this.effect = new Effect(this.canvas, im, Math.floor(gap * chanel) + 1, Math.floor(radius) + 1)
           this.effect.init(pixels)
         }
       })
-      resizeObserver.observe(parent)
+      resizeObserver.observe(this.parent)
     }
   }
 

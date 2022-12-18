@@ -46,6 +46,7 @@ export default class {
       ['YouTube Channel', './assets/qr-youtube.webp', 'https://www.youtube.com/5ikronoz?view_as=subscriber&sub_confirmation=1'],
       ['Github', './assets/qr-github.webp', 'https://github.com/TypeNaN'],
       ['typenan💀duck.com', './assets/typenanatduckdotcom.webp', 'mailto:typenan@duck.com'],
+      ['This web site', './assets/qr-typenan.webp', 'https://typenan.github.io/TypeNaN'],
       // ['Discord', './assets/qr-discord.webp', 'https://discord.gg/gsfuA7s2bw'],
       // ['Slack', './assets/qr-slack.webp', 'https://join.slack.com/t/aloneinthailand/shared_invite/zt-1d88p9fpg-z~20Alg5CA~cbaZJ0MHMzg']
     ]
