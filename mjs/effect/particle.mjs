@@ -115,26 +115,26 @@ export default class {
     this.image.src = src
     this.image.onload = (e) => {
       let im = this.resize(e.target, this.canvas.width, this.canvas.height)
-      const pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
-      this.effect = new Effect(this.canvas, im, Math.floor(gap * chanel), Math.floor(radius))
+      let pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
+      this.effect = new Effect(this.canvas, im, Math.floor(gap) * chanel, radius)
       this.effect.init(pixels)
       this.animate()
       
       this.canvas.onclick = () => this.effect.wrap()
       
       const resizeObserver = new ResizeObserver((entries) => {
-        if (this.canvas.width != entries[0].target.clientWidth) {
-          let scale = entries[0].target.clientWidth / this.canvas.width
-          console.log(scale);
-          gap = gap * scale
-          radius = radius ** (scale**2)
-          im = this.resize(this.image, entries[0].target.clientWidth, this.canvas.height)
-          this.canvas.width = entries[0].target.clientWidth
-          this.canvas.height = im.height
-          const pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
-          this.effect = undefined
-          this.effect = new Effect(this.canvas, im, Math.floor(gap * chanel) + 1, Math.floor(radius) + 1)
-          this.effect.init(pixels)
+        if (entries[0].target.clientWidth > 0 && entries[0].target.clientHeight > 0) {
+          if (this.canvas.width != entries[0].target.clientWidth) {
+            const scale = entries[0].target.clientWidth / this.canvas.width
+            im = this.resize(this.image, entries[0].target.clientWidth, this.canvas.height)
+            this.canvas.width = entries[0].target.clientWidth
+            this.canvas.height = im.height
+            pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
+            this.effect = undefined
+            radius = radius * scale
+            this.effect = new Effect(this.canvas, im, gap * chanel, radius)
+            this.effect.init(pixels)
+          }
         }
       })
       resizeObserver.observe(this.parent)
