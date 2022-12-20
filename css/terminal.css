@@ -91,7 +91,6 @@ section#Terminal div#Terminal-console ul {
 	list-style-type: none;
 }
 section#Terminal div#Terminal-console ul#Terminal-console-log li {
-  font-family: 'K2D';
   font-weight: normal;
   font-size: 0.8rem;
   line-height: 1.6em;
@@ -111,16 +110,13 @@ section#Terminal div#Terminal-prompt {
 	margin-top: 20px;
 	padding: 5px 0;
   color: #fff;
-  /* font: bold 1.6em/1.6em 'K2D'; */
   font-weight: bold;
   font-size: 1rem;
   line-height: 1em;
-  /* letter-spacing: 0.2em; */
   border-top: solid 1px #a6e22e;
 }
 section#Terminal span.Terminal-prompt-sign {
 	color: rgba(56, 209, 56, 0.98);
-  /* font: bold 1em/1em 'K2D'; */
   font-weight: bold;
 }
 section#Terminal span#Terminal-prompt-interrupt {
@@ -168,7 +164,6 @@ section#Terminal div#Terminal-prompt div#Terminal-completer {
   text-align: center;
   z-index: 99999;
   overflow: hidden;
-  /* font: bold 1.2em/1.8em 'K2D'; */
 }
 
 section#Terminal div#Terminal-prompt div#Terminal-completer div {

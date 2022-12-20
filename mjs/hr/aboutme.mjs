@@ -39,13 +39,13 @@ export default class {
     const particle_img = new particle(this.aboutme, this.aboutme_pic.clientWidth, this.aboutme_pic.clientHeight)
     particle_img.render('./assets/me.webp', 10, 8)
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(async (entries) => {
+      entries.forEach(async (entry) => {
         if (entry.isIntersecting) entry.target.classList.add('show')
         else entry.target.classList.remove('show')
       })
     })
     const scrollAnimate = document.querySelectorAll('.HR-Aboutme.scroll-animate')
-    scrollAnimate.forEach((el) => observer.observe(el))
+    scrollAnimate.forEach(async (el) => observer.observe(el))
   }
 }

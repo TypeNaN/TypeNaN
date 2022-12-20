@@ -4,45 +4,16 @@
   100% { background-position: 0% 50%; }
 }
 @keyframes cube {
-  from {
-    transform: scale(0) rotate(0deg) translate(-50%, -50%);
-    opacity: 1;
-  }
-  to {
-    transform: scale(20) rotate(960deg) translate(-50%, -50%);
-    opacity: 0;
-  }
+  from { transform: scale(0) rotate(0deg) translate(-50%, -50%); opacity: 1; }
+  to { opacity: 0; transform: scale(20) rotate(960deg) translate(-50%, -50%); }
 }
 @keyframes animateDot {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(calc(3.6deg * var(--num))); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(calc(3.6deg * var(--num))); }
 }
 @keyframes animateScroll {
-  0% {
-    opacity: 0;
-    /* filter: blur(4px); */
-    transform: rotate(360deg) translateX(100%);
-  }
-  /* 50% {
-    opacity: 0.2;
-    filter: blur(4px);
-    transform: rotate(0deg) translateX(50%);
-  }
-  80% {
-    opacity: 0.8;
-    filter: blur(4px);
-    transform: rotate(0deg) translateX(-10%);
-  }
-  90% {
-    opacity: 0.9;
-    filter: blur(2);
-    transform: rotate(0deg) translateX(10%);
-  } */
-  100% {
-    opacity: 1;
-    /* filter: blur(0); */
-    transform: rotate(0deg)  translateX(0);
-  }
+  from { opacity: 0; transform: rotate(360deg) translateX(100%); }
+  to { opacity: 1; transform: rotate(0deg)  translateX(0); }
 }
 section#HR #HR-Landing {
   position: relative;
@@ -114,6 +85,7 @@ section#HR #HR-Landing #HR-Landing-Download {
   animation: fadeIn 3s linear forwards .5s;
 }
 section#HR #HR-Landing #HR-Landing-Download #HR-Landing-header-resume {
+  font-family: 'monospace';
   padding-bottom: 0.3em;
   font-size: 3rem;
   line-height: 1em;
@@ -141,7 +113,7 @@ section#HR #HR-Landing #HR-Landing-Download button {
   border: solid 2px #baff31;
   background-color: #2d2f32;
   border-radius: 5px;
-  font-family: 'K2D';
+  font-family: 'K2D', sans-serif;
   font-weight: bold;
   font-size: 1.2rem;
   line-height: 1.8em;

@@ -38,42 +38,57 @@ export default class {
     <div class="cube"></div>
     <div class="cube"></div>`
     
-    this.landing.innerHTML += `<div id="HR-Landing-Download">
-    <h3>${landing_lang['info1'][this.lang]}</h3>
+    const landing_box = document.createElement('div')
+    landing_box.id = 'HR-Landing-Download'
+    landing_box.innerHTML = `<h3>${landing_lang['info1'][this.lang]}</h3>
     <div id="HR-Landing-header-resume"></div>
     <h3>${landing_lang['info2'][this.lang]}</h3>
     <a target="_blank" href="./assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top"><button>Download PDF</button></a>
-    <h3>${landing_lang['info3'][this.lang]}</h3>
-    </div>`
-
-    this.randomText()
-  }
-  
-  randomText = async () => {
-    let msg = `Resum${this.generateNonce()}`
-    const timeInterval = setInterval(() => {
-      if (msg == 'Resume') {
-        this.renderNonce(msg)
-        clearTimeout(timeInterval)
-      } else {
-        msg = `Resum${this.generateNonce()}`
-        this.renderNonce(msg)
-      }
-    }, 100)
+    <h3>${landing_lang['info3'][this.lang]}</h3>`
+    
+    this.landing.appendChild(landing_box)
+    this.landing.onclick = () => this.randomText(this.generateNonce(6))
+    this.randomText(this.generateNonce(6))
+    
+    const observer = new IntersectionObserver(async (entries) => {
+      entries.forEach(async (entry) => {
+        if (entry.isIntersecting) this.randomText(this.generateNonce(6))
+      })
+    })
+    const scrollAnimate = document.querySelectorAll('#HR-Landing-header-resume')
+    scrollAnimate.forEach(async (el) => observer.observe(el))
   }
 
-  generateNonce(length = 1) {
+  randomText = (msg = `${this.generateNonceUp()}${this.generateNonce(5)}`) => {
+    this.renderNonce(msg)
+    if (msg != 'Resume') {
+      let char = msg.split('')
+      if (char[0] != 'R') char[0] = this.generateNonceUp()
+      if (char[1] != 'e') char[1] = this.generateNonceLow()
+      if (char[2] != 's') char[2] = this.generateNonceLow()
+      if (char[3] != 'u') char[3] = this.generateNonceLow()
+      if (char[4] != 'm') char[4] = this.generateNonceLow()
+      if (char[5] != 'e') char[5] = this.generateNonceLow()
+      msg = char.join('')
+      this.renderNonce(msg)
+      requestAnimationFrame(() => this.randomText(msg))
+    }
+  }
+
+  generateNonce(length = 1, posible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') {
     let text = ''
-    const posible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     for (let i = 0; i < length; i++) text += posible.charAt(Math.floor(Math.random() * posible.length))
     return text
   }
+
+  generateNonceUp = (length = 1, posible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') => this.generateNonce(length, posible)
+  generateNonceLow = (length = 1, posible = 'abcdefghijklmnopqrstuvwxyz') => this.generateNonce(length, posible)
 
   renderNonce = (msg) => {
     const parent = document.getElementById('HR-Landing-header-resume')
     if (parent) {
       const cursor = document.createElement('span')
-      cursor.setAttribute('class', 'blink-cursor')
+      cursor.className = 'blink-cursor'
       parent.innerHTML = msg
       parent.appendChild(cursor)
     }
