@@ -15,6 +15,10 @@
   from { opacity: 0; transform: rotate(360deg) translateX(100%); }
   to { opacity: 1; transform: rotate(0deg)  translateX(0); }
 }
+@keyframes animateScrollLR {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
 section#HR #HR-Landing {
   position: relative;
   width: 100vw;
@@ -164,7 +168,6 @@ section#HR #HR-Aboutme #Aboutme-desc {
   -webkit-backdrop-filter: blur(8px);
   overflow-x: hidden;
   overflow-y: auto;
-  opacity: 0;
 }
 section#HR #HR-Aboutme.scroll-animate.show #Aboutme-desc {
   animation: animateScroll 0.5s linear forwards 1s;
@@ -175,11 +178,52 @@ section#HR #HR-Aboutme #Aboutme-desc p {
 section#HR #HR-Aboutme #Aboutme-desc p:nth-child(1) {
   margin: 0;
 }
+section#HR #HR-Whatido {
+  position: relative;
+  width: 100vw;
+}
+section#HR #HR-Whatido #Whatido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px 20px;
+  width: 100%;
+}
+section#HR #HR-Whatido #Whatido .Whatido-box {
+  width: 400px;
+  height: 600px;
+  padding: 20px 10px;
+  border: solid 1px #000;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+section#HR #Whatido .Whatido-box.scroll-animate.show {
+  animation: animateScrollLR 1s linear forwards 0.5s;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-cover {
+  width: 100%;
+  margin-bottom: 20px;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-head {
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  line-height: 1.6em;
+  color: #800;
+  text-align: center;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-desc {
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
 section#HR #HR-Skill {
   position: relative;
   width: 100vw;
 }
 section#HR #HR-Aboutme h1,
+section#HR #HR-Whatido h1,
 section#HR #HR-Skill h1 {
   font-size: 3rem;
   line-height: 1.6em;
@@ -413,7 +457,7 @@ section#HR #footer-container ul#footer-qrcode {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px 60px;
+  gap: 20px 30px;
   width: 100vw;
   list-style-type: none;
   text-align: center;

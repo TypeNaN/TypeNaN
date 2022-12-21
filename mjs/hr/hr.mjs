@@ -4,6 +4,7 @@
 import mainnav from '../mainnav.mjs'
 import landing from './landing.mjs'
 import aboutme from './aboutme.mjs'
+import whatido from './whatido.mjs'
 import skill from './skill.mjs'
 
 
@@ -29,6 +30,7 @@ export default class {
     new mainnav(this)
     new landing(this.section)
     new aboutme(this.section)
+    new whatido(this.section)
     new skill(this.section)
     this.render_footer()
   }
