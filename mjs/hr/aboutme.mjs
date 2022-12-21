@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 import particle from '../effect/particle.mjs'
@@ -36,7 +36,7 @@ export default class {
     this.aboutme_desc.innerHTML = aboutme_lang['desc'][this.lang]
     this.aboutme_pic.appendChild(this.aboutme_desc)
 
-    const particle_img = new particle(this.aboutme, this.aboutme_pic.clientWidth, this.aboutme_pic.clientHeight)
+    const particle_img = new particle(this.aboutme, this.aboutme_pic, this.section)
     particle_img.render('./assets/me.webp', 10, 8)
 
     const observer = new IntersectionObserver(async (entries) => {

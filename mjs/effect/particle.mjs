@@ -55,9 +55,9 @@ class Particle {
 
 
 class Effect {
-  constructor(canvas, img, gap=3, radius=3) {
-    this.width = canvas.width
-    this.height = canvas.height
+  constructor(obj, img, gap=10, radius=8) {
+    this.width = obj.canvas.width
+    this.height = obj.canvas.height
     this.particleArray = []
     this.img = img
     this.centerX = this.width * .5
@@ -73,7 +73,7 @@ class Effect {
     }
     window.addEventListener('mousemove', (e) => {
       this.mouse.x = e.x
-      this.mouse.y = e.y
+      this.mouse.y = obj.container.scrollTop - obj.parent.clientHeight + e.y
     })
   }
 
@@ -98,12 +98,13 @@ class Effect {
 
 
 export default class {
-  constructor(parent, width, height) {
+  constructor(parent, section, container) {
     this.parent = parent
+    this.container = container
     this.canvas = document.createElement('canvas')
     this.ctx = this.canvas.getContext('2d')
-    this.canvas.width = width
-    this.canvas.height = height
+    this.canvas.width = section.clientWidth
+    this.canvas.height = section.clientHeight
     this.parent.appendChild(this.canvas)
   }
 
@@ -116,7 +117,7 @@ export default class {
     this.image.onload = (e) => {
       let im = this.resize(e.target, this.canvas.width, this.canvas.height)
       let pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
-      this.effect = new Effect(this.canvas, im, Math.floor(gap) * chanel, radius)
+      this.effect = new Effect(this, im, Math.floor(gap) * chanel, radius)
       this.effect.init(pixels)
       this.animate()
       
@@ -132,7 +133,7 @@ export default class {
             pixels = im.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height).data
             this.effect = undefined
             radius = radius * scale
-            this.effect = new Effect(this.canvas, im, gap * chanel, radius)
+            this.effect = new Effect(this, im, gap * chanel, radius)
             this.effect.init(pixels)
           }
         }
