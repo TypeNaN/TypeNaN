@@ -200,15 +200,6 @@ export default class {
 
     this.skill.innerHTML += `<h1>${myskill_lang['header'][this.lang]}</h1>`
     this.render_skill(myskill)
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('show')
-        else entry.target.classList.remove('show')
-      })
-    })
-    const scrollAnimate = document.querySelectorAll('.skill-box.scroll-animate')
-    scrollAnimate.forEach((el) => observer.observe(el))
   }
 
   render_skill = async (skill_set) => {

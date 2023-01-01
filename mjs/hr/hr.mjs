@@ -33,6 +33,15 @@ export default class {
     new whatido(this.section)
     new skill(this.section)
     this.render_footer()
+
+    const observer = new IntersectionObserver(async (entries) => {
+      entries.forEach(async (entry) => {
+        entry.isIntersecting ? entry.target.classList.add('show') : entry.target.classList.remove('show')
+      })
+    })
+
+    const scrollAnimate = document.querySelectorAll('.scroll-animate')
+    scrollAnimate.forEach(async (el) => observer.observe(el))
   }
 
   render_footer = async () => {

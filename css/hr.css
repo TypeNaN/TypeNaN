@@ -193,17 +193,26 @@ section#HR #HR-Whatido #Whatido {
 section#HR #HR-Whatido #Whatido .Whatido-box {
   width: 400px;
   height: 600px;
+  margin: 40px auto;
   padding: 20px 10px;
-  border: solid 1px #000;
+  background: linear-gradient(#fff, #e5f7d1, #e3e3e3);
+  border-radius: 20px 5px 5px 20px;
+  /* border: solid 1px #000; */
+  box-shadow: 5px 5px 5px #00000011,
+    15px 15px 15px #00000011,
+    20px 20px 20px #00000011,
+    50px 50px 50px #00000011,
+    inset 3px 3px 2px #fff;
   opacity: 0;
   overflow-x: hidden;
   overflow-y: auto;
 }
 section#HR #Whatido .Whatido-box.scroll-animate.show {
-  animation: animateScrollLR 1s linear forwards 0.5s;
+  animation: fadeIn 1s linear forwards 0.5s;
 }
 section#HR #Whatido .Whatido-box .Whatido-box-cover {
   width: 100%;
+  height: 200px;
   margin-bottom: 20px;
 }
 section#HR #Whatido .Whatido-box .Whatido-box-head {
@@ -217,6 +226,31 @@ section#HR #Whatido .Whatido-box .Whatido-box-head {
 section#HR #Whatido .Whatido-box .Whatido-box-desc {
   font-size: 1rem;
   line-height: 1.4rem;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-portfolio {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px 2%;
+  width: 100%;
+  margin: 40px auto;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-portfolio-item {
+  width: 48%;
+  opacity: 0;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-portfolio-item.scroll-animate.show {
+  animation: animateScrollLR 1s linear forwards 0.5s;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-portfolio-img {
+  width: 100%;
+  height: 120px;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-portfolio-desc {
+  text-align: center;
+  background-color: #fff;
+  padding: 2%;
 }
 section#HR #HR-Skill {
   position: relative;
