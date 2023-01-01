@@ -2,26 +2,41 @@
 
 
 const whatido_set = {
-  header: { th: 'สิ่งที่ฉันทำ', en: 'What I do.' }, 
+  header: { th: 'สิ่งที่ฉันทำ', en: 'What I dev.' }, 
   do: [
     {
       header: {
-        th: 'การเผยแพร่ข้อมูล',
-        en: 'Dissemination of information',
+        th: 'งานด้านประชาสัมพันธ์และข้อมูลข่าวสาร',
+        en: 'Public relations and information',
         cover: null
       },
       desc: {
-        th: 'งานด้านการเผยแพร่ข้อมููลข่าวสารที่ฉันสร้างสรรออกมานั้นมีทั้งในรูปแบบเว็บไซต์และเว็บแอพพลิเคชั่น ผลงานที่ผ่านมาอย่างเช่น',
-        en: 'The information dissemination work I create is both the website and the web application. Past works such as',
+        th: '<p>งานด้านประชาสัมพันธ์และข้อมูลข่าวสารที่ฉันสร้างสรรออกมานั้นมีทั้งในรูปแบบเว็บไซต์และเว็บแอพพลิเคชั่น ไม่ว่าจะเป็นด้านออกแบบหรือระบบเบื้องหลังฉันก็ทำได้ ผลงานที่ผ่านมาเช่น</p>',
+        en: "<p>The public relations and information work that I create is both the website and the web application.</p><p>Whether it's the design side or the systems behind it, I can do it.</p><p>Past works such as.</p>",
       },
       portfolio: [
-        ['port 1', './assets/512x512.png'],
-        ['port 2', './assets/512x512.png'],
-        ['port 3', './assets/512x512.png'],
-        ['port 4', './assets/512x512.png'],
-        ['port 5', './assets/512x512.png'],
-        ['port 6', './assets/512x512.png'],
-        ['port 7', './assets/512x512.png']
+        ['Lex Car Gas Garage', 'https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/lek.png', 'https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/lek.png'],
+        ["Disney Products O'Clock Asia", "https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/Disney%20Products%20O'Clock%20Asia.png", "https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/Disney%20Products%20O'Clock%20Asia.png"],
+        ['8E88', 'https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/8E88.png', 'https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/8E88.png'],
+        ['ไก่กลมกล่อม', 'https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/kkk.png', 'https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/kkk.png'],
+        ['mamatell', 'https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/mamatell.png', 'https://raw.githubusercontent.com/TypeNaN/TypeNaN/main/portfolio/mamatell.png']
+      ]
+    },
+    {
+      header: {
+        th: 'งานด้านระบบ',
+        en: 'Systems',
+        cover: null
+      },
+      desc: {
+        th: '<p>การพัฒนาซอร์แวร์เพื่อสนับสนุนระบบต่างๆ ไม่ว่าจะเป็น IoT, MCU, SBC, Embedded</p><p>คลิกเพื่อชมคลิปตัวอย่างผลงาน</p>',
+        en: '<p>Software development to support various systems such as IoT, MCU, SBC, Embedded</p><p>Click to view the sample clip</p>',
+      },
+      portfolio: [
+        ['Voice recognition<br>Raspberry pi<br>[ภาษา Python]', 'https://youtu.be/ToU-9Mjx-PA', 'https://img.youtube.com/vi/ToU-9Mjx-PA/0.jpg'],
+        ['Home automation with Ai<br>แม่หญิงการะเกด<br>[ภาษา Python]', 'https://youtu.be/FiZrHdiAenY', 'https://img.youtube.com/vi/FiZrHdiAenY/0.jpg'],
+        ['Thermal camera<br>Raspberry pi<br>[ภาษา Python]', 'https://youtu.be/qjY0JrnNLmE', 'https://img.youtube.com/vi/qjY0JrnNLmE/0.jpg'],
+        ['DIY CNC<br>[ภาษา C/C++]<br>(Sorry no clip)', null, null],
       ]
     },
     {
@@ -77,7 +92,7 @@ export default class {
       
       const cover = document.createElement('div')
       cover.className = 'Whatido-box-cover'
-      cover.style.backgroundImage = `url(${ido['header']['cover'] || './assets/lain.webp'})`
+      cover.style.backgroundImage = `url("${ido['header']['cover'] || './assets/lain.webp'}")`
       cover.style.backgroundPosition = 'center'
       cover.style.backgroundRepeat = 'no-repeat'
       cover.style.backgroundSize = 'cover'
@@ -92,13 +107,25 @@ export default class {
         this.whatido_box.appendChild(portfolio)
         
         ido['portfolio'].forEach((data) => {
+          let anchor
+          if (data[1]) {
+            anchor = document.createElement('a')
+            anchor.target = '_blank'
+            anchor.alt = data[0]
+            anchor.href = data[1] || '#'
+          } else {
+            anchor = document.createElement('div')
+          }
+
+          anchor.className = 'Whatido-box-portfolio-item scroll-animate'
+          portfolio.appendChild(anchor)
+          
           const item = document.createElement('div')
-          item.className = 'Whatido-box-portfolio-item scroll-animate'
-          portfolio.appendChild(item)
+          anchor.appendChild(item)
 
           const img = document.createElement('div')
           img.className = 'Whatido-box-portfolio-img'
-          img.style.backgroundImage = `url(${data[1] || './assets/lain.webp'})`
+          img.style.backgroundImage = `url("${data[2] || './assets/lain.webp'}")`
           img.style.backgroundPosition = 'center'
           img.style.backgroundRepeat = 'no-repeat'
           img.style.backgroundSize = 'cover'

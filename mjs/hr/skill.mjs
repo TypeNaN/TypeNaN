@@ -41,8 +41,8 @@ const myskill_lang = {
     en: { h2: 'Skill<br>Machine Learning<br>and Data Analysis', li: myskill_desc['en'] },
   },
   head_iot: {
-    th: { h2: 'ทักษะด้าน<br>Embeded System<br>และ Internet of think', li: myskill_desc['th'] },
-    en: { h2: 'Skill<br>Embeded System<br>and Internet of think', li: myskill_desc['en'] },
+    th: { h2: 'ทักษะด้าน<br>Embedded System<br>และ Internet of Think', li: myskill_desc['th'] },
+    en: { h2: 'Skill<br>Embedded System<br>and Internet of Think', li: myskill_desc['en'] },
   },
   head_lang: {
     th: {

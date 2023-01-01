@@ -185,17 +185,19 @@ section#HR #HR-Whatido {
 section#HR #HR-Whatido #Whatido {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 20px 20px;
   width: 100%;
+  margin: 40px auto;
 }
 section#HR #HR-Whatido #Whatido .Whatido-box {
   width: 400px;
-  height: 600px;
-  margin: 40px auto;
+  min-height: 200px;
+  max-height: 75vh;
   padding: 20px 10px;
-  background: linear-gradient(#fff, #e5f7d1, #e3e3e3);
+  color: #555;
+  background-color: #eee;
   border-radius: 20px 5px 5px 20px;
   /* border: solid 1px #000; */
   box-shadow: 5px 5px 5px #00000011,
@@ -226,18 +228,24 @@ section#HR #Whatido .Whatido-box .Whatido-box-head {
 section#HR #Whatido .Whatido-box .Whatido-box-desc {
   font-size: 1rem;
   line-height: 1.4rem;
+  text-indent: 3em;
+}
+section#HR #Whatido .Whatido-box .Whatido-box-desc p {
+  margin-top: 30px;
 }
 section#HR #Whatido .Whatido-box .Whatido-box-portfolio {
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 20px 2%;
+  gap: 40px 2%;
   width: 100%;
   margin: 40px auto;
 }
 section#HR #Whatido .Whatido-box .Whatido-box-portfolio-item {
   width: 48%;
+  background-color: #800;
+  border: solid 1px #800;
   opacity: 0;
 }
 section#HR #Whatido .Whatido-box .Whatido-box-portfolio-item.scroll-animate.show {
@@ -249,7 +257,8 @@ section#HR #Whatido .Whatido-box .Whatido-box-portfolio-img {
 }
 section#HR #Whatido .Whatido-box .Whatido-box-portfolio-desc {
   text-align: center;
-  background-color: #fff;
+  background-color: #800;
+  color: #fff;
   padding: 2%;
 }
 section#HR #HR-Skill {
@@ -418,11 +427,12 @@ section#HR .skill-dot::before {
   position: absolute;
   top: -7px;
   left: 50%;
-  transform: translateX(-50%);
+  transform-origin: center left;
+  transform: rotate(45deg) translateX(-50%);
   width: 14px;
   height: 14px;
   background: #555;
-  border-radius: 50%;
+  border-radius: 50% 0 50% 15%;
 }
 section#HR .skill-box:hover .skill-dot::before {
   background: #f52e4f;
@@ -449,7 +459,7 @@ section#HR .skill-box.scroll-animate.show .skill-percent svg circle:nth-child(2)
   opacity: 0;
   animation: fadeIn 2s ease-in-out forwards 3.5s;
 }
-section#HR .skill-box.scroll-animate.show .skill-box:hover svg circle:nth-child(2) {
+section#HR .skill-box.scroll-animate.show:hover svg circle:nth-child(2) {
   stroke: #f52e4f;
   filter: drop-shadow(0px 0px 2px #b90642);
 }
