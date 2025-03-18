@@ -87,7 +87,7 @@ class Top extends Subprocess {
 
     if (!performance.memory) {
       this.done = true
-      return { error: 'Memory API not supported' }
+      return { message: 'Current web browsers do not support the Memory API.' }
     }
 
     const numCores = navigator.hardwareConcurrency

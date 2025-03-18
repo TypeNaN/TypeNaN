@@ -723,6 +723,7 @@ export default class Terminal {
     const logli = document.createElement('li')
     const std = await this.command_maping([...data.command])
     const command = (this.command_space([...data.command])).join('')
+    console.log(std)
     //const cmd = (this.command_space_reduce([...data.command])).join(' ')
     //const prevcmd = this.termhistory.slice(-1)[0]
     //if (cmd !== prevcmd && cmd !== '') {
