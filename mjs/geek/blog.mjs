@@ -10,14 +10,37 @@ Exit Status : void
 
 `
 
-export default class extends Windows {
-  constructor(params) { super(params) }
+const desc0 = {
+  th: '<p class="no-sudo">คำสั่งนี้ไม่ต้องการสิทธิ์พิเศษใดๆ เพื่อดำเนิดการ</p>',
+  en: '<p class="no-sudo">Do not need super user permission</p>'
+}
+const desc1 = {
+  th: '<p>\tคำสั่งจัดรูปแบบข้อมูลเพื่อสั่งพิมพ์ออกไปยังเครื่องพิมพ์เอกสารขนาด A4 คุณสามารถสั่งการพิมพ์ออกไปยังเครื่องพิมพ์เอกสารได้โดยที่รูปแบบที่พิมพ์ ออกไปจะมีรูปแบบตามที่แสดงให้เห็นจากด้านล่างนี้ หรือหากตัวอย่างที่ด้านล่างไม่แสดงสามารถกดดาวน์โหลดได้ <a target="_blank" href="./assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top">ที่ตรงนี้</a>\n\n</p>',
+  en: '<p>\tCommand to format the data to print out to an A4 document printer You can print out to a document printer that prints that format. The result will look like the one below. Or if the preview below doesn\'t show, you can click to download it <a target="_blank" href="./assets/resume.pdf#toolbar=1&navpanes=1&scrollbar=0&view=FitH,top">here</a>.\n\n</p>'
+}
 
-  render = async (id) => {
+class Blog extends Windows {
+  //constructor(params) { super(params) }
+  constructor() {
+    if (!Blog.instance) {
+      super()
+      Blog.instance = this
+    }
+    return Blog.instance
+  }
+
+  render = async (id, sudo, params) => {
+    this.sudo = sudo
+    const lang = document.documentElement.lang
     this.create(id, description)
     await this.waitfor(50)
     this.show()
+    if (this.sudo) this.console.innerHTML += desc0[lang]
+    this.console.innerHTML += desc1[lang]
+    this.preview()
+  }
 
+  preview = async () => {
     const blog = document.createElement('div')
     blog.id = 'Blog'
     blog.innerHTML = '<img alt="TypeNaN" src="https://res.cloudinary.com/practicaldev/image/fetch/s--rR4Xzq6L--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/859123/ae293bd6-130c-43f3-ae70-71c9f61b31dd.jpeg" />'
@@ -49,9 +72,11 @@ export default class extends Windows {
         }
       })
     }).catch((e) => console.error(e))
+  }
+
 
     /*
-    // Load from feed, fast and no log warnning/error but no image
+    // Load from feed, fast and no log warnning/error
     fetch('https://dev.to/feed/typenan', { referrerPolicy: 'no-referrer' })
     .then(res => res.text())
     .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
@@ -73,5 +98,5 @@ export default class extends Windows {
       }
     }).catch((e) => console.error(e))
     */
-  }
 }
+export default new Blog()

@@ -3,7 +3,7 @@
 
 export default class {
   constructor() {
-    this._private
+    //this._private
   }
 
   create = (id, description) => {
@@ -41,7 +41,7 @@ export default class {
     this.windows.childNodes[1].childNodes[0].appendChild(ads)
     if ('adsbygoogle' in window) (adsbygoogle = window.adsbygoogle || []).push({})
     */
-  
+
     this.X = this.windows.childNodes[0].childNodes[1]
     this.X.onclick = (e) => this.remove()
     this.randomStatusBarReverse()
@@ -53,7 +53,7 @@ export default class {
     if (t) e.innerHTML = t
     let parent
     if (p instanceof HTMLElement) parent = p
-    else if (typeof p === 'string') parent = document.getElementById(p) || document.body 
+    else if (typeof p === 'string') parent = document.getElementById(p) || document.body
     else parent = document.body
     parent.appendChild(e)
     return e

@@ -1,9 +1,12 @@
 'use strict'
 
 
-export default class {
+class Geek {
   constructor() {
-
+    if (!Geek.instance) {
+      Geek.instance = this
+    }
+    return Geek.instace
     /*
     // <!-- adsbygoogle banner name TypeNaN Profile -->
     const script = document.createElement('script')
@@ -11,14 +14,19 @@ export default class {
     script.crossorigin = 'anonymous'
     document.head.appendChild(script)
     */
-    this.render()
   }
 
   render = async () => {
     this.section = document.createElement('section')
     this.section.id = 'GEEK'
     document.body.appendChild(this.section)
-    const { default:terminal } = await import('./terminal.mjs')
+
+    const { default: terminal } = await import('./terminal.mjs')
     new terminal(this.section)
+
+    //const { default: matrix } = await import('./matrix.mjs')
+    //new matrix(this.section)
   }
 }
+
+export default new Geek()

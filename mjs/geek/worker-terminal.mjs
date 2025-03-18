@@ -1,218 +1,292 @@
-'use strict'
+//'use strict'
+//
+//
+//import { CmdsIndex, ParamsIndex, PathIndex } from './commands.mjs'
+//
+//const cmdi = CmdsIndex()
+//const pathFS = {}
+//let CWD = ''
+//
+//const command_line = []
+//const command_line_tmp = []
+//const history = []
+//
+//let command_cursor = -1
+//let history_index = -1
+//const keypress = {}
+//
+//
+//class Terminal {
+//  constructor() {
+//    if (!Terminal.instance) {
+//      Terminal.instance = this
+//    }
+//    return Terminal.instance
+//  }
+//
+//  enterinterrupt = () => {
+//    postMessage({ do: 'command_line_interrupt', command: command_line, cursor: command_cursor })
+//
+//    if (history[history.length - 1]) {
+//      if (command_line.toString() !== history[history.length - 1].toString()) {
+//        if (history.length > 100) history.shift()
+//        history.push([...command_line])
+//        history_index = history.length
+//      }
+//    } else {
+//      history.push([...command_line])
+//      history_index = history.length
+//    }
+//    this.clearinterrupt()
+//  }
+//
+//  clearinterrupt = () => {
+//    command_line_tmp.length = 0
+//    command_line.length = 0
+//    command_cursor = -1
+//    postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//  }
+//
+//  completer = (command_line) => {
+//    let n = 0
+//    let cmd = command_line.join('')
+//    let params = cmd.split(' ')
+//    for (let i = 0; i < cmd.length; i++) {
+//      if (cmd[i] == ' ') n++
+//      if (i >= command_cursor) break
+//    }
+//    if (params.length === 1) {
+//      cmd = cmd.split(' ')[n]
+//      if (!cmdi.hasOwnProperty(cmd)) return postMessage({ do: 'command_line_completer_done' })
+//      const group = Object.keys(cmdi[cmd])
+//      if (group.length < 1) return postMessage({ do: 'command_line_completer_done' })
+//      const details = Object.values(cmdi[cmd])
+//      postMessage({ do: 'command_line_completer', command: cmd, options: group, details: details, cursor: command_cursor })
+//    } else {
+//      if (params.length > 1 && params[0] === 'sudo') {
+//        if (params.length > 2) {
+//          cmd = params[1]
+//          let param = params[params.length - 1]
+//          let prmi
+//          if (param.startsWith('/') || param.startsWith('.')) {
+//            [ prmi, param ] = PathIndex(CWD, pathFS, param)
+//          } else {
+//            prmi = ParamsIndex(cmd)
+//          }
+//          //console.log(prmi, param, prmi.hasOwnProperty(param))
+//          if (!prmi.hasOwnProperty(param)) return postMessage({ do: 'command_line_completer_done' })
+//          const group = Object.keys(prmi[param])
+//          if (group.length < 1) return postMessage({ do: 'command_line_completer_done' })
+//          const details = Object.values(prmi[param])
+//          postMessage({ do: 'command_line_completer', command: param, options: group, details: details, cursor: command_cursor })
+//        } else {
+//          cmd = params[1]
+//          if (!cmdi.hasOwnProperty(cmd)) return postMessage({ do: 'command_line_completer_done' })
+//          const group = Object.keys(cmdi[cmd])
+//          if (group.length < 1) return postMessage({ do: 'command_line_completer_done' })
+//          const details = Object.values(cmdi[cmd])
+//          postMessage({ do: 'command_line_completer', command: cmd, options: group, details: details, cursor: command_cursor })
+//        }
+//      } else if (params.length > 1) {
+//        cmd = params[0]
+//        let param = params[params.length - 1]
+//        let prmi
+//        if (param.startsWith('/') || param.startsWith('.')) {
+//          [ prmi, param ] = PathIndex(CWD, pathFS, param)
+//          if (param.startsWith('./')) param = param.replace('./', '')
+//        } else {
+//          prmi = ParamsIndex(cmd)
+//        }
+//        //console.log(prmi, param, prmi.hasOwnProperty(param))
+//        if (!prmi.hasOwnProperty(param)) return postMessage({ do: 'command_line_completer_done' })
+//        const group = Object.keys(prmi[param])
+//        if (group.length < 1) return postMessage({ do: 'command_line_completer_done' })
+//        const details = Object.values(prmi[param])
+//        //console.log(param, group, command_cursor)
+//        postMessage({ do: 'command_line_completer', command: param, options: group, details: details, cursor: command_cursor })
+//      }
+//    }
+//  }
+//
+//  set_completer = (data) => {
+//    if (data.oldCursor < data.cursor) {
+//      for (let i = data.oldCommand.length; i > 0; i--) {
+//        if (command_cursor > -1) {
+//          command_line.splice(command_cursor, 1)
+//          command_cursor--
+//        }
+//      }
+//      for (let i = 0; i < data.command.length; i++) {
+//        command_cursor++
+//        command_line.splice(command_cursor, 0, data.command[i])
+//      }
+//      postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//    }
+//  }
+//
+//  keyup = (e) => { keypress[e.code] = { ascii: e.ascii, key: e.key, press: false } }
+//
+//  keydown = (e) => {
+//    keypress[e.code] = { ascii: e.ascii, key: e.key, press: true }
+//    let code = e.code
+//    let key = e.key
+//
+//    if (keypress[17] && keypress[67]) {
+//      if (keypress[17].press && keypress[67].press) {
+//        command_line.length = 0
+//        command_line_tmp. length = 0
+//        command_cursor = -1
+//        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        return
+//      }
+//    }
+//    switch (code) {
+//      case 9: // Tab
+//        if (command_cursor > -1) this.completer(command_line)
+//        break
+//
+//      // [Shift, Control, Alt]
+//      case 16: case 17: case 18: break
+//
+//      // [Pause, CapsLock, Escape]
+//      case 19: case 20: case 27: break
+//
+//      // [PageUp, PageDown, Insert]
+//      case 33: case 34: case 45: break
+//
+//      // [ContextMenu, NumLock, ScrollLock]
+//      case 93: case 144: case 145: break
+//
+//      // [F1-F12]
+//      case 112: case 113: case 114: case 115: case 116: case 117: break
+//      case 118: case 119: case 120: case 121: case 122: case 123: break
+//
+//      case 8: // Back space
+//        if (command_cursor > -1) {
+//          command_line.splice(command_cursor, 1)
+//          command_cursor--
+//          postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        }
+//        break
+//      case 13: // Enter
+//        // if (command_line.length > 0) this.enterinterrupt()
+//        this.enterinterrupt()
+//        break
+//      case 35: // End
+//        if (command_cursor < command_line.length - 1) command_cursor = command_line.length - 1
+//        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        break
+//      case 36: // home
+//        if (command_cursor > -1) command_cursor = -1
+//        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        break
+//      case 37: // Arrow Left
+//        if (command_line.length > 0) if (command_cursor > -1) command_cursor--
+//        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        break
+//      case 39: // Arrow Right
+//        if (command_line.length > 0) if (command_cursor < command_line.length - 1) command_cursor++
+//        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        break
+//      case 38: // Arrow Up
+//        if (history_index == history.length) {
+//          command_line_tmp.length = 0
+//          command_line_tmp.push(...command_line)
+//        }
+//        if (history_index > 0) {
+//          if (history_index > history.length) history_index = history.length
+//          history_index--
+//          command_line.length = 0
+//          command_line.push(...history[history_index])
+//          command_cursor = history[history_index].length
+//          postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        }
+//        break
+//      case 40: // Arrow Down
+//        if (history_index < history.length) {
+//          history_index++
+//          if (history_index <= history.length - 1) {
+//            command_line.length = 0
+//            command_line.push(...history[history_index])
+//            command_cursor = history[history_index].length
+//            postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//          } else {
+//            command_line.length = 0
+//            command_line.push(...command_line_tmp)
+//            command_cursor = command_line.length
+//            postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//          }
+//        } else {
+//          command_line.length = 0
+//          command_line.push(...command_line_tmp)
+//          command_cursor = command_line.length
+//          postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        }
+//        break
+//      case 46: // Delete
+//        if (command_line.length > 0) if (command_cursor < command_line.length) command_line.splice(command_cursor + 1, 1)
+//        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        break
+//      default:
+//        command_cursor++
+//        command_line.splice(command_cursor, 0, key)
+//        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
+//        break
+//    }
+//  }
+//}
+//
+//
+//const terminal = new Terminal()
+//
+//
+//onerror = async (event) => console.error(event)
+//
+//onmessage = async (event) => {
+//  switch (event.data.on) {
+//    case 'keydown':
+//      terminal.keydown({
+//        code  : event.data.code,
+//        ascii : event.data.ascii,
+//        key   : event.data.key
+//      })
+//      //terminal.completer(command_line)
+//      break
+//    case 'keyup':
+//      terminal.keyup({
+//        code  : event.data.code,
+//        ascii : event.data.ascii,
+//        key   : event.data.key
+//      })
+//      break
+//    case 'get_completer':
+//      if (command_cursor > -1) terminal.completer(command_line)
+//      break
+//    case 'set_completer':
+//      terminal.set_completer({
+//        oldCursor : event.data.oldCursor,
+//        oldCommand: event.data.oldCommand,
+//        cursor    : event.data.cursor,
+//        command   : event.data.command,
+//      })
+//      break
+//    case 'add_path_completer':
+//      //Object.assign(cmdi, PathIndex(event.data.path))
+//      Object.assign(pathFS, event.data.path)
+//      CWD = event.data.cwd
+//      break
+//    case 'load_command_history':
+//      history.push(...event.data.history)
+//      history_index = history.length
+//      break
+//    default: break
+//  }
+//}
 
 
-import { CmdsIndex } from './buidincmds.mjs'
-
-const cmdi = CmdsIndex()
-
-const command_line = []
-const command_line_tmp = []
-const history = []
-
-let command_cursor = -1
-let history_index = -1
-const keypress = {}
 
 
-class Terminal {
-  constructor() {}
 
-  enterinterrupt = () => {
-    postMessage({ do: 'command_line_interrupt', command: command_line, cursor: command_cursor })
-    
-    if (history[history.length - 1]) {
-      if (command_line.toString() !== history[history.length - 1].toString()) {
-        if (history.length > 100) history.shift()
-        history.push([...command_line])
-        history_index = history.length
-      }
-    } else {
-      history.push([...command_line])
-      history_index = history.length
-    }
-    this.clearinterrupt()
-  }
-
-  clearinterrupt = () => {
-    command_line_tmp.length = 0
-    command_line.length = 0
-    command_cursor = -1
-    postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-  }
-
-  completer = (command_line) => {
-    let n = 0
-    let cmd = command_line.join('')
-    for (let i = 0; i < cmd.length; i++) {
-      if (cmd[i] == ' ') n++
-      if (i >= command_cursor) break
-    }
-    cmd = cmd.split(' ')[n]
-    if (!cmdi.hasOwnProperty(cmd)) {
-      postMessage({ do: 'command_line_completer_done' })
-      return
-    }
-    const group = Object.keys(cmdi[cmd])
-    if (group.length < 1) {
-      postMessage({ do: 'command_line_completer_done' })
-      return
-    }
-    postMessage({ do: 'command_line_completer', command: cmd, options: Object.keys(cmdi[cmd]), cursor: command_cursor })
-  }
-
-  set_completer = (data) => {
-    if (data.oldCursor < data.cursor) {
-      for (let i = data.oldCommand.length; i > 0; i--) {
-        if (command_cursor > -1) {
-          command_line.splice(command_cursor, 1)
-          command_cursor--
-        }
-      }
-      for (let i = 0; i < data.command.length; i++) {
-        command_cursor++
-        command_line.splice(command_cursor, 0, data.command[i])
-      }
-      postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-    }
-  }
-
-  keyup = (e) => { keypress[e.code] = { ascii: e.ascii, key: e.key, press: false } }
-
-  keydown = (e) => {
-    keypress[e.code] = { ascii: e.ascii, key: e.key, press: true }
-    let code = e.code
-    let key = e.key
-
-    switch (code) {
-      
-      // [Tab, Shift, Control, Alt]
-      case 9:
-        if (command_cursor > -1) this.completer(command_line)
-        break
-      case 16: case 17: case 18: break
-
-      // [Pause, CapsLock, Escape]
-      case 19: case 20: case 27: break
-
-      // [PageUp, PageDown, Insert]
-      case 33: case 34: case 45: break
-
-      // [ContextMenu, NumLock, ScrollLock]
-      case 93: case 144: case 145: break
-
-      // [F1-F12]
-      case 112: case 113: case 114: case 115: case 116: case 117: break
-      case 118: case 119: case 120: case 121: case 122: case 123: break
-
-      case 8: // Back space
-        if (command_cursor > -1) {
-          command_line.splice(command_cursor, 1)
-          command_cursor--
-          postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        }
-        break
-      case 13: // Enter
-        // if (command_line.length > 0) this.enterinterrupt()
-        this.enterinterrupt()
-        break
-      case 35: // End
-        if (command_cursor < command_line.length - 1) command_cursor = command_line.length - 1
-        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        break
-      case 36: // home
-        if (command_cursor > -1) command_cursor = -1
-        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        break
-      case 37: // Arrow Left
-        if (command_line.length > 0) if (command_cursor > -1) command_cursor--
-        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        break
-      case 39: // Arrow Right
-        if (command_line.length > 0) if (command_cursor < command_line.length - 1) command_cursor++
-        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        break
-      case 38: // Arrow Up
-        if (history_index == history.length) {
-          command_line_tmp.length = 0
-          command_line_tmp.push(...command_line)
-        }
-        if (history_index > 0) {
-          if (history_index > history.length) history_index = history.length
-          history_index--
-          command_line.length = 0
-          command_line.push(...history[history_index])
-          command_cursor = history[history_index].length
-          postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        }
-        break
-      case 40: // Arrow Down
-        if (history_index < history.length) {
-          history_index++
-          if (history_index <= history.length - 1) {
-            command_line.length = 0
-            command_line.push(...history[history_index])
-            command_cursor = history[history_index].length
-            postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-          } else {
-            command_line.length = 0
-            command_line.push(...command_line_tmp)
-            command_cursor = command_line.length
-            postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-          }
-        } else {
-          command_line.length = 0
-          command_line.push(...command_line_tmp)
-          command_cursor = command_line.length
-          postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        }
-        break
-      case 46: // Delete
-        if (command_line.length > 0) if (command_cursor < command_line.length) command_line.splice(command_cursor + 1, 1)
-        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        break
-      default:
-        command_cursor++
-        command_line.splice(command_cursor, 0, key)
-        postMessage({ do: 'command_line_change', command: command_line, cursor: command_cursor })
-        break
-    }
-  }
-}
-
-
-const terminal = new Terminal()
-
-
-onmessage = async (event) => {
-  switch (event.data.on) {
-    case 'keydown':
-      terminal.keydown({
-        code  : event.data.code,
-        ascii : event.data.ascii,
-        key   : event.data.key
-      })
-      break
-    case 'keyup':
-      terminal.keyup({
-        code  : event.data.code,
-        ascii : event.data.ascii,
-        key   : event.data.key
-      })
-      break
-    case 'get_completer':
-      if (command_cursor > -1) terminal.completer(command_line)
-      break
-    case 'set_completer':
-      terminal.set_completer({
-        oldCursor : event.data.oldCursor,
-        oldCommand: event.data.oldCommand,
-        cursor    : event.data.cursor,
-        command   : event.data.command,
-      })
-      break
-    default: break
-  }
-}
 
 // const keyschart = {
 //   8: { ascii: "\b", key: "Backspace", press: false },

@@ -6,15 +6,19 @@ import initconfig from "./initconfig.mjs"
 const waitfor = (millisecond) => new Promise(resolve => setTimeout(() => resolve(), millisecond))
 
 
-export default class {
+class Landing {
   constructor() {
-    this.parent = document.body
-    this.conf = { lang: false, viewer: false }
+    if (!Landing.instance) {
+      this.parent = document.body
+      this.conf = { lang: false, viewer: false }
+      Landing.instance = this
+    }
+    return Landing.instance
   }
 
   render = async () => {
     const conf_lang = initconfig.language_available
-    const conf_view = initconfig.viewer_enable
+    const conf_view = initconfig.viewer_all
     const conf_disabled = initconfig.viewer_disabled
 
     this.landing = document.createElement('section')
@@ -117,3 +121,6 @@ export default class {
 
   getconf = () => this.conf
 }
+
+export default new Landing()
+

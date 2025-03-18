@@ -3,6 +3,6 @@
 
 export default {
   language_available : ['th', 'en'],
-  viewer_enable : ['hr', 'geek', 'gamer'],
-  viewer_disabled: ['gamer'],
+  viewer_all : ['hr', 'geek', 'gamer'],
+  viewer_disabled: [],
 }

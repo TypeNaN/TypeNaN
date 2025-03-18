@@ -8,8 +8,12 @@ import whatido from './whatido.mjs'
 import skill from './skill.mjs'
 
 
-export default class {
+class HR {
   constructor() {
+    if (!HR.instance) {
+      HR.instance = this
+    }
+    return HR.instace
     /*
     // <!-- adsbygoogle banner name TypeNaN Profile -->
     const script = document.createElement('script')
@@ -17,16 +21,15 @@ export default class {
     script.crossorigin = 'anonymous'
     document.head.appendChild(script)
     */
-    this.id = 'hr'
-    this.render()
   }
 
   render = async () => {
+    this.id = 'hr'
     this.lang = document.documentElement.lang
     this.section = document.createElement('section')
     this.section.id = 'HR'
     document.body.appendChild(this.section)
-    
+
     new mainnav(this)
     new landing(this.section)
     new aboutme(this.section)
@@ -49,7 +52,7 @@ export default class {
     this.footer.id = 'footer-container'
     this.section.appendChild(this.footer)
 
-    const ul = document.createElement('ul')    
+    const ul = document.createElement('ul')
     ul.id = 'footer-qrcode'
     this.footer.appendChild(ul)
 
@@ -76,3 +79,6 @@ export default class {
     })
   }
 }
+
+export default new HR()
+

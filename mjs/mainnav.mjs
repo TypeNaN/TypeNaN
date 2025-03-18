@@ -8,7 +8,7 @@ export default class {
   constructor(obj) {
     this.parent = obj
     this.section = obj.section
-    this.ignore = obj.id
+    this.viewID = obj.id
     this.conf = { lang: false, viewer: false }
     this.render()
   }
@@ -16,7 +16,7 @@ export default class {
   render = async () => {
     this.lang = document.documentElement.lang
     const conf_lang = preconfig.language_available
-    const conf_view = preconfig.viewer_enable
+    const conf_view = preconfig.viewer_all
     const conf_disabled = preconfig.viewer_disabled
     const container = document.createElement('ul')
     container.id = 'container-mainnav'
@@ -33,7 +33,7 @@ export default class {
           continue
         }
         v.onclick = (e) => {
-          new setting('sudo', [`--lang=${i}`])
+          setting.render(null, 'sudo', [`--lang=${i}`])
           for (const n of conf_lang) {
             if (n === this.lang) continue
             const vf = document.getElementById(n)
@@ -62,7 +62,7 @@ export default class {
     }
 
     for (const i of conf_view) {
-      if (i === this.ignore) continue
+      //if (i === this.viewID) continue
       if (!document.getElementById(i)) {
         const v = document.createElement('li')
         v.id = i
@@ -73,9 +73,12 @@ export default class {
           v.setAttribute('disabled', true)
           continue
         }
+        if (i === this.viewID) {
+          v.classList.add('selected')
+          continue
+        }
         v.onclick = () => {
-          const obj = new setting('sudo', [`--viewer=${i}`])
-          obj.render()
+          setting.render(null, 'sudo', [`--viewer=${i}`])
         }
       }
     }

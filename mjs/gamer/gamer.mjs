@@ -4,8 +4,12 @@
 import mainnav from "../mainnav.mjs"
 
 
-export default class {
+class Gamer {
   constructor() {
+    if (!Gamer.instance) {
+      Gamer.instance = this
+    }
+    return Gamer.instace
     /*
     // <!-- adsbygoogle banner name TypeNaN Profile -->
     const script = document.createElement('script')
@@ -13,7 +17,6 @@ export default class {
     script.crossorigin = 'anonymous'
     document.head.appendChild(script)
     */
-    this.id = 'gamer'
     this.render()
   }
 
@@ -23,6 +26,9 @@ export default class {
     this.section.id = 'GAMER'
     document.body.appendChild(this.section)
 
-    new mainnav(this.section, this.id)
+    new mainnav(this)
   }
 }
+
+export default new Gamer()
+
