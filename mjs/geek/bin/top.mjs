@@ -57,8 +57,6 @@ class Top extends Subprocess {
       this._version = version
       this.parameters = help.parameters.th
       this.prmi = this.ParamsIndex()
-      this.numCores = navigator.hardwareConcurrency
-      this.CPUUsage = 0
       Top.instance = this
     }
     return Top.instance
@@ -92,6 +90,7 @@ class Top extends Subprocess {
       return { message: 'Current web browsers do not support the Memory API.' }
     }
 
+    const numCores = navigator.hardwareConcurrency
     const maxMembers = 50
 
     let Time = performance.now()
@@ -99,6 +98,7 @@ class Top extends Subprocess {
     let DeltaTime = 0
     let CPUIdleTime = 0
     let CPULastIdleTime = 0
+    let CPUUsage = 0
 
     let FPS = 30
     const FPSs = [...Array(maxMembers)].map(e => FPS)
@@ -106,8 +106,8 @@ class Top extends Subprocess {
     limit = performance.memory.jsHeapSizeLimit
     total = performance.memory.totalJSHeapSize
     used = performance.memory.usedJSHeapSize
-    dataPoints = [...Array(maxMembers)].map(e => ({ total: total, used: used, cpu: this.CPUUsage }))
-    lastDataPoints = [...Array(maxMembers)].map(e => ({ total: total, used: used, cpu: this.CPUUsage }))
+    dataPoints = [...Array(maxMembers)].map(e => ({ total: total, used: used, cpu: CPUUsage }))
+    lastDataPoints = [...Array(maxMembers)].map(e => ({ total: total, used: used, cpu: CPUUsage }))
 
 
     this.body.innerHTML = `
@@ -115,7 +115,7 @@ class Top extends Subprocess {
         <div><label for="heap-limit">JS Heap Size Limit : </label><progress id="heap-limit" value="${limit}" max="${limit}"></progress><span id="heap-limit-span"> ${(limit / 1024 / 1024).toFixed(2)} MB</span></div>
         <div><label for="heap-total">Total JS Heap Size : </label><progress id="heap-total" value="${total}" max="${limit}"></progress><span id="heap-total-span"> ${(total / 1024 / 1024).toFixed(2)} / ${(limit / 1024 / 1024).toFixed(2)} MB</span></div>
         <div><label for="heap-used">Used JS Heap Size: </label><progress id="heap-used" value="${used}" max="${total}"></progress><span id="heap-used-span"> ${(used / 1024 / 1024).toFixed(2)} / ${(total / 1024 / 1024).toFixed(2)} MB</span></div>
-        <div><label for="top-cpu">CPU ${this.numCores} Core(s) : </label><progress id="top-cpu" value="${this.CPUUsage / this.numCores}" max="100"></progress><span id="top-cpu-span"> ${(this.CPUUsage / this.numCores).toFixed(2)} %</span></div>
+        <div><label for="top-cpu">CPU ${numCores} Core(s) : </label><progress id="top-cpu" value="${CPUUsage}" max="100"></progress><span id="top-cpu-span"> ${CPUUsage.toFixed(2)} %</span></div>
       </div>
     `
 
@@ -138,8 +138,8 @@ class Top extends Subprocess {
       document.getElementById('heap-used-span').innerHTML = ` ${(used / 1024 / 1024).toFixed(2)} / ${(total / 1024 / 1024).toFixed(2)} MB`
 
       const cu = document.getElementById('top-cpu')
-      cu.value = this.CPUUsage
-      document.getElementById('top-cpu-span').innerHTML = ` ${this.CPUUsage.toFixed(2)} %`
+      cu.value = CPUUsage
+      document.getElementById('top-cpu-span').innerHTML = ` ${CPUUsage.toFixed(2)} %`
     }
 
 
@@ -169,10 +169,9 @@ class Top extends Subprocess {
       FPSs.shift()
       FPS = FPSs.reduce((a, b) => a + b, 0) / FPSs.length
 
-      const CPUUsage = DeltaTime - (CPUIdleTime - CPULastIdleTime)
+      CPUUsage = DeltaTime - (CPUIdleTime - CPULastIdleTime)
       CPUIdleTime = CPUIdleTime + (DeltaTime - CPUUsage)
       CPULastIdleTime = CPUIdleTime
-      this.CPUUsage = CPUUsage / this.numCores
 
       const width = canvas.width = this.body.offsetWidth
       const height = canvas.height = 200
@@ -265,7 +264,7 @@ class Top extends Subprocess {
 
         updateprogress(limit, total, used)
 
-        dataPoints.push({ total, used, cpu: this.CPUUsage * 1024 * 1024 })
+        dataPoints.push({ total, used, cpu: CPUUsage * 1024 * 1024 })
         dataPoints.shift()
       }
     }
