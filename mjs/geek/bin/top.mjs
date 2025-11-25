@@ -115,7 +115,7 @@ class Top extends Subprocess {
         <div><label for="heap-limit">JS Heap Size Limit : </label><progress id="heap-limit" value="${limit}" max="${limit}"></progress><span id="heap-limit-span"> ${(limit / 1024 / 1024).toFixed(2)} MB</span></div>
         <div><label for="heap-total">Total JS Heap Size : </label><progress id="heap-total" value="${total}" max="${limit}"></progress><span id="heap-total-span"> ${(total / 1024 / 1024).toFixed(2)} / ${(limit / 1024 / 1024).toFixed(2)} MB</span></div>
         <div><label for="heap-used">Used JS Heap Size: </label><progress id="heap-used" value="${used}" max="${total}"></progress><span id="heap-used-span"> ${(used / 1024 / 1024).toFixed(2)} / ${(total / 1024 / 1024).toFixed(2)} MB</span></div>
-        <div><label for="top-cpu">CPU ${numCores} Core(s) : </label><progress id="top-cpu" value="${CPUUsage}" max="100"></progress><span id="top-cpu-span"> ${CPUUsage.toFixed(2)} %</span></div>
+        <div><label for="top-cpu">CPU ${numCores} Core(s) : </label><progress id="top-cpu" value="${CPUUsage / numCores}" max="100"></progress><span id="top-cpu-span"> ${(CPUUsage / numCores).toFixed(2)} %</span></div>
       </div>
     `
 

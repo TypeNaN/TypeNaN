@@ -148,8 +148,7 @@ class Column {
   }
 
   Update(scene, camera) {
-    for (let index = this.columns.length - 1;  index > 0 ;  index--) {
-      const column = this.columns[index]
+    this.columns.forEach((column, index) => {
       if (column.z > camera.position.z) {
         this.ResponseColumn(scene, camera, column)
       } else {
@@ -166,8 +165,7 @@ class Column {
       }
 
       const tall = column.letters.length * 0.5
-      for (let lindex = 0; lindex < column.letters.length; lindex++) {
-        const letter = column.letters[lindex]
+      column.letters.forEach(letter => {
         letter.position.y -= column.fallSpeed
         letter.position.z = column.z
         if (Math.random() < this.blinkSpeed) this.Letter.ChangeLetter(letter)
@@ -175,8 +173,8 @@ class Column {
           letter.position.y = 5
           this.Letter.UpdateTexture(letter)
         }
-      }
-    }
+      })
+    })
   }
 }
 
